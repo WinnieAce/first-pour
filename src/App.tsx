@@ -1,6 +1,8 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { AgeGate } from './screens/AgeGate'
+import { DrinkPage } from './screens/DrinkPage'
+import { Library } from './screens/Library'
 import { NotFound } from './screens/NotFound'
 import { Terms } from './screens/Terms'
 import { useUserData } from './storage/UserDataContext'
@@ -25,8 +27,8 @@ export default function App() {
     <Routes>
       <Route path="/drinks/:id/make" element={<Placeholder name="Making mode" />} />
       <Route element={<Layout />}>
-        <Route path="/" element={<Placeholder name="Drinks" />} />
-        <Route path="/drinks/:id" element={<Placeholder name="Drink" />} />
+        <Route path="/" element={<Library />} />
+        <Route path="/drinks/:id" element={<DrinkPage />} />
         <Route path="/ingredients/:id" element={<Placeholder name="Ingredient" />} />
         <Route path="/bar" element={<Placeholder name="My bar" />} />
         <Route path="/favourites" element={<Placeholder name="Favourites" />} />
