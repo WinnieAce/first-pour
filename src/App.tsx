@@ -4,6 +4,7 @@ import { AgeGate } from './screens/AgeGate'
 import { DrinkPage } from './screens/DrinkPage'
 import { IngredientPage } from './screens/IngredientPage'
 import { Library } from './screens/Library'
+import { MakingMode } from './screens/MakingMode'
 import { MyBar } from './screens/MyBar'
 import { NotFound } from './screens/NotFound'
 import { Terms } from './screens/Terms'
@@ -27,7 +28,7 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/drinks/:id/make" element={<Placeholder name="Making mode" />} />
+      <Route path="/drinks/:id/make" element={<MakingMode />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Library />} />
         <Route path="/drinks/:id" element={<DrinkPage />} />
