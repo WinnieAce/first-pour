@@ -284,6 +284,26 @@ a {
   border-color: transparent;
 }
 
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.group legend {
+  padding: 0.75rem 0 0.25rem;
+  font-weight: 700;
+}
+.group .check {
+  border-bottom: 1px solid var(--line);
+}
+.group .check a {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  display: grid;
+  place-items: center;
+}
+
 /* Drink cards */
 
 .card-list {
