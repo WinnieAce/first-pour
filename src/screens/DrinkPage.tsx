@@ -133,7 +133,8 @@ export function DrinkPage() {
           </div>
         </dl>
         <p className="muted small">
-          These figures are approximate. A standard drink here is 10 g of alcohol; the definition varies by country.
+          These figures are approximate and assume the ingredients as listed, so a swap can change them. A standard drink
+          here is 10 g of alcohol; the definition varies by country.
         </p>
         <ResponsibleNotice />
       </section>

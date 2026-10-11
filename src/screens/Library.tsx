@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { useContent } from '../content/ContentContext'
@@ -16,6 +16,9 @@ export function Library() {
   const { content, ingredientById } = useContent()
   const { data } = useUserData()
   const [params, setParams] = useSearchParams()
+  // The text box keeps its own value: the address updates a moment later, and driving a text
+  // input from it can move the caret or drop characters while typing.
+  const [query, setQuery] = useState(params.get('q') ?? '')
 
   const baseSpirits = useMemo(
     () =>
@@ -27,7 +30,7 @@ export function Library() {
 
   // Filters live in the address so the back button returns to the same list.
   const filters: DrinkFilters = {
-    query: params.get('q') ?? '',
+    query,
     baseIngredientId: baseSpirits.find((b) => b.id === params.get('base'))?.id,
     family: oneOf(FAMILY_IDS, params.get('family')),
     flavour: oneOf(FLAVOURS, params.get('flavour')),
@@ -67,7 +70,14 @@ export function Library() {
       <h1>Drinks</h1>
       <label className="field">
         Search drinks or ingredients
-        <input type="search" value={filters.query} onChange={(e) => setParam('q', e.target.value)} />
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value)
+            setParam('q', e.target.value)
+          }}
+        />
       </label>
       <div className="filters">
         {select('Base spirit', 'base', filters.baseIngredientId, baseSpirits.map((b) => ({ value: b.id, label: b.name })))}
@@ -92,7 +102,13 @@ export function Library() {
         <div className="stack-sm">
           <p>No drinks match. Try a different search or fewer filters.</p>
           <div>
-            <button className="button" onClick={() => setParams({}, { replace: true })}>
+            <button
+              className="button"
+              onClick={() => {
+                setQuery('')
+                setParams({}, { replace: true })
+              }}
+            >
               Clear filters
             </button>
           </div>

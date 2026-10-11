@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import App from '../App'
 import { serialiseBackup } from '../storage/backup'
 import { confirmed, renderApp } from '../test/render'
@@ -129,4 +129,31 @@ it('shows the feedback link when an address is set', async () => {
     expect(link).toHaveAttribute('target', '_blank')
     expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'))
   }
+})
+
+it('returns focus to the import control after cancelling', async () => {
+  const { user } = await open()
+  await upload(user, serialiseBackup(theirs))
+  await user.click(await screen.findByRole('button', { name: /cancel/i }))
+  expect(screen.getByLabelText(/import a backup/i)).toHaveFocus()
+})
+
+it('Escape closes the confirmation without changing data', async () => {
+  const { user, store } = await open()
+  await upload(user, serialiseBackup(theirs))
+  await screen.findByRole('alertdialog')
+  await user.keyboard('{Escape}')
+  expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument()
+  expect(await store.load()).toEqual(mine)
+  expect(screen.getByLabelText(/import a backup/i)).toHaveFocus()
+})
+
+it('announces the restore through a status region that exists beforehand', async () => {
+  const { user } = await open()
+  const status = within(screen.getByRole('heading', { name: 'Backup' }).closest('section')!).getByRole('status')
+  expect(status).toBeEmptyDOMElement()
+  await upload(user, serialiseBackup(theirs))
+  await user.click(await screen.findByRole('button', { name: /replace my data/i }))
+  expect(status).toHaveTextContent(/backup restored/i)
+  expect(screen.getByLabelText(/import a backup/i)).toHaveFocus()
 })

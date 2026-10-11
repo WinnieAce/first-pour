@@ -331,9 +331,7 @@
         "reason": "A slice of orange matches its main flavour."
       }
     ],
-    "substitutes": [
-      "campari"
-    ],
+    "substitutes": [],
     "allergens": [],
     "common": false
   },
@@ -969,7 +967,7 @@
     "id": "egg-white",
     "name": "Egg white",
     "category": "fresh",
-    "description": "Shaken into a drink, it makes a silky foam on top without changing the taste. Use a fresh egg; it is served raw.",
+    "description": "Shaken into a drink, it makes a silky foam on top without changing the taste. It is served raw, so use a fresh or pasteurised egg, and leave it out if you are pregnant, elderly or unwell.",
     "abv": 0,
     "pairsWith": [
       {

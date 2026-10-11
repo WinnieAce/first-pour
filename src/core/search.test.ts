@@ -45,3 +45,22 @@ it('returns [] when nothing matches', () => {
 it('normalise strips accents, case and extra spaces', () => {
   expect(normalise('  PIÑA   Colada ')).toBe('pina colada')
 })
+
+it.each([
+  ['Bee’s Knees', 'bees knees'],
+  ["Bee's Knees", 'bees knees'],
+  ['No-Alcohol Mule', 'no alcohol mule'],
+  ['Lemon, Lime and Bitters', 'lemon lime and bitters'],
+  ['gin & tonic', 'gin and tonic'],
+  ['old-fashioned', 'old fashioned'],
+])('normalise ignores punctuation: %s', (input, out) => {
+  expect(normalise(input)).toBe(out)
+})
+
+it('matches a hyphenated query against a name written with a space', () => {
+  expect(run({ query: 'old-fashioned' })).toEqual(['old-fashioned'])
+})
+
+it('matches words in an ingredient description, so brand and style names find drinks', () => {
+  expect(run({ query: 'vanilla' })).toEqual(['old-fashioned', 'whiskey-sour'])
+})

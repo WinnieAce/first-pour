@@ -1,5 +1,6 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { RouteChange } from './components/RouteChange'
 import { AgeGate } from './screens/AgeGate'
 import { DrinkPage } from './screens/DrinkPage'
 import { Favourites } from './screens/Favourites'
@@ -27,7 +28,9 @@ export default function App() {
   }
 
   return (
-    <Routes>
+    <>
+      <RouteChange />
+      <Routes>
       <Route path="/drinks/:id/make" element={<MakingMode />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Library />} />
@@ -39,6 +42,7 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-    </Routes>
+      </Routes>
+    </>
   )
 }

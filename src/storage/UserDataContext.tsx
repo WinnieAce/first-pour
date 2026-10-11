@@ -23,6 +23,7 @@ export function UserDataProvider({ store, children }: { store: UserDataStore; ch
   const [data, setData] = useState<UserData | null>(null)
   const [persistent, setPersistent] = useState(store.persistent)
   const latest = useRef<UserData | null>(null)
+  const askedToPersist = useRef(false)
 
   useEffect(() => {
     let cancelled = false
@@ -46,6 +47,11 @@ export function UserDataProvider({ store, children }: { store: UserDataStore; ch
       latest.current = change(latest.current)
       setData(latest.current)
       store.save(latest.current).catch(() => setPersistent(false))
+      // Without this, some browsers (notably Safari) may clear a site's data after a week unvisited.
+      if (!askedToPersist.current) {
+        askedToPersist.current = true
+        navigator.storage?.persist?.().catch(() => {})
+      }
     },
     [store],
   )

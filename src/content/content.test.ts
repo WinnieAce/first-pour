@@ -1,3 +1,4 @@
+import { EMPTY_FILTERS, filterDrinks } from '../core/search'
 import { calculateStrength } from '../core/strength'
 import { content, ingredientById } from './index'
 
@@ -51,4 +52,36 @@ it('no ingredient lists itself as a substitute or pairing', () => {
     (i) => i.substitutes.includes(i.id) || i.pairsWith.some((p) => p.ingredientId === i.id),
   )
   expect(selfReferring.map((i) => i.id)).toEqual([])
+})
+
+describe('searching the shipped library the way a beginner types', () => {
+  const find = (query: string) => filterDrinks(content, { ...EMPTY_FILTERS, query }, new Set()).map((d) => d.id)
+
+  it.each([
+    ['lemon lime and bitters', 'lemon-lime-and-bitters'],
+    ['no alcohol', 'no-alcohol-mule'],
+    ['bee’s knees', 'bees-knees'],
+    ['gin & tonic', 'gin-and-tonic'],
+    ['old-fashioned', 'old-fashioned'],
+    ['prosecco', 'aperol-spritz'],
+    ['cointreau', 'margarita'],
+    ['whiskey', 'old-fashioned'],
+    ['whiskey', 'boulevardier'],
+  ])('"%s" finds %s', (query, id) => {
+    expect(find(query)).toContain(id)
+  })
+})
+
+it('a substitute is never much stronger or weaker than what it replaces, so strength figures stay honest', () => {
+  const mismatched = content.ingredients.flatMap((i) =>
+    i.substitutes.filter((s) => Math.abs(ingredientById.get(s)!.abv - i.abv) > 10).map((s) => `${i.id} -> ${s}`),
+  )
+  expect(mismatched).toEqual([])
+})
+
+it('every drink with raw egg white carries a caution in its ingredient note', () => {
+  const missing = content.drinks.filter((d) =>
+    d.ingredients.some((i) => i.ingredientId === 'egg-white' && !/raw/i.test(i.note ?? '')),
+  )
+  expect(missing.map((d) => d.id)).toEqual([])
 })

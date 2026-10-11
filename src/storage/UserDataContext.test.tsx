@@ -88,3 +88,27 @@ it('starts fresh when loading fails', async () => {
   expect(await screen.findByTestId('owned')).toHaveTextContent('ice,sugar')
   expect(screen.getByTestId('persistent')).toHaveTextContent('false')
 })
+
+describe('asking the browser to keep saved data', () => {
+  afterEach(() => {
+    Reflect.deleteProperty(navigator, 'storage')
+  })
+
+  it('asks once, on the first change, not on load', async () => {
+    const persist = vi.fn().mockResolvedValue(true)
+    Object.defineProperty(navigator, 'storage', { value: { persist }, configurable: true })
+    const { user } = renderApp(<Probe />, { data: confirmed() })
+    await screen.findByTestId('owned')
+    expect(persist).not.toHaveBeenCalled()
+    await user.click(screen.getByRole('button', { name: 'gin' }))
+    await user.click(screen.getByRole('button', { name: 'fav' }))
+    expect(persist).toHaveBeenCalledTimes(1)
+  })
+
+  it('carries on when the browser refuses or lacks the feature', async () => {
+    Object.defineProperty(navigator, 'storage', { value: { persist: () => Promise.reject(new Error('no')) }, configurable: true })
+    const { user } = renderApp(<Probe />, { data: confirmed() })
+    await user.click(await screen.findByRole('button', { name: 'gin' }))
+    expect(screen.getByTestId('owned')).toHaveTextContent('ice,sugar,gin')
+  })
+})

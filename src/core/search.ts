@@ -11,19 +11,22 @@ export type DrinkFilters = {
 
 export const EMPTY_FILTERS: DrinkFilters = { query: '', makeableOnly: false }
 
-/** Lowercase, without accents, outer spaces or repeated inner spaces. */
+/** Lowercase, without accents or punctuation, with single spaces. "Bee’s Knees" and "bees knees" match. */
 export function normalise(text: string): string {
   return text
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .toLowerCase()
+    .replace(/['’‘`]/g, '')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
     .trim()
-    .replace(/\s+/g, ' ')
 }
 
 export function filterDrinks(content: Content, filters: DrinkFilters, makeableIds: ReadonlySet<string>): Drink[] {
   const query = normalise(filters.query)
-  const names = new Map(content.ingredients.map((i) => [i.id, normalise(i.name)]))
+  // Descriptions are searched too, so brand and style names ("prosecco", "whiskey") find drinks.
+  const names = new Map(content.ingredients.map((i) => [i.id, normalise(`${i.name} ${i.description}`)]))
   const matchesQuery = (drink: Drink) =>
     query === '' ||
     normalise(drink.name).includes(query) ||

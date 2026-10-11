@@ -34,7 +34,7 @@
         "amount": 1,
         "unit": "piece",
         "optional": true,
-        "note": "for a silky foam on top"
+        "note": "for a silky foam on top. Served raw: leave it out if you are pregnant, elderly or unwell"
       }
     ],
     "steps": [
@@ -463,7 +463,7 @@
         "amount": 1,
         "unit": "piece",
         "optional": true,
-        "note": "for a silky foam on top"
+        "note": "for a silky foam on top. Served raw: leave it out if you are pregnant, elderly or unwell"
       }
     ],
     "steps": [
@@ -1206,7 +1206,7 @@
         "amount": 1,
         "unit": "piece",
         "optional": true,
-        "note": "for a foamy head"
+        "note": "for a foamy head. Served raw: leave it out if you are pregnant, elderly or unwell"
       }
     ],
     "steps": [
@@ -1850,7 +1850,7 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "Three parts sparkling wine, two parts Aperol, one part soda. The wine brings bubbles and acidity, the Aperol a gentle bitter orange flavour, and the soda keeps it light. It is low in alcohol and hard to get wrong."
+    "whyItWorks": "Three parts sparkling wine, two parts Aperol, one part soda. The wine brings bubbles and acidity, the Aperol a gentle bitter orange flavour, and the soda keeps it light. It is lighter than most cocktails and hard to get wrong."
   },
   {
     "id": "americano",

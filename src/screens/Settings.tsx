@@ -15,6 +15,7 @@ export function Settings() {
   const [error, setError] = useState('')
   const [restored, setRestored] = useState(false)
   const cancelButton = useRef<HTMLButtonElement>(null)
+  const importInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (pending) cancelButton.current?.focus()
@@ -47,11 +48,16 @@ export function Settings() {
     else setError(`That file isn't a ${APP_NAME} backup. Choose a file you exported from this app.`)
   }
 
+  const closeDialog = () => {
+    setPending(null)
+    importInput.current?.focus()
+  }
+
   const confirmImport = () => {
     if (!pending) return
     replaceAll(pending)
-    setPending(null)
     setRestored(true)
+    closeDialog()
   }
 
   return (
@@ -93,7 +99,13 @@ export function Settings() {
           </button>
           <label className="button">
             Import a backup
-            <input type="file" accept=".json,application/json" className="visually-hidden" onChange={importBackup} />
+            <input
+              ref={importInput}
+              type="file"
+              accept=".json,application/json"
+              className="visually-hidden"
+              onChange={importBackup}
+            />
           </label>
         </div>
 
@@ -102,13 +114,18 @@ export function Settings() {
             {error}
           </p>
         )}
-        {restored && (
-          <p className="badge good" role="status">
-            Backup restored.
-          </p>
-        )}
+        {/* Always present, so screen readers announce the text when it appears. */}
+        <p className={restored ? 'badge good' : undefined} role="status">
+          {restored && 'Backup restored.'}
+        </p>
         {pending && (
-          <div className="dialog stack-sm" role="alertdialog" aria-labelledby="import-title" aria-describedby="import-text">
+          <div
+            className="dialog stack-sm"
+            role="alertdialog"
+            aria-labelledby="import-title"
+            aria-describedby="import-text"
+            onKeyDown={(e) => e.key === 'Escape' && closeDialog()}
+          >
             <h3 id="import-title">Replace your bar and favourites?</h3>
             <p id="import-text">
               This backup has {count(pending.ownedIngredientIds.length, 'ingredient', 'ingredients')} and{' '}
@@ -119,7 +136,7 @@ export function Settings() {
               <button className="button primary" onClick={confirmImport}>
                 Replace my data
               </button>
-              <button className="button" ref={cancelButton} onClick={() => setPending(null)}>
+              <button className="button" ref={cancelButton} onClick={closeDialog}>
                 Cancel
               </button>
             </div>
