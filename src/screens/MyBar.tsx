@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { useContent } from '../content/ContentContext'
@@ -15,6 +15,8 @@ export function MyBar() {
   const owned = useMemo(() => new Set(data.ownedIngredientIds), [data.ownedIngredientIds])
   const results = useMemo(() => matchBar(content, owned), [content, owned])
   const hasBottles = data.ownedIngredientIds.some((id) => !stapleIds.includes(id))
+  // Two views, so ticking a bottle never pushes the list down the screen under the person's finger.
+  const [view, setView] = useState<'bottles' | 'results'>(hasBottles ? 'results' : 'bottles')
 
   const common = content.ingredients.filter((i) => i.common).sort(byName)
   const groups = INGREDIENT_CATEGORIES.map((category) => ({
@@ -47,15 +49,27 @@ export function MyBar() {
   return (
     <div className="stack">
       <h1>My bar</h1>
+      <div className="row" role="group" aria-label="View">
+        <button className="button" aria-pressed={view === 'bottles'} onClick={() => setView('bottles')}>
+          My bottles
+        </button>
+        <button className="button" aria-pressed={view === 'results'} onClick={() => setView('results')}>
+          What I can make ({results.makeable.length})
+        </button>
+      </div>
 
-      {!hasBottles ? (
-        <p>Tick the bottles you have and we'll show what you can make, and what to buy next.</p>
+      {view === 'bottles' ? (
+        <section className="stack-sm">
+          <p>Tick the bottles you have and we'll show what you can make, and what to buy next.</p>
+          {common.length > 0 && checklist('Common bottles', common)}
+          {groups.map((g) => checklist(g.name, g.ingredients))}
+        </section>
       ) : (
         <>
-          <section className="section">
+          <section className="stack-sm">
             <h2 id="can-make-heading">Can make now</h2>
             {results.makeable.length === 0 ? (
-              <p className="muted">Nothing yet. Tick a few more ingredients below, such as juices and syrups.</p>
+              <p className="muted">Nothing yet. Tick a few more ingredients under "My bottles", such as juices and syrups.</p>
             ) : (
               <ul className="card-list" aria-labelledby="can-make-heading">
                 {results.makeable.map((drink) => (
@@ -96,12 +110,6 @@ export function MyBar() {
           )}
         </>
       )}
-
-      <section className="section">
-        <h2>What do you have?</h2>
-        {common.length > 0 && checklist('Common bottles', common)}
-        {groups.map((g) => checklist(g.name, g.ingredients))}
-      </section>
     </div>
   )
 }

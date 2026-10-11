@@ -18,7 +18,7 @@ const items = (list: string) =>
 
 it('shows common bottles in a quick-pick section first', async () => {
   await open()
-  expect(screen.getAllByRole('group')[0]).toBe(screen.getByRole('group', { name: 'Common bottles' }))
+  expect(screen.getAllByRole('group').filter((g) => g.tagName === 'FIELDSET')[0]).toBe(screen.getByRole('group', { name: 'Common bottles' }))
   expect(boxes('Common bottles')).toEqual(['Bourbon', 'Gin', 'White rum'])
 })
 
@@ -49,6 +49,7 @@ it('ticking updates "Can make now" immediately', async () => {
   for (const name of ['White rum', 'Lime juice', 'Simple syrup']) {
     await user.click(screen.getByRole('checkbox', { name }))
   }
+  await user.click(screen.getByRole('button', { name: /what i can make/i }))
   expect(within(screen.getByRole('list', { name: 'Can make now' })).getByRole('link', { name: /Daiquiri/ })).toHaveAttribute(
     'href',
     '/drinks/daiquiri',
@@ -83,4 +84,30 @@ it('says so when nothing can be made yet', async () => {
 it('each ingredient links to its page', async () => {
   await open()
   expect(screen.getByRole('link', { name: 'About Bourbon' })).toHaveAttribute('href', '/ingredients/bourbon')
+})
+
+it('opens on the bottle list for a new bar and on the results once there are bottles', async () => {
+  const first = await open()
+  expect(screen.getByRole('button', { name: /my bottles/i })).toHaveAttribute('aria-pressed', 'true')
+  first.unmount()
+  await open(['white-rum'])
+  expect(screen.getByRole('button', { name: /what i can make/i })).toHaveAttribute('aria-pressed', 'true')
+  expect(screen.queryByRole('group', { name: 'Common bottles' })).not.toBeInTheDocument()
+})
+
+it('ticking a bottle does not insert anything above the list, and the count updates on the button', async () => {
+  const { user } = await open()
+  const before = screen.getByRole('heading', { level: 1 }).parentElement!.querySelectorAll('section').length
+  for (const name of ['White rum', 'Lime juice', 'Simple syrup']) {
+    await user.click(screen.getByRole('checkbox', { name }))
+  }
+  expect(screen.getByRole('heading', { level: 1 }).parentElement!.querySelectorAll('section').length).toBe(before)
+  expect(screen.getByRole('button', { name: /what i can make/i })).toHaveTextContent('What I can make (1)')
+  expect(screen.getByRole('group', { name: 'Common bottles' })).toBeInTheDocument()
+})
+
+it('can switch back to the bottle list', async () => {
+  const { user } = await open(['white-rum'])
+  await user.click(screen.getByRole('button', { name: /my bottles/i }))
+  expect(screen.getByRole('checkbox', { name: 'White rum' })).toBeChecked()
 })
