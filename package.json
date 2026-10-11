@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "test": "vitest run",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate-content": "tsx scripts/validate-content.ts",
+    "prebuild": "npm run validate-content"
   },
   "dependencies": {
     "idb-keyval": "^6.3.0",

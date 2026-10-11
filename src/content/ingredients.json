@@ -1,0 +1,150 @@
+[
+  {
+    "pairsWith": [
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime cuts through the sweetness of rum."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": true,
+    "id": "white-rum",
+    "name": "White rum",
+    "category": "spirit",
+    "description": "Light, clean and faintly sweet.",
+    "abv": 40
+  },
+  {
+    "pairsWith": [
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Lemon brightens the oak and vanilla."
+      }
+    ],
+    "substitutes": [
+      "rye"
+    ],
+    "allergens": [],
+    "common": true,
+    "id": "bourbon",
+    "name": "Bourbon",
+    "category": "spirit",
+    "description": "Sweet and oaky, with vanilla and caramel.",
+    "abv": 40
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [
+      "bourbon"
+    ],
+    "allergens": [],
+    "common": false,
+    "id": "rye",
+    "name": "Rye whiskey",
+    "category": "spirit",
+    "description": "Drier and spicier than bourbon.",
+    "abv": 40
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": true,
+    "id": "gin",
+    "name": "Gin",
+    "category": "spirit",
+    "description": "Crisp, with juniper and citrus peel.",
+    "abv": 40
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "lime-juice",
+    "name": "Lime juice",
+    "category": "fresh",
+    "description": "Sharp and aromatic.",
+    "abv": 0
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "lemon-juice",
+    "name": "Lemon juice",
+    "category": "fresh",
+    "description": "Bright and sour.",
+    "abv": 0
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "simple-syrup",
+    "name": "Simple syrup",
+    "category": "mixer",
+    "description": "Sugar dissolved in an equal amount of water.",
+    "abv": 0
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "soda-water",
+    "name": "Soda water",
+    "category": "mixer",
+    "description": "Plain fizzy water.",
+    "abv": 0
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "angostura-bitters",
+    "name": "Angostura bitters",
+    "category": "bitters",
+    "description": "Intensely spiced; used a few drops at a time.",
+    "abv": 44.7
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [
+      "egg"
+    ],
+    "common": false,
+    "id": "egg-white",
+    "name": "Egg white",
+    "category": "fresh",
+    "description": "Adds a silky foam without changing the flavour.",
+    "abv": 0
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "ice",
+    "name": "Ice",
+    "category": "staple",
+    "description": "Chills and dilutes.",
+    "abv": 0
+  },
+  {
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "id": "sugar",
+    "name": "Sugar",
+    "category": "staple",
+    "description": "Plain white sugar.",
+    "abv": 0
+  }
+]
