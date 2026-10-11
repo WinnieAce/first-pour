@@ -2,15 +2,15 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { AgeGate } from './screens/AgeGate'
 import { DrinkPage } from './screens/DrinkPage'
+import { Favourites } from './screens/Favourites'
 import { IngredientPage } from './screens/IngredientPage'
 import { Library } from './screens/Library'
 import { MakingMode } from './screens/MakingMode'
 import { MyBar } from './screens/MyBar'
 import { NotFound } from './screens/NotFound'
+import { Settings } from './screens/Settings'
 import { Terms } from './screens/Terms'
 import { useUserData } from './storage/UserDataContext'
-
-const Placeholder = ({ name }: { name: string }) => <h1>{name}</h1>
 
 export default function App() {
   const { data } = useUserData()
@@ -34,8 +34,8 @@ export default function App() {
         <Route path="/drinks/:id" element={<DrinkPage />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path="/bar" element={<MyBar />} />
-        <Route path="/favourites" element={<Placeholder name="Favourites" />} />
-        <Route path="/settings" element={<Placeholder name="Settings" />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<NotFound />} />
       </Route>

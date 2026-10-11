@@ -1,15 +1,5 @@
 import type { GlassId } from '../content/schema'
 
-export const GLASS_NAMES: Record<GlassId, string> = {
-  rocks: 'Short tumbler',
-  highball: 'Tall glass',
-  coupe: 'Coupe',
-  martini: 'Martini glass',
-  wine: 'Wine glass',
-  flute: 'Flute',
-  mug: 'Mug',
-}
-
 const OUTLINES: Record<GlassId, string> = {
   rocks: 'M9 13h22l-2 20H11z M10.5 22h19',
   highball: 'M12 5h16l-1.5 30h-13z M12.8 16h14.4',

@@ -2,19 +2,10 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { useContent } from '../content/ContentContext'
-import { INGREDIENT_CATEGORIES, type Ingredient, type IngredientCategory } from '../content/schema'
+import { INGREDIENT_CATEGORIES, type Ingredient } from '../content/schema'
+import { CATEGORY_NAMES } from '../core/labels'
 import { matchBar } from '../core/matching'
 import { useUserData } from '../storage/UserDataContext'
-
-export const CATEGORY_NAMES: Record<IngredientCategory, string> = {
-  spirit: 'Spirits',
-  liqueur: 'Liqueurs',
-  'wine-or-fortified': 'Wine and fortified wine',
-  bitters: 'Bitters',
-  mixer: 'Mixers',
-  fresh: 'Fresh ingredients',
-  staple: 'Kitchen staples',
-}
 
 const byName = (a: Ingredient, b: Ingredient) => a.name.localeCompare(b.name)
 

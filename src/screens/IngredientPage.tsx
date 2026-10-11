@@ -2,9 +2,9 @@ import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { useContent } from '../content/ContentContext'
+import { CATEGORY_NAMES } from '../core/labels'
 import { matchBar } from '../core/matching'
 import { useUserData } from '../storage/UserDataContext'
-import { CATEGORY_NAMES } from './MyBar'
 import { NotFound } from './NotFound'
 
 export function IngredientPage() {
