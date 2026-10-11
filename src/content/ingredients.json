@@ -1,150 +1,1066 @@
 [
   {
-    "pairsWith": [
-      {
-        "ingredientId": "lime-juice",
-        "reason": "Lime cuts through the sweetness of rum."
-      }
-    ],
-    "substitutes": [],
-    "allergens": [],
-    "common": true,
-    "id": "white-rum",
-    "name": "White rum",
+    "id": "bourbon",
+    "name": "Bourbon",
     "category": "spirit",
-    "description": "Light, clean and faintly sweet.",
-    "abv": 40
-  },
-  {
+    "description": "American whiskey made mostly from corn. Sweet and round, with vanilla, caramel and oak.",
+    "abv": 40,
     "pairsWith": [
       {
         "ingredientId": "lemon-juice",
-        "reason": "Lemon brightens the oak and vanilla."
+        "reason": "Lemon cuts through the sweetness and lifts the vanilla."
+      },
+      {
+        "ingredientId": "sweet-vermouth",
+        "reason": "The herbs and dark fruit in vermouth sit well with oak."
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "reason": "A little spice keeps the sweetness in check."
       }
     ],
     "substitutes": [
       "rye"
     ],
     "allergens": [],
-    "common": true,
-    "id": "bourbon",
-    "name": "Bourbon",
-    "category": "spirit",
-    "description": "Sweet and oaky, with vanilla and caramel.",
-    "abv": 40
+    "common": true
   },
   {
-    "pairsWith": [],
+    "id": "rye",
+    "name": "Rye whiskey",
+    "category": "spirit",
+    "description": "American whiskey made mostly from rye. Drier and spicier than bourbon, with a peppery finish.",
+    "abv": 45,
+    "pairsWith": [
+      {
+        "ingredientId": "sweet-vermouth",
+        "reason": "Sweet vermouth softens the spice. This pairing is the Manhattan."
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "reason": "Bitters echo the pepper and clove notes already in rye."
+      }
+    ],
     "substitutes": [
       "bourbon"
     ],
     "allergens": [],
-    "common": false,
-    "id": "rye",
-    "name": "Rye whiskey",
-    "category": "spirit",
-    "description": "Drier and spicier than bourbon.",
-    "abv": 40
+    "common": false
   },
   {
-    "pairsWith": [],
+    "id": "scotch",
+    "name": "Blended Scotch whisky",
+    "category": "spirit",
+    "description": "Malty and gently smoky, with honey and dried fruit. A blended Scotch is the easiest kind to mix.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "soda-water",
+        "reason": "Bubbles open up the aroma and make it a long, light drink."
+      },
+      {
+        "ingredientId": "drambuie",
+        "reason": "Drambuie is made from Scotch and honey, so the two blend seamlessly."
+      },
+      {
+        "ingredientId": "ginger-ale",
+        "reason": "Ginger adds warmth that suits the malt."
+      }
+    ],
     "substitutes": [],
     "allergens": [],
-    "common": true,
+    "common": true
+  },
+  {
+    "id": "irish-whiskey",
+    "name": "Irish whiskey",
+    "category": "spirit",
+    "description": "Smooth, light and slightly sweet, with very little smoke.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "coffee",
+        "reason": "Its gentle sweetness rounds off the bitterness of coffee."
+      },
+      {
+        "ingredientId": "ginger-ale",
+        "reason": "Ginger and a squeeze of lime make an easy tall drink."
+      }
+    ],
+    "substitutes": [
+      "bourbon"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
     "id": "gin",
     "name": "Gin",
     "category": "spirit",
-    "description": "Crisp, with juniper and citrus peel.",
-    "abv": 40
-  },
-  {
-    "pairsWith": [],
+    "description": "A clear spirit flavoured with juniper, which tastes of pine, plus citrus peel and spices.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "tonic-water",
+        "reason": "The bitterness of tonic sharpens the juniper."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Citrus brings out the peel flavours already in the gin."
+      },
+      {
+        "ingredientId": "dry-vermouth",
+        "reason": "Vermouth adds a soft, herbal edge. This pairing is the Martini."
+      },
+      {
+        "ingredientId": "campari",
+        "reason": "Gin is crisp enough to stand up to a strong bitter liqueur."
+      }
+    ],
     "substitutes": [],
     "allergens": [],
-    "common": false,
-    "id": "lime-juice",
-    "name": "Lime juice",
-    "category": "fresh",
-    "description": "Sharp and aromatic.",
-    "abv": 0
+    "common": true
   },
   {
-    "pairsWith": [],
+    "id": "vodka",
+    "name": "Vodka",
+    "category": "spirit",
+    "description": "A clean, nearly neutral spirit. It adds strength without much flavour, so the other ingredients lead.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "ginger-beer",
+        "reason": "Fiery ginger gives a neutral spirit something to carry."
+      },
+      {
+        "ingredientId": "coffee-liqueur",
+        "reason": "Vodka adds strength without getting in the way of the coffee."
+      },
+      {
+        "ingredientId": "cranberry-juice",
+        "reason": "Tart fruit juice does the flavour work while vodka stays in the background."
+      }
+    ],
     "substitutes": [],
     "allergens": [],
-    "common": false,
-    "id": "lemon-juice",
-    "name": "Lemon juice",
-    "category": "fresh",
-    "description": "Bright and sour.",
-    "abv": 0
+    "common": true
   },
   {
-    "pairsWith": [],
+    "id": "white-rum",
+    "name": "White rum",
+    "category": "spirit",
+    "description": "A light rum made from sugar cane. Clean and faintly sweet, with a grassy note.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime balances the sweetness. Rum, lime and sugar is the base of many classics."
+      },
+      {
+        "ingredientId": "mint",
+        "reason": "Fresh mint lifts the light, grassy side of the rum."
+      },
+      {
+        "ingredientId": "pineapple-juice",
+        "reason": "Tropical fruit suits the sugar-cane flavour."
+      },
+      {
+        "ingredientId": "cola",
+        "reason": "Cola adds caramel and spice that white rum lacks."
+      }
+    ],
     "substitutes": [],
     "allergens": [],
-    "common": false,
-    "id": "simple-syrup",
-    "name": "Simple syrup",
-    "category": "mixer",
-    "description": "Sugar dissolved in an equal amount of water.",
-    "abv": 0
+    "common": true
   },
   {
-    "pairsWith": [],
+    "id": "dark-rum",
+    "name": "Dark rum",
+    "category": "spirit",
+    "description": "A rum aged in barrels. Rich, with molasses, toffee and spice.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "ginger-beer",
+        "reason": "Ginger heat cuts through the richness."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime keeps a rich rum from tasting heavy."
+      },
+      {
+        "ingredientId": "orgeat",
+        "reason": "Almond syrup adds a nutty roundness that suits aged rum."
+      }
+    ],
     "substitutes": [],
     "allergens": [],
-    "common": false,
-    "id": "soda-water",
-    "name": "Soda water",
-    "category": "mixer",
-    "description": "Plain fizzy water.",
-    "abv": 0
+    "common": true
   },
   {
-    "pairsWith": [],
+    "id": "tequila",
+    "name": "Tequila",
+    "category": "spirit",
+    "description": "Made from the agave plant. Earthy and peppery, with a citrus note. A clear \"blanco\" tequila is best for mixing.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime sharpens the earthy agave flavour."
+      },
+      {
+        "ingredientId": "triple-sec",
+        "reason": "Orange liqueur adds sweetness and a citrus aroma. With lime, this is the Margarita."
+      },
+      {
+        "ingredientId": "grapefruit-soda",
+        "reason": "Grapefruit has a gentle bitterness that suits agave."
+      }
+    ],
     "substitutes": [],
     "allergens": [],
-    "common": false,
+    "common": true
+  },
+  {
+    "id": "brandy",
+    "name": "Brandy",
+    "category": "spirit",
+    "description": "A spirit distilled from wine and aged in oak. Fruity and warm, with raisin and vanilla. Cognac is a well-known kind.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "triple-sec",
+        "reason": "Orange brightens the dried-fruit flavour."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Lemon stops a rich spirit from feeling heavy."
+      },
+      {
+        "ingredientId": "creme-de-cacao",
+        "reason": "Chocolate and brandy make a classic dessert pairing."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": true
+  },
+  {
+    "id": "triple-sec",
+    "name": "Orange liqueur (triple sec)",
+    "category": "liqueur",
+    "description": "A clear, sweet liqueur flavoured with orange peel. Cointreau is a well-known brand.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Sweet orange softens sharp lime."
+      },
+      {
+        "ingredientId": "tequila",
+        "reason": "It sweetens and perfumes tequila without hiding it."
+      },
+      {
+        "ingredientId": "brandy",
+        "reason": "Orange and aged grape spirit are a long-standing match."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": true
+  },
+  {
+    "id": "amaretto",
+    "name": "Amaretto",
+    "category": "liqueur",
+    "description": "A sweet Italian liqueur that tastes of almond and marzipan.",
+    "abv": 28,
+    "pairsWith": [
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Plenty of lemon is needed to balance how sweet it is."
+      },
+      {
+        "ingredientId": "coffee",
+        "reason": "Almond and coffee is a familiar dessert combination."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "nuts"
+    ],
+    "common": false
+  },
+  {
+    "id": "campari",
+    "name": "Campari",
+    "category": "liqueur",
+    "description": "A bright red Italian liqueur. Strongly bitter, with orange peel and herbs.",
+    "abv": 25,
+    "pairsWith": [
+      {
+        "ingredientId": "sweet-vermouth",
+        "reason": "Sweet vermouth tames the bitterness and adds depth."
+      },
+      {
+        "ingredientId": "soda-water",
+        "reason": "Soda stretches it into a lighter, refreshing drink."
+      },
+      {
+        "ingredientId": "orange",
+        "reason": "Orange picks up the peel flavour inside the liqueur."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": true
+  },
+  {
+    "id": "aperol",
+    "name": "Aperol",
+    "category": "liqueur",
+    "description": "A light orange Italian liqueur. Like a gentler, sweeter Campari, with only mild bitterness.",
+    "abv": 11,
+    "pairsWith": [
+      {
+        "ingredientId": "sparkling-wine",
+        "reason": "Bubbles and a little acidity turn it into a spritz."
+      },
+      {
+        "ingredientId": "orange",
+        "reason": "A slice of orange matches its main flavour."
+      }
+    ],
+    "substitutes": [
+      "campari"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "coffee-liqueur",
+    "name": "Coffee liqueur",
+    "category": "liqueur",
+    "description": "A sweet liqueur that tastes of roasted coffee. Kahlúa is a well-known brand.",
+    "abv": 20,
+    "pairsWith": [
+      {
+        "ingredientId": "vodka",
+        "reason": "Vodka adds strength while the coffee flavour stays clear."
+      },
+      {
+        "ingredientId": "cream",
+        "reason": "Cream turns it into something close to an iced latte."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "drambuie",
+    "name": "Drambuie",
+    "category": "liqueur",
+    "description": "A Scottish liqueur made from whisky, honey, herbs and spices.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "scotch",
+        "reason": "It sweetens Scotch and adds honey and spice."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Lemon balances the honey."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "creme-de-cacao",
+    "name": "Chocolate liqueur (crème de cacao)",
+    "category": "liqueur",
+    "description": "A sweet liqueur that tastes of chocolate and vanilla. It contains no cream despite the name.",
+    "abv": 24,
+    "pairsWith": [
+      {
+        "ingredientId": "cream",
+        "reason": "Cream makes the chocolate flavour taste like dessert."
+      },
+      {
+        "ingredientId": "brandy",
+        "reason": "Brandy adds warmth and stops it being too sweet."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "creme-de-cassis",
+    "name": "Blackcurrant liqueur (crème de cassis)",
+    "category": "liqueur",
+    "description": "A dark, sweet liqueur made from blackcurrants.",
+    "abv": 15,
+    "pairsWith": [
+      {
+        "ingredientId": "sparkling-wine",
+        "reason": "A small amount turns dry sparkling wine fruity and pink."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Lemon balances the jammy sweetness."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "sweet-vermouth",
+    "name": "Sweet vermouth",
+    "category": "wine-or-fortified",
+    "description": "Red wine strengthened with spirit and flavoured with herbs and spices. Sweet, with a bitter edge. Keep it in the fridge once open.",
+    "abv": 16,
+    "pairsWith": [
+      {
+        "ingredientId": "rye",
+        "reason": "Its sweetness rounds off spicy whiskey."
+      },
+      {
+        "ingredientId": "campari",
+        "reason": "It softens Campari and adds herbal depth."
+      },
+      {
+        "ingredientId": "gin",
+        "reason": "With gin and Campari it makes the Negroni."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "sulphites"
+    ],
+    "common": true
+  },
+  {
+    "id": "dry-vermouth",
+    "name": "Dry vermouth",
+    "category": "wine-or-fortified",
+    "description": "White wine strengthened with spirit and flavoured with herbs. Dry and crisp. Keep it in the fridge once open.",
+    "abv": 18,
+    "pairsWith": [
+      {
+        "ingredientId": "gin",
+        "reason": "A small amount softens gin and adds a herbal note."
+      },
+      {
+        "ingredientId": "vodka",
+        "reason": "It gives a neutral spirit some flavour."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "sulphites"
+    ],
+    "common": false
+  },
+  {
+    "id": "sparkling-wine",
+    "name": "Sparkling wine",
+    "category": "wine-or-fortified",
+    "description": "Dry white wine with bubbles. Prosecco, cava or Champagne all work. Choose one labelled \"brut\", which means dry.",
+    "abv": 12,
+    "pairsWith": [
+      {
+        "ingredientId": "aperol",
+        "reason": "Its acidity and bubbles balance a sweet, bitter liqueur."
+      },
+      {
+        "ingredientId": "orange-juice",
+        "reason": "Fresh juice softens the wine. This is the Mimosa."
+      },
+      {
+        "ingredientId": "peach-puree",
+        "reason": "Soft, sweet peach suits light sparkling wine."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "sulphites"
+    ],
+    "common": true
+  },
+  {
     "id": "angostura-bitters",
     "name": "Angostura bitters",
     "category": "bitters",
-    "description": "Intensely spiced; used a few drops at a time.",
-    "abv": 44.7
+    "description": "A concentrated mix of herbs and spices, used a few drops at a time like seasoning. A \"dash\" is one quick shake of the bottle.",
+    "abv": 44.7,
+    "pairsWith": [
+      {
+        "ingredientId": "bourbon",
+        "reason": "A few dashes add spice and make whiskey taste less sweet."
+      },
+      {
+        "ingredientId": "sweet-vermouth",
+        "reason": "Clove and cinnamon notes deepen the vermouth."
+      },
+      {
+        "ingredientId": "lemon-lime-soda",
+        "reason": "Bitters make a sweet soft drink taste more grown-up."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
   },
   {
-    "pairsWith": [],
+    "id": "simple-syrup",
+    "name": "Simple syrup",
+    "category": "mixer",
+    "description": "Sugar dissolved in an equal amount of water. To make it, stir equal parts sugar and hot water until clear, then let it cool. It keeps for a month in the fridge.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Sweetness balances sour juice. Most sours use the two together."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "It takes the sharp edge off lemon."
+      }
+    ],
+    "substitutes": [
+      "sugar"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "honey-syrup",
+    "name": "Honey syrup",
+    "category": "mixer",
+    "description": "Honey thinned with an equal amount of warm water so it mixes into a cold drink.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Honey and lemon is a familiar pairing; the honey adds a floral note."
+      },
+      {
+        "ingredientId": "gin",
+        "reason": "Floral honey suits the botanicals in gin."
+      }
+    ],
+    "substitutes": [
+      "simple-syrup"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "grenadine",
+    "name": "Grenadine",
+    "category": "mixer",
+    "description": "A sweet red syrup made from pomegranate. It adds colour and a fruity sweetness.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "ginger-ale",
+        "reason": "It sweetens ginger ale and turns it pink."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime keeps it from being cloying."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "orgeat",
+    "name": "Almond syrup (orgeat)",
+    "category": "mixer",
+    "description": "A sweet, cloudy syrup made from almonds, with a hint of orange blossom.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "dark-rum",
+        "reason": "Nutty almond rounds out rich rum."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime balances the sweetness."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "nuts"
+    ],
+    "common": false
+  },
+  {
+    "id": "soda-water",
+    "name": "Soda water",
+    "category": "mixer",
+    "description": "Plain fizzy water. It makes a drink longer and lighter without adding flavour.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "scotch",
+        "reason": "It lengthens whisky and opens up its aroma."
+      },
+      {
+        "ingredientId": "campari",
+        "reason": "It dilutes bitterness into something refreshing."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime and soda is a simple, sharp refresher."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "tonic-water",
+    "name": "Tonic water",
+    "category": "mixer",
+    "description": "A fizzy mixer that is both bitter, from quinine, and sweet.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "gin",
+        "reason": "Bitter tonic and juniper is the classic match."
+      },
+      {
+        "ingredientId": "vodka",
+        "reason": "Tonic supplies the flavour that vodka lacks."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "cola",
+    "name": "Cola",
+    "category": "mixer",
+    "description": "Sweet and fizzy, with caramel, vanilla and spice.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "white-rum",
+        "reason": "Rum and cola share caramel and vanilla flavours."
+      },
+      {
+        "ingredientId": "bourbon",
+        "reason": "Vanilla in the bourbon matches the cola."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "ginger-beer",
+    "name": "Ginger beer",
+    "category": "mixer",
+    "description": "A fizzy soft drink with a strong, spicy ginger kick. Despite the name, it has no alcohol.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "vodka",
+        "reason": "Vodka lets the ginger lead."
+      },
+      {
+        "ingredientId": "dark-rum",
+        "reason": "Rich rum stands up to fiery ginger."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime sharpens the ginger and cuts the sweetness."
+      }
+    ],
+    "substitutes": [
+      "ginger-ale"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "ginger-ale",
+    "name": "Ginger ale",
+    "category": "mixer",
+    "description": "A fizzy soft drink with a mild, sweet ginger flavour. Gentler than ginger beer.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "scotch",
+        "reason": "Gentle ginger adds warmth without hiding the whisky."
+      },
+      {
+        "ingredientId": "grenadine",
+        "reason": "Pomegranate syrup makes it fruity."
+      }
+    ],
+    "substitutes": [
+      "ginger-beer"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "grapefruit-soda",
+    "name": "Grapefruit soda",
+    "category": "mixer",
+    "description": "A fizzy soft drink that is tart and slightly bitter.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "tequila",
+        "reason": "Tart grapefruit suits earthy tequila."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Extra lime makes it sharper and less sweet."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "lemon-lime-soda",
+    "name": "Lemon-lime soda",
+    "category": "mixer",
+    "description": "A clear, sweet, fizzy soft drink flavoured with lemon and lime, such as Sprite or 7UP.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "angostura-bitters",
+        "reason": "Bitters add spice and cut the sweetness."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Fresh lime makes it taste less like a soft drink."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "cranberry-juice",
+    "name": "Cranberry juice",
+    "category": "mixer",
+    "description": "Tart, dry and deep red.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "vodka",
+        "reason": "Its sharp fruit flavour carries a neutral spirit."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime adds freshness to the tartness."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "orange-juice",
+    "name": "Orange juice",
+    "category": "mixer",
+    "description": "Sweet and gently acidic. Freshly squeezed tastes much better here than juice from a carton.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "sparkling-wine",
+        "reason": "Juice softens dry wine and the bubbles keep it light."
+      },
+      {
+        "ingredientId": "tequila",
+        "reason": "Sweet orange softens the pepper in tequila."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "pineapple-juice",
+    "name": "Pineapple juice",
+    "category": "mixer",
+    "description": "Sweet, tangy and tropical. It froths when shaken or blended.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "white-rum",
+        "reason": "Rum and pineapple is the heart of many tropical drinks."
+      },
+      {
+        "ingredientId": "coconut-cream",
+        "reason": "Coconut makes pineapple rich and creamy."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "coconut-cream",
+    "name": "Cream of coconut",
+    "category": "mixer",
+    "description": "A thick, sweetened coconut cream sold in tins or squeezy bottles for drinks. Unsweetened coconut cream is different and will need extra sugar.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "pineapple-juice",
+        "reason": "Tangy pineapple balances the richness."
+      },
+      {
+        "ingredientId": "white-rum",
+        "reason": "Light rum adds strength without hiding the coconut."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "peach-puree",
+    "name": "Peach purée",
+    "category": "mixer",
+    "description": "Ripe peaches blended smooth. Tinned peaches, drained and blended, work when fresh ones are out of season.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "sparkling-wine",
+        "reason": "Peach and sparkling wine make the Bellini."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "A little lemon keeps the peach flavour bright."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "coffee",
+    "name": "Espresso or strong coffee",
+    "category": "mixer",
+    "description": "Freshly made and strong. Let it cool for a few minutes before using it in a cold drink.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "coffee-liqueur",
+        "reason": "The liqueur sweetens real coffee and deepens the flavour."
+      },
+      {
+        "ingredientId": "irish-whiskey",
+        "reason": "Smooth whiskey and hot coffee make Irish Coffee."
+      },
+      {
+        "ingredientId": "cream",
+        "reason": "Cream softens the bitterness."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "lime-juice",
+    "name": "Lime juice",
+    "category": "fresh",
+    "description": "Sharp and aromatic. Squeeze it fresh: bottled juice tastes flat. One lime gives about 30 ml.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "white-rum",
+        "reason": "Lime and rum is the classic sour pairing."
+      },
+      {
+        "ingredientId": "tequila",
+        "reason": "Lime brightens earthy tequila."
+      },
+      {
+        "ingredientId": "ginger-beer",
+        "reason": "Lime sharpens ginger and cuts sweetness."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "lemon-juice",
+    "name": "Lemon juice",
+    "category": "fresh",
+    "description": "Bright and sour, a little softer than lime. Squeeze it fresh. One lemon gives about 45 ml.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "bourbon",
+        "reason": "Lemon balances sweet, oaky whiskey."
+      },
+      {
+        "ingredientId": "gin",
+        "reason": "Lemon brings out the citrus in gin."
+      },
+      {
+        "ingredientId": "honey-syrup",
+        "reason": "Honey and lemon balance each other."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "mint",
+    "name": "Mint leaves",
+    "category": "fresh",
+    "description": "Fresh and cooling. Use the leaves, not the stalks, and press them gently.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "white-rum",
+        "reason": "Mint, lime and rum make the Mojito."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime keeps mint tasting fresh."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "orange",
+    "name": "Orange slice or peel",
+    "category": "fresh",
+    "description": "A slice, or a strip of peel cut with a vegetable peeler. Squeezing the peel over the glass releases fragrant oils.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "campari",
+        "reason": "Orange matches the peel flavour in bitter liqueurs."
+      },
+      {
+        "ingredientId": "bourbon",
+        "reason": "Orange oil adds a fresh aroma to whiskey."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "egg-white",
+    "name": "Egg white",
+    "category": "fresh",
+    "description": "Shaken into a drink, it makes a silky foam on top without changing the taste. Use a fresh egg; it is served raw.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Foam softens the sharpness of a sour."
+      },
+      {
+        "ingredientId": "bourbon",
+        "reason": "It gives a Whiskey Sour its smooth texture."
+      }
+    ],
     "substitutes": [],
     "allergens": [
       "egg"
     ],
-    "common": false,
-    "id": "egg-white",
-    "name": "Egg white",
-    "category": "fresh",
-    "description": "Adds a silky foam without changing the flavour.",
-    "abv": 0
+    "common": false
   },
   {
-    "pairsWith": [],
+    "id": "cream",
+    "name": "Cream",
+    "category": "fresh",
+    "description": "Double or heavy cream. It adds richness and a smooth texture.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "coffee-liqueur",
+        "reason": "Cream and coffee liqueur taste like a sweet iced coffee."
+      },
+      {
+        "ingredientId": "creme-de-cacao",
+        "reason": "Cream and chocolate make a dessert drink."
+      }
+    ],
     "substitutes": [],
-    "allergens": [],
-    "common": false,
+    "allergens": [
+      "dairy"
+    ],
+    "common": false
+  },
+  {
     "id": "ice",
     "name": "Ice",
     "category": "staple",
-    "description": "Chills and dilutes.",
-    "abv": 0
-  },
-  {
+    "description": "Chills the drink and adds a little water as it melts, which is part of the recipe. Use plenty: more ice melts more slowly.",
+    "abv": 0,
     "pairsWith": [],
     "substitutes": [],
     "allergens": [],
-    "common": false,
+    "common": false
+  },
+  {
+    "id": "water",
+    "name": "Water",
+    "category": "staple",
+    "description": "Used to make syrups from sugar or honey.",
+    "abv": 0,
+    "pairsWith": [],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
     "id": "sugar",
     "name": "Sugar",
     "category": "staple",
-    "description": "Plain white sugar.",
-    "abv": 0
+    "description": "Plain white sugar. Dissolve it in an equal amount of hot water to make simple syrup.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Sugar and citrus are the two sides of every sour."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "salt",
+    "name": "Salt",
+    "category": "staple",
+    "description": "A pinch on the rim of the glass makes sour and sweet flavours stand out.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "tequila",
+        "reason": "Salt softens bitterness and brightens lime in tequila drinks."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
   }
 ]

@@ -1,5 +1,81 @@
 [
   {
+    "id": "whiskey-sour",
+    "name": "Whiskey Sour",
+    "family": "sour",
+    "baseIngredientId": "bourbon",
+    "flavour": [
+      "sour",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "bourbon",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "egg-white",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "for a silky foam on top"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the bourbon, lemon juice and syrup to a shaker. Add the egg white if you are using it.",
+        "ingredientIds": [
+          "bourbon",
+          "lemon-juice",
+          "simple-syrup",
+          "egg-white"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a short glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "This is the basic sour: a strong spirit, sour lemon and sweet syrup in balance, so no single one stands out. Bourbon brings vanilla and oak. Once you can taste how the three parts fit, you can make most drinks in this family."
+  },
+  {
     "id": "daiquiri",
     "name": "Daiquiri",
     "family": "sour",
@@ -32,7 +108,7 @@
     ],
     "steps": [
       {
-        "text": "Add the rum, lime juice and syrup to a shaker with ice.",
+        "text": "Add the rum, lime juice and syrup to a shaker.",
         "ingredientIds": [
           "white-rum",
           "lime-juice",
@@ -40,12 +116,12 @@
         ]
       },
       {
-        "text": "Shake hard for about 12 seconds.",
+        "text": "Fill the shaker with ice and shake hard.",
         "technique": "shake",
         "ingredientIds": []
       },
       {
-        "text": "Strain into a chilled glass.",
+        "text": "Strain into a chilled stemmed glass with no ice.",
         "technique": "strain",
         "ingredientIds": []
       }
@@ -53,17 +129,173 @@
     "glass": "coupe",
     "tools": [
       {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
         "name": "Shaker",
         "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Rum is the strong part, lime the sour and syrup the sweet. In balance, none of the three stands out."
+    "whyItWorks": "Three ingredients and nowhere to hide. Rum is the strong part, lime the sour and syrup the sweet. If it tastes too sharp, add a little syrup; if too sweet, a little lime. That adjustment is the main skill in mixing."
   },
   {
-    "id": "whiskey-sour",
-    "name": "Whiskey Sour",
+    "id": "margarita",
+    "name": "Margarita",
     "family": "sour",
-    "baseIngredientId": "bourbon",
+    "baseIngredientId": "tequila",
+    "flavour": [
+      "sour",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "tequila",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "triple-sec",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "salt",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a pinch, for the rim of the glass"
+      }
+    ],
+    "steps": [
+      {
+        "text": "For a salt rim, rub a cut lime around the edge of the glass and dip it in salt.",
+        "ingredientIds": [
+          "salt"
+        ]
+      },
+      {
+        "text": "Add the tequila, orange liqueur and lime juice to a shaker.",
+        "ingredientIds": [
+          "tequila",
+          "triple-sec",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into the glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "A sour where the sweet part is a liqueur instead of syrup. Orange liqueur sweetens the drink and adds its own flavour and strength. Salt on the rim makes the lime taste brighter and softens any bitterness."
+  },
+  {
+    "id": "gimlet",
+    "name": "Gimlet",
+    "family": "sour",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin, lime juice and syrup to a shaker.",
+        "ingredientIds": [
+          "gin",
+          "lime-juice",
+          "simple-syrup"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled stemmed glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "coupe",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "The same shape as a Daiquiri with gin in place of rum. Compare the two and you can taste what the spirit alone contributes: here, juniper and citrus peel in place of sugar cane."
+  },
+  {
+    "id": "sidecar",
+    "name": "Sidecar",
+    "family": "sour",
+    "baseIngredientId": "brandy",
     "flavour": [
       "sour",
       "strong"
@@ -72,8 +304,728 @@
     "method": "shaken",
     "ingredients": [
       {
-        "ingredientId": "bourbon",
+        "ingredientId": "brandy",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "triple-sec",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the brandy, orange liqueur and lemon juice to a shaker.",
+        "ingredientIds": [
+          "brandy",
+          "triple-sec",
+          "lemon-juice"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled stemmed glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "coupe",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Built like a Margarita, with brandy and lemon in place of tequila and lime. The orange liqueur is the only sweetener, so the drink is quite dry. Brandy gives it a warm, dried-fruit depth."
+  },
+  {
+    "id": "cosmopolitan",
+    "name": "Cosmopolitan",
+    "family": "sour",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "triple-sec",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cranberry-juice",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the vodka, orange liqueur, cranberry juice and lime juice to a shaker.",
+        "ingredientIds": [
+          "vodka",
+          "triple-sec",
+          "cranberry-juice",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled V-shaped glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "martini",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Vodka adds strength but little taste, so the flavour comes from tart cranberry, lime and sweet orange liqueur. It shows how a neutral spirit lets fruit take the lead."
+  },
+  {
+    "id": "amaretto-sour",
+    "name": "Amaretto Sour",
+    "family": "sour",
+    "baseIngredientId": "amaretto",
+    "flavour": [
+      "sweet",
+      "sour"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "amaretto",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "egg-white",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "for a silky foam on top"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the amaretto and lemon juice to a shaker. Add the egg white if you are using it.",
+        "ingredientIds": [
+          "amaretto",
+          "lemon-juice",
+          "egg-white"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a short glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Amaretto is already very sweet, so it plays both the strong and the sweet part and needs no syrup. Lemon does all the balancing. It is lower in alcohol than most sours and a gentle place to start."
+  },
+  {
+    "id": "bees-knees",
+    "name": "Bee's Knees",
+    "family": "sour",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
         "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "honey-syrup",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin, lemon juice and honey syrup to a shaker.",
+        "ingredientIds": [
+          "gin",
+          "lemon-juice",
+          "honey-syrup"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled stemmed glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "coupe",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "A gin sour sweetened with honey instead of sugar. Honey adds a floral flavour of its own, which suits the herbs in gin. Changing the sweetener is one of the easiest ways to change a drink."
+  },
+  {
+    "id": "gin-and-tonic",
+    "name": "Gin and Tonic",
+    "family": "highball",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "bitter"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "tonic-water",
+        "amount": 150,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 5,
+        "unit": "ml",
+        "optional": true,
+        "note": "a squeeze, to taste"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass to the top with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Pour in the gin, then the tonic. Add a squeeze of lime if you like.",
+        "technique": "build",
+        "ingredientIds": [
+          "gin",
+          "tonic-water",
+          "lime-juice"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "One part spirit to three parts mixer is the usual highball ratio. Bitter tonic sharpens the pine-like juniper in gin. Plenty of ice keeps it cold and fizzy for longer, because a full glass of ice melts slowly."
+  },
+  {
+    "id": "whisky-highball",
+    "name": "Whisky Highball",
+    "family": "highball",
+    "baseIngredientId": "scotch",
+    "flavour": [
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "scotch",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "soda-water",
+        "amount": 150,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass to the top with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Pour in the whisky, then the soda water.",
+        "technique": "build",
+        "ingredientIds": [
+          "scotch",
+          "soda-water"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "Soda water adds no flavour, so this is whisky made longer and lighter. The bubbles carry the aroma up, which makes it a good way to get to know a bottle you usually drink neat."
+  },
+  {
+    "id": "cuba-libre",
+    "name": "Cuba Libre",
+    "family": "highball",
+    "baseIngredientId": "white-rum",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "white-rum",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cola",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass to the top with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the rum and lime juice, then top with cola.",
+        "technique": "build",
+        "ingredientIds": [
+          "white-rum",
+          "lime-juice",
+          "cola"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "A rum and cola with lime. The small amount of lime is what makes it a proper drink: its sourness cuts the sweetness of the cola and lets the rum come through."
+  },
+  {
+    "id": "moscow-mule",
+    "name": "Moscow Mule",
+    "family": "highball",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "ginger-beer",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a mug or tall glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the vodka and lime juice, then top with ginger beer.",
+        "technique": "build",
+        "ingredientIds": [
+          "vodka",
+          "lime-juice",
+          "ginger-beer"
+        ]
+      }
+    ],
+    "glass": "mug",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "Vodka supplies the strength and spicy ginger beer supplies the flavour. Lime ties the two together. It is traditionally served in a copper mug, but any glass works."
+  },
+  {
+    "id": "dark-and-stormy",
+    "name": "Dark and Stormy",
+    "family": "highball",
+    "baseIngredientId": "dark-rum",
+    "flavour": [
+      "sweet",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "dark-rum",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "ginger-beer",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 10,
+        "unit": "ml",
+        "optional": true,
+        "note": "a squeeze, to taste"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass to the top with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Pour in the ginger beer, then slowly pour the rum on top so it floats. Add a squeeze of lime if you like.",
+        "ingredientIds": [
+          "ginger-beer",
+          "dark-rum",
+          "lime-juice"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "The same idea as a Moscow Mule with dark rum in place of vodka. Because the rum has plenty of its own flavour, toffee and spice meet the heat of the ginger. Comparing the two shows how much the base spirit matters."
+  },
+  {
+    "id": "paloma",
+    "name": "Paloma",
+    "family": "highball",
+    "baseIngredientId": "tequila",
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "tequila",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "grapefruit-soda",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "salt",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a pinch, stirred in"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass to the top with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the tequila, lime juice and a pinch of salt, then top with grapefruit soda.",
+        "technique": "build",
+        "ingredientIds": [
+          "tequila",
+          "lime-juice",
+          "salt",
+          "grapefruit-soda"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "Grapefruit is sour and slightly bitter, which suits the earthy taste of tequila. A pinch of salt softens the bitterness. It is as easy as a rum and cola and more refreshing."
+  },
+  {
+    "id": "no-alcohol-mule",
+    "name": "No-Alcohol Mule",
+    "family": "highball",
+    "baseIngredientId": null,
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "ginger-beer",
+        "amount": 150,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "mint",
+        "amount": 4,
+        "unit": "piece",
+        "optional": true,
+        "note": "to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a mug or tall glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the lime juice and top with ginger beer. Garnish with mint if you like.",
+        "technique": "build",
+        "ingredientIds": [
+          "lime-juice",
+          "ginger-beer",
+          "mint"
+        ]
+      }
+    ],
+    "glass": "mug",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "A Moscow Mule without the vodka. Because vodka adds almost no flavour, very little is lost: ginger and lime already carry the drink."
+  },
+  {
+    "id": "lemon-lime-and-bitters",
+    "name": "Lemon, Lime and Bitters",
+    "family": "highball",
+    "baseIngredientId": null,
+    "flavour": [
+      "sweet",
+      "bitter"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "lemon-lime-soda",
+        "amount": 150,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "amount": 4,
+        "unit": "dash",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Shake the bitters into a tall glass and swirl to coat the inside.",
+        "ingredientIds": [
+          "angostura-bitters"
+        ]
+      },
+      {
+        "text": "Fill the glass with ice, add the lime juice and top with the soda.",
+        "technique": "build",
+        "ingredientIds": [
+          "lime-juice",
+          "lemon-lime-soda"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "A few dashes of bitters add spice and a touch of bitterness to a sweet soft drink, the way seasoning changes a dish. The bitters contain alcohol, but so little is used that the drink is well under 1%."
+  },
+  {
+    "id": "tom-collins",
+    "name": "Tom Collins",
+    "family": "collins-and-fizz",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 50,
         "unit": "ml",
         "optional": false
       },
@@ -90,42 +1042,342 @@
         "optional": false
       },
       {
-        "ingredientId": "egg-white",
-        "amount": 1,
-        "unit": "piece",
-        "optional": true,
-        "note": "for a foamy top"
+        "ingredientId": "soda-water",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
       }
     ],
     "steps": [
       {
-        "text": "Add everything to a shaker with ice.",
+        "text": "Fill a tall glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the gin, lemon juice and syrup and stir briefly.",
         "ingredientIds": [
-          "bourbon",
+          "gin",
+          "lemon-juice",
+          "simple-syrup"
+        ]
+      },
+      {
+        "text": "Top with soda water and give one gentle stir.",
+        "technique": "build",
+        "ingredientIds": [
+          "soda-water"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A gin sour made long with soda water. The strong, sour and sweet balance is the same; the soda makes it lighter and more refreshing, like a grown-up lemonade."
+  },
+  {
+    "id": "mojito",
+    "name": "Mojito",
+    "family": "collins-and-fizz",
+    "baseIngredientId": "white-rum",
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "medium",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "white-rum",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "mint",
+        "amount": 8,
+        "unit": "piece",
+        "optional": false
+      },
+      {
+        "ingredientId": "soda-water",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Put the mint, syrup and lime juice in a tall glass and press gently.",
+        "technique": "muddle",
+        "ingredientIds": [
+          "mint",
+          "simple-syrup",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Add the rum and fill the glass with ice.",
+        "ingredientIds": [
+          "white-rum"
+        ]
+      },
+      {
+        "text": "Top with soda water and stir gently from the bottom to lift the mint.",
+        "technique": "build",
+        "ingredientIds": [
+          "soda-water"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Muddler (a blunt stick for pressing)",
+        "alternative": "The end of a wooden spoon"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A Daiquiri with mint and soda added. Pressing the mint gently releases its oils; crushing it makes it bitter. The soda lengthens the drink so it can be sipped slowly."
+  },
+  {
+    "id": "gin-fizz",
+    "name": "Gin Fizz",
+    "family": "collins-and-fizz",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "soda-water",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "egg-white",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "for a foamy head"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin, lemon juice and syrup to a shaker. Add the egg white if you are using it.",
+        "ingredientIds": [
+          "gin",
           "lemon-juice",
           "simple-syrup",
           "egg-white"
         ]
       },
       {
-        "text": "Shake hard for about 15 seconds.",
+        "text": "Fill the shaker with ice and shake hard.",
         "technique": "shake",
         "ingredientIds": []
       },
       {
-        "text": "Strain into a glass over fresh ice.",
+        "text": "Strain into a tall glass with no ice.",
         "technique": "strain",
         "ingredientIds": []
+      },
+      {
+        "text": "Top slowly with soda water so a foam rises.",
+        "ingredientIds": [
+          "soda-water"
+        ]
       }
     ],
-    "glass": "rocks",
+    "glass": "highball",
     "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
       {
         "name": "Shaker",
         "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "The same strong, sour, sweet balance as a Daiquiri, with bourbon bringing oak and vanilla."
+    "whyItWorks": "Almost the same ingredients as a Tom Collins, but shaken and served without ice. Shaking adds air, and the soda lifts it into a foamy head. It shows how technique changes a drink even when the recipe barely does."
+  },
+  {
+    "id": "virgin-mojito",
+    "name": "Virgin Mojito",
+    "family": "collins-and-fizz",
+    "baseIngredientId": null,
+    "flavour": [
+      "sour",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "lime-juice",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "mint",
+        "amount": 8,
+        "unit": "piece",
+        "optional": false
+      },
+      {
+        "ingredientId": "soda-water",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Put the mint, syrup and lime juice in a tall glass and press gently.",
+        "technique": "muddle",
+        "ingredientIds": [
+          "mint",
+          "simple-syrup",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Fill the glass with ice, top with soda water and stir gently.",
+        "technique": "build",
+        "ingredientIds": [
+          "soda-water"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Muddler (a blunt stick for pressing)",
+        "alternative": "The end of a wooden spoon"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A Mojito without the rum. Mint, lime and sugar are strong enough flavours to stand on their own, with a little more of each to fill the gap."
+  },
+  {
+    "id": "shirley-temple",
+    "name": "Shirley Temple",
+    "family": "collins-and-fizz",
+    "baseIngredientId": null,
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "ginger-ale",
+        "amount": 150,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "grenadine",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the grenadine and lime juice, then top with ginger ale.",
+        "technique": "build",
+        "ingredientIds": [
+          "grenadine",
+          "lime-juice",
+          "ginger-ale"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "A classic drink with no alcohol. Sweet pomegranate syrup and gentle ginger are balanced by a little lime, the same sweet-against-sour idea as a cocktail."
   },
   {
     "id": "old-fashioned",
@@ -156,19 +1408,365 @@
         "amount": 2,
         "unit": "dash",
         "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a strip of peel, to garnish"
       }
     ],
     "steps": [
       {
-        "text": "Add the bourbon, syrup and bitters to a glass with ice.",
+        "text": "Add the syrup and bitters to a short glass.",
         "ingredientIds": [
-          "bourbon",
           "simple-syrup",
           "angostura-bitters"
         ]
       },
       {
-        "text": "Stir for about 20 seconds.",
+        "text": "Add the bourbon and a few large ice cubes, then stir.",
+        "technique": "stir",
+        "ingredientIds": [
+          "bourbon"
+        ]
+      },
+      {
+        "text": "Squeeze the orange peel over the glass to release its oils, then drop it in.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Whiskey with just enough sugar to soften it and bitters to season it. The spirit stays the star, which makes this the closest cocktail to drinking it neat. It is a good way to compare bottles you already own."
+  },
+  {
+    "id": "manhattan",
+    "name": "Manhattan",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "rye",
+    "flavour": [
+      "strong",
+      "sweet"
+    ],
+    "difficulty": "medium",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "rye",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the whiskey, vermouth and bitters to a mixing glass and fill it with ice.",
+        "ingredientIds": [
+          "rye",
+          "sweet-vermouth",
+          "angostura-bitters"
+        ]
+      },
+      {
+        "text": "Stir until very cold.",
+        "technique": "stir",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled stemmed glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "coupe",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Mixing glass",
+        "alternative": "Any sturdy glass or jug"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Two parts whiskey to one part sweet vermouth. Vermouth plays the role that sugar plays in an Old Fashioned, and brings herbs and dark fruit as well. It is stirred, not shaken, so it stays clear and smooth."
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "bitter",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "campari",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a slice or strip of peel, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin, Campari and vermouth to a short glass and fill it with ice.",
+        "ingredientIds": [
+          "gin",
+          "campari",
+          "sweet-vermouth"
+        ]
+      },
+      {
+        "text": "Stir until very cold.",
+        "technique": "stir",
+        "ingredientIds": []
+      },
+      {
+        "text": "Garnish with the orange.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Equal parts strong, bitter and sweet, which makes it easy to remember. Gin gives the strength, Campari the bitterness and vermouth the sweetness. It tastes bitter at first; many people grow to love it."
+  },
+  {
+    "id": "dry-martini",
+    "name": "Dry Martini",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "strong"
+    ],
+    "difficulty": "medium",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "dry-vermouth",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin and vermouth to a mixing glass and fill it with ice.",
+        "ingredientIds": [
+          "gin",
+          "dry-vermouth"
+        ]
+      },
+      {
+        "text": "Stir until very cold.",
+        "technique": "stir",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled V-shaped glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "martini",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Mixing glass",
+        "alternative": "Any sturdy glass or jug"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Nearly all gin, softened by a little dry vermouth and by the water from stirring with ice. That small amount of dilution is essential: it opens up the flavour and takes off the burn. Serve it as cold as you can."
+  },
+  {
+    "id": "boulevardier",
+    "name": "Boulevardier",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "bourbon",
+    "flavour": [
+      "bitter",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "bourbon",
+        "amount": 45,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "campari",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a strip of peel, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the bourbon, Campari and vermouth to a short glass and fill it with ice.",
+        "ingredientIds": [
+          "bourbon",
+          "campari",
+          "sweet-vermouth"
+        ]
+      },
+      {
+        "text": "Stir until very cold.",
+        "technique": "stir",
+        "ingredientIds": []
+      },
+      {
+        "text": "Garnish with the orange peel.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A Negroni with bourbon in place of gin. The sweeter, rounder whiskey softens the bitterness of the Campari, so this is an easier first step into bitter drinks if you already like bourbon."
+  },
+  {
+    "id": "rusty-nail",
+    "name": "Rusty Nail",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "scotch",
+    "flavour": [
+      "strong",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "scotch",
+        "amount": 45,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "drambuie",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the Scotch and Drambuie to a short glass and fill it with ice.",
+        "ingredientIds": [
+          "scotch",
+          "drambuie"
+        ]
+      },
+      {
+        "text": "Stir until cold.",
         "technique": "stir",
         "ingredientIds": []
       }
@@ -176,48 +1774,853 @@
     "glass": "rocks",
     "tools": [
       {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
         "name": "Bar spoon",
-        "alternative": "A teaspoon or chopstick"
+        "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "A little sugar softens the whiskey and bitters add spice, so the spirit stays the star."
+    "whyItWorks": "Two ingredients. Drambuie is itself made from Scotch and honey, so it sweetens the whisky without changing its character. Use less Drambuie for a drier drink."
   },
   {
-    "id": "lime-soda",
-    "name": "Lime Soda",
-    "family": "highball",
-    "baseIngredientId": null,
+    "id": "aperol-spritz",
+    "name": "Aperol Spritz",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "aperol",
     "flavour": [
-      "sour"
+      "bitter",
+      "sweet"
     ],
     "difficulty": "easy",
     "method": "built",
     "ingredients": [
       {
-        "ingredientId": "lime-juice",
-        "amount": 20,
+        "ingredientId": "sparkling-wine",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "aperol",
+        "amount": 60,
         "unit": "ml",
         "optional": false
       },
       {
         "ingredientId": "soda-water",
-        "amount": 120,
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a slice, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a large wine glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Pour in the sparkling wine, then the Aperol, then the soda water, and give one gentle stir.",
+        "technique": "build",
+        "ingredientIds": [
+          "sparkling-wine",
+          "aperol",
+          "soda-water"
+        ]
+      },
+      {
+        "text": "Garnish with a slice of orange.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "wine",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "Three parts sparkling wine, two parts Aperol, one part soda. The wine brings bubbles and acidity, the Aperol a gentle bitter orange flavour, and the soda keeps it light. It is low in alcohol and hard to get wrong."
+  },
+  {
+    "id": "americano",
+    "name": "Americano",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "campari",
+    "flavour": [
+      "bitter"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "campari",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "sweet-vermouth",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "soda-water",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a slice, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the Campari and vermouth, then top with soda water and give one gentle stir.",
+        "technique": "build",
+        "ingredientIds": [
+          "campari",
+          "sweet-vermouth",
+          "soda-water"
+        ]
+      },
+      {
+        "text": "Garnish with a slice of orange.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "A Negroni with soda water in place of gin. You get the same bitter and sweet flavours in a much lighter drink, which makes it a gentle way to find out whether you like Campari."
+  },
+  {
+    "id": "french-75",
+    "name": "French 75",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "sparkling-wine",
+        "amount": 60,
         "unit": "ml",
         "optional": false
       }
     ],
     "steps": [
       {
-        "text": "Fill a tall glass with ice, add the lime juice and top with soda.",
-        "technique": "build",
+        "text": "Add the gin, lemon juice and syrup to a shaker.",
         "ingredientIds": [
-          "lime-juice",
-          "soda-water"
+          "gin",
+          "lemon-juice",
+          "simple-syrup"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a tall, narrow glass.",
+        "technique": "strain",
+        "ingredientIds": []
+      },
+      {
+        "text": "Top slowly with sparkling wine.",
+        "ingredientIds": [
+          "sparkling-wine"
         ]
       }
     ],
+    "glass": "flute",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "A small gin sour topped with sparkling wine instead of soda. The wine adds bubbles, acidity and extra strength, so it is livelier and stronger than it tastes."
+  },
+  {
+    "id": "mimosa",
+    "name": "Mimosa",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "sparkling-wine",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "sparkling-wine",
+        "amount": 75,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange-juice",
+        "amount": 75,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Pour chilled orange juice into a tall, narrow glass.",
+        "ingredientIds": [
+          "orange-juice"
+        ]
+      },
+      {
+        "text": "Top slowly with chilled sparkling wine. Do not stir, or it will lose its bubbles.",
+        "ingredientIds": [
+          "sparkling-wine"
+        ]
+      }
+    ],
+    "glass": "flute",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "Equal parts sparkling wine and orange juice. The juice softens the dry wine and the bubbles keep it light. Both should be well chilled, because no ice is used."
+  },
+  {
+    "id": "bellini",
+    "name": "Bellini",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "sparkling-wine",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "sparkling-wine",
+        "amount": 100,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "peach-puree",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Spoon the peach purée into a tall, narrow glass.",
+        "ingredientIds": [
+          "peach-puree"
+        ]
+      },
+      {
+        "text": "Top slowly with chilled sparkling wine, stirring gently as you pour so it does not foam over.",
+        "ingredientIds": [
+          "sparkling-wine"
+        ]
+      }
+    ],
+    "glass": "flute",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Two parts sparkling wine to one part peach. Soft, sweet fruit rounds off the acidity of the wine. It works with other ripe fruit too, which makes it a good drink to experiment with."
+  },
+  {
+    "id": "kir-royale",
+    "name": "Kir Royale",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "sparkling-wine",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "sparkling-wine",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "creme-de-cassis",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Pour the blackcurrant liqueur into a tall, narrow glass.",
+        "ingredientIds": [
+          "creme-de-cassis"
+        ]
+      },
+      {
+        "text": "Top slowly with chilled sparkling wine.",
+        "ingredientIds": [
+          "sparkling-wine"
+        ]
+      }
+    ],
+    "glass": "flute",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "A spoonful of blackcurrant liqueur in a glass of sparkling wine. The liqueur adds sweetness, colour and fruit, and shows how a very small amount of a strong flavour can change a drink."
+  },
+  {
+    "id": "pina-colada",
+    "name": "Piña Colada",
+    "family": "tropical",
+    "baseIngredientId": "white-rum",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "medium",
+    "method": "blended",
+    "ingredients": [
+      {
+        "ingredientId": "white-rum",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "pineapple-juice",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coconut-cream",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 10,
+        "unit": "ml",
+        "optional": true,
+        "note": "to cut the sweetness"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the rum, pineapple juice and cream of coconut to a blender with a large handful of ice. Add the lime juice if you are using it.",
+        "ingredientIds": [
+          "white-rum",
+          "pineapple-juice",
+          "coconut-cream",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Blend until smooth.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Pour into a tall glass.",
+        "ingredientIds": []
+      }
+    ],
     "glass": "highball",
-    "tools": [],
-    "whyItWorks": "Sharp lime and plain bubbles make a refreshing drink with no alcohol at all."
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Blender",
+        "alternative": "A shaker; shake hard with ice for a thinner drink"
+      }
+    ],
+    "whyItWorks": "Rum, pineapple and coconut: sweet, tangy and creamy together. The pineapple supplies the acidity that keeps the coconut from being too rich. A little lime sharpens it further."
+  },
+  {
+    "id": "mai-tai",
+    "name": "Mai Tai",
+    "family": "tropical",
+    "baseIngredientId": "dark-rum",
+    "flavour": [
+      "sour",
+      "strong"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "dark-rum",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "triple-sec",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orgeat",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the rum, orange liqueur, almond syrup and lime juice to a shaker.",
+        "ingredientIds": [
+          "dark-rum",
+          "triple-sec",
+          "orgeat",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a short glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "A rum sour with two sweeteners: orange liqueur and almond syrup. The almond gives the drink its nutty, rounded taste. Despite its reputation it contains no fruit juice except lime."
+  },
+  {
+    "id": "virgin-pina-colada",
+    "name": "Virgin Piña Colada",
+    "family": "tropical",
+    "baseIngredientId": null,
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "blended",
+    "ingredients": [
+      {
+        "ingredientId": "pineapple-juice",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coconut-cream",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the pineapple juice, cream of coconut and lime juice to a blender with a large handful of ice.",
+        "ingredientIds": [
+          "pineapple-juice",
+          "coconut-cream",
+          "lime-juice"
+        ]
+      },
+      {
+        "text": "Blend until smooth.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Pour into a tall glass.",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Blender",
+        "alternative": "A shaker; shake hard with ice for a thinner drink"
+      }
+    ],
+    "whyItWorks": "A Piña Colada without the rum. Pineapple and coconut already carry the flavour, and the lime keeps it from being too sweet."
+  },
+  {
+    "id": "white-russian",
+    "name": "White Russian",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coffee-liqueur",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cream",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a short glass with ice.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the vodka and coffee liqueur and stir briefly.",
+        "ingredientIds": [
+          "vodka",
+          "coffee-liqueur"
+        ]
+      },
+      {
+        "text": "Pour the cream slowly over the top so it floats.",
+        "ingredientIds": [
+          "cream"
+        ]
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Coffee liqueur gives the flavour and sweetness, vodka the strength and cream the richness. It tastes like a sweet iced coffee, so the alcohol is easy to miss."
+  },
+  {
+    "id": "espresso-martini",
+    "name": "Espresso Martini",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sweet",
+      "bitter"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coffee-liqueur",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coffee",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 10,
+        "unit": "ml",
+        "optional": true,
+        "note": "if you like it sweeter"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the vodka, coffee liqueur and cooled coffee to a shaker. Add the syrup if you are using it.",
+        "ingredientIds": [
+          "vodka",
+          "coffee-liqueur",
+          "coffee",
+          "simple-syrup"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake very hard to build a foam.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled V-shaped glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "martini",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Real coffee adds bitterness and aroma that the liqueur alone cannot. Shaking hard whips the natural oils in the coffee into a creamy foam on top, with no cream involved."
+  },
+  {
+    "id": "irish-coffee",
+    "name": "Irish Coffee",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "irish-whiskey",
+    "flavour": [
+      "sweet",
+      "strong"
+    ],
+    "difficulty": "medium",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "irish-whiskey",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coffee",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cream",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Warm a mug or heatproof glass with hot water, then empty it.",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the whiskey, syrup and hot coffee and stir.",
+        "ingredientIds": [
+          "irish-whiskey",
+          "simple-syrup",
+          "coffee"
+        ]
+      },
+      {
+        "text": "Whisk the cream lightly so it thickens but still pours, then pour it gently over the back of a spoon so it floats.",
+        "ingredientIds": [
+          "cream"
+        ]
+      }
+    ],
+    "glass": "mug",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A hot drink. Sugar is not only for sweetness here: it makes the coffee dense enough for the cream to float. You drink the hot, sweet coffee through the cool cream."
+  },
+  {
+    "id": "brandy-alexander",
+    "name": "Brandy Alexander",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "brandy",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "brandy",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "creme-de-cacao",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cream",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the brandy, chocolate liqueur and cream to a shaker.",
+        "ingredientIds": [
+          "brandy",
+          "creme-de-cacao",
+          "cream"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled stemmed glass with no ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "coupe",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Brandy, chocolate and cream: a dessert in a glass. The liqueur sweetens it, the cream makes it smooth, and the brandy adds warmth so it is not just sweet."
   }
 ]
