@@ -5,6 +5,7 @@
   --text: #1f1a17;
   --muted: #62564e;
   --line: #e2d8cc;
+  --control-line: #85776c; /* 3:1 or better against both backgrounds, for field and button edges */
   --accent: #9a3412;
   --on-accent: #ffffff;
   --good: #166534;
@@ -23,6 +24,7 @@
     --text: #f3ece6;
     --muted: #b9aca2;
     --line: #3a302a;
+    --control-line: #8f8177;
     --accent: #f6a876;
     --on-accent: #1f1410;
     --good: #86efac;
@@ -212,7 +214,7 @@ a {
   font-weight: 600;
   color: var(--text);
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--control-line);
   border-radius: var(--radius);
   text-decoration: none;
   cursor: pointer;
@@ -246,7 +248,7 @@ a {
   font-weight: 400;
   color: var(--text);
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--control-line);
   border-radius: var(--radius);
 }
 
