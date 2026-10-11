@@ -7,7 +7,7 @@ import { FAMILIES } from '../content/families'
 import type { DrinkIngredient, Ingredient } from '../content/schema'
 import { drinkAllergens } from '../core/allergens'
 import { GLASS_NAMES, titleCase } from '../core/labels'
-import { calculateStrength } from '../core/strength'
+import { calculateStrength, containsAlcohol } from '../core/strength'
 import { useUserData } from '../storage/UserDataContext'
 import { NotFound } from './NotFound'
 
@@ -32,6 +32,7 @@ export function DrinkPage() {
     .filter((d) => d.family === drink.family && d.id !== drink.id)
     .sort((a, b) => a.name.localeCompare(b.name))
   const strength = calculateStrength(drink, ingredientById)
+  const alcoholic = containsAlcohol(drink, ingredientById)
   const allergens = drinkAllergens(drink, ingredientById)
   const isFavourite = data.favouriteDrinkIds.includes(drink.id)
 
@@ -67,7 +68,7 @@ export function DrinkPage() {
             {titleCase(f)}
           </span>
         ))}
-        {strength.abvPercent === 0 && <span className="badge good">No alcohol</span>}
+        {!alcoholic && <span className="badge good">No alcohol</span>}
       </div>
       <div className="row">
         <Link to={`/drinks/${drink.id}/make`} className="button primary">
@@ -120,7 +121,7 @@ export function DrinkPage() {
         <dl className="stats">
           <div>
             <dt>Alcohol by volume</dt>
-            <dd>{strength.abvPercent}%</dd>
+            <dd>{alcoholic && strength.abvPercent === 0 ? 'Under 1%' : `${strength.abvPercent}%`}</dd>
           </div>
           <div>
             <dt>Pure alcohol</dt>

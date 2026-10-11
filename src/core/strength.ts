@@ -25,3 +25,8 @@ export function calculateStrength(drink: Drink, byId: ReadonlyMap<string, Ingred
     standardDrinks: oneDecimal(grams / GRAMS_PER_STANDARD_DRINK),
   }
 }
+
+/** True if any ingredient has alcohol, including dashes and optional extras that the strength figure leaves out. */
+export function containsAlcohol(drink: Drink, byId: ReadonlyMap<string, Ingredient>): boolean {
+  return drink.ingredients.some((i) => (byId.get(i.ingredientId)?.abv ?? 0) > 0)
+}

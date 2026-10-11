@@ -1,5 +1,6 @@
 import { screen, within } from '@testing-library/react'
 import App from '../App'
+import { fixtureContent } from '../test/fixtures'
 import { confirmed, renderApp } from '../test/render'
 
 const open = async (id: string, data = confirmed()) => {
@@ -121,4 +122,21 @@ it('a no-alcohol drink is labelled as such', async () => {
 it('an unknown drink id shows not-found', async () => {
   await open('nope')
   expect(screen.getByRole('heading', { name: /couldn't find that drink/i })).toBeInTheDocument()
+})
+
+it('does not call a drink alcohol-free when it has a few dashes of bitters', async () => {
+  const content = structuredClone(fixtureContent)
+  content.drinks.push({
+    ...content.drinks.find((d) => d.id === 'lime-soda')!,
+    id: 'bitters-soda',
+    name: 'Bitters and Soda',
+    ingredients: [
+      { ingredientId: 'soda-water', amount: 150, unit: 'ml', optional: false },
+      { ingredientId: 'angostura-bitters', amount: 4, unit: 'dash', optional: false },
+    ],
+  })
+  renderApp(<App />, { data: confirmed(), route: '/drinks/bitters-soda', content })
+  await screen.findByRole('heading', { level: 1, name: 'Bitters and Soda' })
+  expect(screen.queryByText('No alcohol')).not.toBeInTheDocument()
+  expect(screen.getByText('Under 1%')).toBeInTheDocument()
 })
