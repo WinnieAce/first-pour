@@ -1,4 +1,479 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fbf7f1;
+  --surface: #ffffff;
+  --text: #1f1a17;
+  --muted: #62564e;
+  --line: #e2d8cc;
+  --accent: #9a3412;
+  --on-accent: #ffffff;
+  --good: #166534;
+  --warn-bg: #fef3c7;
+  --warn-text: #713f12;
+  --space: 1rem;
+  --radius: 0.75rem;
+  --tap: 2.75rem; /* 44px minimum tap target */
+  --nav-height: 3.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171311;
+    --surface: #231d19;
+    --text: #f3ece6;
+    --muted: #b9aca2;
+    --line: #3a302a;
+    --accent: #f6a876;
+    --on-accent: #1f1410;
+    --good: #86efac;
+    --warn-bg: #42320c;
+    --warn-text: #fde68a;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 {
+  font-size: 1.75rem;
+}
+h2 {
+  font-size: 1.25rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Layout */
+
+.app {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 var(--space) calc(var(--nav-height) + env(safe-area-inset-bottom) + var(--space));
+}
+
+.header {
+  padding: var(--space) 0 0.5rem;
+}
+
+.brand {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.main {
+  padding: 0.5rem 0 var(--space);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  padding: var(--space) 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.nav {
+  position: fixed;
+  inset: auto 0 0 0;
+  display: flex;
+  justify-content: center;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.nav a {
+  flex: 1 1 0;
+  max-width: 10.5rem;
+  min-height: var(--nav-height);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-top: 3px solid transparent;
+}
+.nav a[aria-current='page'] {
+  color: var(--accent);
+  border-top-color: var(--accent);
+}
+
+.gate {
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 3rem var(--space);
+  display: grid;
+  gap: 1.25rem;
+}
+.gate .brand {
+  font-size: 2.25rem;
+}
+
+/* Building blocks */
+
+.stack {
+  display: grid;
+  gap: var(--space);
+}
+.stack-sm {
+  display: grid;
+  gap: 0.5rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 0.9rem;
+}
+.prose p {
+  max-width: 65ch;
+}
+
+.plain-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notice,
+.responsible {
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  padding: 0.75rem var(--space);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.button {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0.5rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+}
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.field input,
+.field select {
+  min-height: var(--tap);
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+}
+
+.check {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.check input {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+  accent-color: var(--accent);
+}
+.check label {
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge.good {
+  color: var(--good);
+}
+.badge.warn {
+  color: var(--warn-text);
+  background: var(--warn-bg);
+  border-color: transparent;
+}
+
+/* Drink cards */
+
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.9rem;
+  align-items: center;
+  padding: 0.9rem var(--space);
+  min-height: 4.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+}
+.card .glass {
+  grid-row: span 2;
+}
+.card-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.glass {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--accent);
+  flex: none;
+}
+
+/* Drink and ingredient pages */
+
+.section {
+  display: grid;
+  gap: 0.6rem;
+  padding-top: var(--space);
+  border-top: 1px solid var(--line);
+}
+
+.ingredient-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ingredient-rows li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.ingredient-rows li:last-child {
+  border-bottom: 0;
+}
+.measure {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem var(--space);
+  margin: 0;
+}
+.stats div {
+  display: grid;
+}
+.stats dt {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.stats dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Making mode */
+
+.making {
+  max-width: 42rem;
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: var(--space);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space);
+}
+.making-top {
+  display: grid;
+  gap: 0.75rem;
+}
+.making-body {
+  display: grid;
+  gap: var(--space);
+  align-content: start;
+  font-size: 1.25rem;
+}
+.making-step {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.making-body .ingredient-rows li {
+  grid-template-columns: 7rem 1fr;
+}
+.technique {
+  font-size: 1.05rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem var(--space);
+  display: grid;
+  gap: 0.4rem;
+}
+.making-actions {
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.75rem;
+  padding: 0.75rem 0 calc(0.75rem + env(safe-area-inset-bottom));
+  background: var(--bg);
+}
+.making-actions .button {
+  min-height: 3.5rem;
+  font-size: 1.15rem;
+}
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stepper output {
+  min-width: 2ch;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Dialog */
+
+.dialog {
+  max-width: min(28rem, calc(100vw - 2rem));
+  padding: 1.25rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button,
+  .card {
+    transition: border-color 0.15s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+  }
 }
