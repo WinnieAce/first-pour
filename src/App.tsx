@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
-import { useScrollTilt } from './hooks/useScrollTilt'
 import { RouteChange } from './components/RouteChange'
 import { AgeGate } from './screens/AgeGate'
 import { DrinkPage } from './screens/DrinkPage'
@@ -22,7 +21,6 @@ export default function App() {
   const { theme, scheme } = data.settings
 
   useEffect(() => applyTheme(theme, scheme), [theme, scheme])
-  useScrollTilt()
 
   if (!data.settings.ageConfirmed) {
     return pathname === '/terms' ? (

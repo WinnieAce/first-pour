@@ -6,6 +6,7 @@ import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
 import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS } from '../content/schema'
 import { greeting, titleCase } from '../core/labels'
+import { shelfTilt } from '../hooks/shelfTilt'
 import { matchBar } from '../core/matching'
 import { filterDrinks, type DrinkFilters } from '../core/search'
 import { useUserData } from '../storage/UserDataContext'
@@ -164,7 +165,7 @@ export function Library() {
           <h2 className="label" id="shelf-heading">
             {shelf.title}
           </h2>
-          <ul className="shelf" aria-labelledby="shelf-heading">
+          <ul className="shelf" aria-labelledby="shelf-heading" ref={shelfTilt}>
             {shelf.drinks.map((drink) => (
               <li key={drink.id}>
                 <Link to={`/drinks/${drink.id}`} className="arch" style={{ '--tint': drink.colour } as CSSProperties}>
