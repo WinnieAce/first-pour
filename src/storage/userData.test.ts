@@ -5,7 +5,7 @@ const valid: UserData = {
   version: 1,
   ownedIngredientIds: ['gin', 'ice'],
   favouriteDrinkIds: ['daiquiri'],
-  settings: { units: 'oz', ageConfirmed: true },
+  settings: { units: 'oz', ageConfirmed: true, theme: 'dark', scheme: 'velvet' },
 }
 
 it('defaults own the staples', () => {
@@ -13,7 +13,7 @@ it('defaults own the staples', () => {
     version: 1,
     ownedIngredientIds: ['ice', 'sugar'],
     favouriteDrinkIds: [],
-    settings: { units: 'ml', ageConfirmed: false },
+    settings: { units: 'ml', ageConfirmed: false, theme: 'system', scheme: 'classic' },
   })
 })
 
@@ -58,4 +58,15 @@ it('prunes ids missing from the content', () => {
   expect(d.ownedIngredientIds).toEqual(['gin'])
   expect(d.favouriteDrinkIds).toEqual(['daiquiri'])
   expect(d.settings).toEqual(valid.settings)
+})
+
+it('gives data saved before themes existed the device theme and the classic colours', () => {
+  const old = { version: 1, ownedIngredientIds: [], favouriteDrinkIds: [], settings: { units: 'ml', ageConfirmed: true } }
+  const result = parseUserData(old)
+  expect(result.ok && result.data.settings).toMatchObject({ theme: 'system', scheme: 'classic' })
+})
+
+it('rejects a colour scheme it does not know', () => {
+  const odd = { version: 1, ownedIngredientIds: [], favouriteDrinkIds: [], settings: { units: 'ml', ageConfirmed: true, scheme: 'neon' } }
+  expect(parseUserData(odd).ok).toBe(false)
 })

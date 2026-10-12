@@ -53,8 +53,9 @@ defined in `src/content/schema.ts`.
 Strength, standard drinks and allergen flags are calculated from the ingredients, so they are never typed in
 by hand. A malformed entry or a reference to an ingredient that does not exist fails the build.
 
-Colour contrast for the palette in `src/styles.css` was checked by hand against WCAG 2.1 AA (4.5:1 for text,
-3:1 for field and button edges) in both light and dark themes. Re-check it if you change the colours.
+The light and dark themes and the five colour schemes live in `src/theme/palettes.ts`. A test checks every
+palette against WCAG 2.1 AA (4.5:1 for text, 3:1 for field and button edges), so `npm test` fails if a colour
+change makes text hard to read.
 
 ## Deploy
 

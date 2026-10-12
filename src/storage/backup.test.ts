@@ -5,7 +5,7 @@ const valid: UserData = {
   version: 1,
   ownedIngredientIds: ['gin'],
   favouriteDrinkIds: ['daiquiri'],
-  settings: { units: 'oz', ageConfirmed: true },
+  settings: { units: 'oz', ageConfirmed: true, theme: 'dark', scheme: 'velvet' },
 }
 
 it('round-trips', () => {

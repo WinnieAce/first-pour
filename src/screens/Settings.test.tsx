@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react'
 import App from '../App'
 import { serialiseBackup } from '../storage/backup'
 import { confirmed, renderApp } from '../test/render'
+import { PALETTES } from '../theme/palettes'
 
 const feedback = vi.hoisted(() => ({ url: '' }))
 vi.mock('../config', () => ({
@@ -161,4 +162,26 @@ it('announces the restore through a status region that exists beforehand', async
 it('links to terms and privacy once, not in both the page and the footer', async () => {
   await open()
   expect(screen.getAllByRole('link', { name: /terms and privacy/i })).toHaveLength(1)
+})
+
+it('starts on the device theme and the classic colours', async () => {
+  await open()
+  expect(screen.getByRole('radio', { name: /match my device/i })).toBeChecked()
+  expect(screen.getByRole('radio', { name: /classic/i })).toBeChecked()
+})
+
+it('switching to the dark theme applies it at once and saves it', async () => {
+  const { user, store } = await open()
+  await user.click(screen.getByRole('radio', { name: /^dark$/i }))
+  expect(document.documentElement.dataset.theme).toBe('dark')
+  expect((await store.load())!.settings.theme).toBe('dark')
+})
+
+it('choosing a colour scheme recolours the page and saves it', async () => {
+  const { user, store } = await open()
+  await user.click(screen.getByRole('radio', { name: /^light$/i }))
+  await user.click(screen.getByRole('radio', { name: /velvet/i }))
+  expect(document.documentElement.dataset.scheme).toBe('velvet')
+  expect(document.documentElement.style.getPropertyValue('--bg')).toBe(PALETTES.velvet.light.bg)
+  expect((await store.load())!.settings.scheme).toBe('velvet')
 })

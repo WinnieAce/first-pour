@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { RouteChange } from './components/RouteChange'
@@ -12,10 +13,14 @@ import { NotFound } from './screens/NotFound'
 import { Settings } from './screens/Settings'
 import { Terms } from './screens/Terms'
 import { useUserData } from './storage/UserDataContext'
+import { applyTheme } from './theme/applyTheme'
 
 export default function App() {
   const { data } = useUserData()
   const { pathname } = useLocation()
+  const { theme, scheme } = data.settings
+
+  useEffect(() => applyTheme(theme, scheme), [theme, scheme])
 
   if (!data.settings.ageConfirmed) {
     return pathname === '/terms' ? (

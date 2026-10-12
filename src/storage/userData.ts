@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import type { Content } from '../content/schema'
+import { SCHEMES, THEMES } from '../theme/palettes'
 
 export const CURRENT_VERSION = 1
 
@@ -10,6 +11,9 @@ const userDataSchema = z.object({
   settings: z.object({
     units: z.enum(['ml', 'oz']),
     ageConfirmed: z.boolean(),
+    // Added after launch, so data saved earlier has neither and takes the defaults.
+    theme: z.enum(THEMES).default('system'),
+    scheme: z.enum(SCHEMES).default('classic'),
   }),
 })
 
@@ -28,7 +32,7 @@ export function defaultUserData(stapleIds: string[]): UserData {
     version: CURRENT_VERSION,
     ownedIngredientIds: [...stapleIds],
     favouriteDrinkIds: [],
-    settings: { units: 'ml', ageConfirmed: false },
+    settings: { units: 'ml', ageConfirmed: false, theme: 'system', scheme: 'classic' },
   }
 }
 

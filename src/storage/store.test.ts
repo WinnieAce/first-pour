@@ -7,7 +7,7 @@ const valid: UserData = {
   version: 1,
   ownedIngredientIds: ['gin'],
   favouriteDrinkIds: [],
-  settings: { units: 'ml', ageConfirmed: true },
+  settings: { units: 'ml', ageConfirmed: true, theme: 'system', scheme: 'classic' },
 }
 
 beforeEach(() => {

@@ -19,7 +19,7 @@ export function confirmed(overrides: Partial<Omit<UserData, 'settings'>> & { uni
     ownedIngredientIds: ['ice', 'sugar'],
     favouriteDrinkIds: [],
     ...rest,
-    settings: { units, ageConfirmed: true },
+    settings: { units, ageConfirmed: true, theme: 'system', scheme: 'classic' },
   }
 }
 

@@ -52,6 +52,8 @@ export function UserDataProvider({ store, children }: { store: UserDataStore; ch
         toggleOwned: (id) => update((d) => ({ ...d, ownedIngredientIds: toggle(d.ownedIngredientIds, id) })),
         toggleFavourite: (id) => update((d) => ({ ...d, favouriteDrinkIds: toggle(d.favouriteDrinkIds, id) })),
         setUnits: (units) => update((d) => ({ ...d, settings: { ...d.settings, units } })),
+        setTheme: (theme) => update((d) => ({ ...d, settings: { ...d.settings, theme } })),
+        setScheme: (scheme) => update((d) => ({ ...d, settings: { ...d.settings, scheme } })),
         confirmAge: () => update((d) => ({ ...d, settings: { ...d.settings, ageConfirmed: true } })),
         replaceAll: (next) => update(() => pruneUnknownIds(next, content)),
       },

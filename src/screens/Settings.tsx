@@ -4,12 +4,14 @@ import { useContent } from '../content/ContentContext'
 import { backupFileName, parseBackup, serialiseBackup } from '../storage/backup'
 import { pruneUnknownIds, type UserData } from '../storage/userData'
 import { useUserData } from '../storage/UserDataContext'
+import { resolveMode } from '../theme/applyTheme'
+import { PALETTES, SCHEMES } from '../theme/palettes'
 
 const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`
 
 export function Settings() {
   const { content } = useContent()
-  const { data, setUnits, replaceAll } = useUserData()
+  const { data, setUnits, setTheme, setScheme, replaceAll } = useUserData()
   const [pending, setPending] = useState<UserData | null>(null)
   const [error, setError] = useState('')
   const [restored, setRestored] = useState(false)
@@ -81,6 +83,50 @@ export function Settings() {
                 onChange={() => setUnits(units)}
               />
               <label htmlFor={`units-${units}`}>{label}</label>
+            </div>
+          ))}
+        </fieldset>
+      </section>
+
+      <section className="section">
+        <fieldset className="group">
+          <legend>Theme</legend>
+          {(
+            [
+              ['system', 'Match my device'],
+              ['light', 'Light'],
+              ['dark', 'Dark'],
+            ] as const
+          ).map(([theme, label]) => (
+            <div key={theme} className="check">
+              <input
+                id={`theme-${theme}`}
+                type="radio"
+                name="theme"
+                checked={data.settings.theme === theme}
+                onChange={() => setTheme(theme)}
+              />
+              <label htmlFor={`theme-${theme}`}>{label}</label>
+            </div>
+          ))}
+        </fieldset>
+        <fieldset className="group">
+          <legend>Colours</legend>
+          {SCHEMES.map((scheme) => (
+            <div key={scheme} className="check">
+              <input
+                id={`scheme-${scheme}`}
+                type="radio"
+                name="scheme"
+                checked={data.settings.scheme === scheme}
+                onChange={() => setScheme(scheme)}
+              />
+              <label htmlFor={`scheme-${scheme}`}>{PALETTES[scheme].name}</label>
+              <span className="swatches" aria-hidden="true">
+                {(['bg', 'accent', 'text'] as const).map((part) => (
+                  <span key={part} style={{ background: PALETTES[scheme][resolveMode(data.settings.theme)][part] }} />
+                ))}
+              </span>
             </div>
           ))}
         </fieldset>

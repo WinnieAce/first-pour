@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react'
+import type { Scheme, Theme } from '../theme/palettes'
 import type { UserData } from './userData'
 
 export type UserDataValue = {
@@ -8,6 +9,8 @@ export type UserDataValue = {
   toggleOwned(id: string): void
   toggleFavourite(id: string): void
   setUnits(units: 'ml' | 'oz'): void
+  setTheme(theme: Theme): void
+  setScheme(scheme: Scheme): void
   confirmAge(): void
   replaceAll(data: UserData): void
 }

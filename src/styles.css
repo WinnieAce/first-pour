@@ -307,6 +307,20 @@ h1:focus {
   padding: 0.5rem 0;
 }
 
+.swatches {
+  display: flex;
+  flex: none;
+}
+.swatches span {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--control-line);
+  border-radius: 50%;
+}
+.swatches span + span {
+  margin-left: -0.35rem;
+}
+
 .badge {
   display: inline-block;
   padding: 0.1rem 0.6rem;

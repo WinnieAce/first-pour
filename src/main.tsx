@@ -5,7 +5,10 @@ import { registerSW } from 'virtual:pwa-register'
 import App from './App'
 import { createStore } from './storage/store'
 import { UserDataProvider } from './storage/UserDataProvider'
+import { applyCachedTheme } from './theme/applyTheme'
 import './styles.css'
+
+applyCachedTheme()
 
 // Registers the offline cache. The returned update function is deliberately never called:
 // a new version takes over only once every tab of the app has been closed.
