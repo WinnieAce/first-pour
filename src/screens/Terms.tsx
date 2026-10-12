@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ResponsibleNotice } from '../components/ResponsibleNotice'
-import { APP_NAME } from '../config'
+import { APP_NAME, FEEDBACK_URL } from '../config'
 
 export function Terms() {
   return (
@@ -16,6 +16,12 @@ export function Terms() {
         Clearing this browser's data erases them. You can keep a copy with the backup option in Settings. The site counts
         page views without cookies and without identifying you.
       </p>
+      {FEEDBACK_URL && (
+        <p>
+          The feedback form is run by Google, not by {APP_NAME}. If you use it, Google receives what you type there
+          under its own privacy policy. Leave out anything that identifies you.
+        </p>
+      )}
 
       <h2>Using the app</h2>
       <p>
