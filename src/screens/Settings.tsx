@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
-import { Link } from 'react-router-dom'
 import { APP_NAME, FEEDBACK_URL } from '../config'
 import { useContent } from '../content/ContentContext'
 import { backupFileName, parseBackup, serialiseBackup } from '../storage/backup'
@@ -147,14 +146,13 @@ export function Settings() {
       <section className="section">
         <h2>About</h2>
         <p>{APP_NAME} is free, has no accounts and collects no personal data.</p>
-        <div className="row">
-          <Link to="/terms">Terms and privacy</Link>
-          {FEEDBACK_URL && (
+        {FEEDBACK_URL && (
+          <div>
             <a href={FEEDBACK_URL} target="_blank" rel="noopener noreferrer">
               Send feedback
             </a>
-          )}
-        </div>
+          </div>
+        )}
       </section>
     </div>
   )

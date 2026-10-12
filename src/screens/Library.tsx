@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
@@ -13,7 +13,7 @@ const oneOf = <T extends string>(allowed: readonly T[], value: string | null): T
   allowed.find((a) => a === value)
 
 export function Library() {
-  const { content, ingredientById } = useContent()
+  const { content, ingredientById, stapleIds } = useContent()
   const { data } = useUserData()
   const [params, setParams] = useSearchParams()
   // The text box keeps its own value: the address updates a moment later, and driving a text
@@ -37,6 +37,11 @@ export function Library() {
     difficulty: oneOf(DIFFICULTIES, params.get('difficulty')),
     makeableOnly: params.get('makeable') === '1',
   }
+
+  const filtersInUse = [filters.baseIngredientId, filters.family, filters.flavour, filters.difficulty].filter(Boolean).length
+  // Closed to begin with so the drinks start higher up, unless the address arrives with a filter set.
+  const [filtersOpen, setFiltersOpen] = useState(filtersInUse > 0)
+  const hasBottles = data.ownedIngredientIds.some((id) => !stapleIds.includes(id))
 
   const makeableIds = useMemo(
     () => new Set(matchBar(content, new Set(data.ownedIngredientIds)).makeable.map((d) => d.id)),
@@ -68,6 +73,11 @@ export function Library() {
   return (
     <div className="stack">
       <h1>Drinks</h1>
+      {!hasBottles && (
+        <p className="callout">
+          Tick the bottles you own and we'll show what you can make. <Link to="/bar">Set up my bar</Link>
+        </p>
+      )}
       <label className="field">
         Search drinks or ingredients
         <input
@@ -79,12 +89,19 @@ export function Library() {
           }}
         />
       </label>
-      <div className="filters">
-        {select('Base spirit', 'base', filters.baseIngredientId, baseSpirits.map((b) => ({ value: b.id, label: b.name })))}
-        {select('Family', 'family', filters.family, FAMILY_IDS.map((f) => ({ value: f, label: FAMILIES[f].name })))}
-        {select('Flavour', 'flavour', filters.flavour, FLAVOURS.map((f) => ({ value: f, label: titleCase(f) })))}
-        {select('Difficulty', 'difficulty', filters.difficulty, DIFFICULTIES.map((d) => ({ value: d, label: titleCase(d) })))}
+      <div>
+        <button className="button" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(!filtersOpen)}>
+          {filtersInUse > 0 ? `Filters (${filtersInUse})` : 'Filters'}
+        </button>
       </div>
+      {filtersOpen && (
+        <div className="filters">
+          {select('Base spirit', 'base', filters.baseIngredientId, baseSpirits.map((b) => ({ value: b.id, label: b.name })))}
+          {select('Family', 'family', filters.family, FAMILY_IDS.map((f) => ({ value: f, label: FAMILIES[f].name })))}
+          {select('Flavour', 'flavour', filters.flavour, FLAVOURS.map((f) => ({ value: f, label: titleCase(f) })))}
+          {select('Difficulty', 'difficulty', filters.difficulty, DIFFICULTIES.map((d) => ({ value: d, label: titleCase(d) })))}
+        </div>
+      )}
       <div className="check">
         <input
           id="makeable-only"

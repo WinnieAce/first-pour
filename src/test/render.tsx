@@ -6,7 +6,7 @@ import { ContentContext, makeContentValue } from '../content/ContentContext'
 import type { Content } from '../content/schema'
 import { createMemoryStore, type UserDataStore } from '../storage/store'
 import type { UserData } from '../storage/userData'
-import { UserDataProvider } from '../storage/UserDataContext'
+import { UserDataProvider } from '../storage/UserDataProvider'
 import { fixtureContent } from './fixtures'
 
 export const memoryStore = createMemoryStore

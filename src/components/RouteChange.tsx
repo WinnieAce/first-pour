@@ -13,7 +13,9 @@ export function RouteChange() {
   // Read through a ref so that a filter change, which alters the navigation type but not the
   // screen, does not count as moving to a new screen.
   const latestType = useRef(navigationType)
-  latestType.current = navigationType
+  useEffect(() => {
+    latestType.current = navigationType
+  })
 
   useEffect(() => {
     const heading = document.querySelector('h1')

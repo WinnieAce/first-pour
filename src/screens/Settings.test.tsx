@@ -157,3 +157,8 @@ it('announces the restore through a status region that exists beforehand', async
   expect(status).toHaveTextContent(/backup restored/i)
   expect(screen.getByLabelText(/import a backup/i)).toHaveFocus()
 })
+
+it('links to terms and privacy once, not in both the page and the footer', async () => {
+  await open()
+  expect(screen.getAllByRole('link', { name: /terms and privacy/i })).toHaveLength(1)
+})

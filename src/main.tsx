@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
 import App from './App'
 import { createStore } from './storage/store'
-import { UserDataProvider } from './storage/UserDataContext'
+import { UserDataProvider } from './storage/UserDataProvider'
 import './styles.css'
 
 // Registers the offline cache. The returned update function is deliberately never called:
