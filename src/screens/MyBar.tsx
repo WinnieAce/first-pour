@@ -49,7 +49,7 @@ export function MyBar() {
   return (
     <div className="stack">
       <h1>My bar</h1>
-      <div className="row" role="group" aria-label="View">
+      <div className="row pinned" role="group" aria-label="View">
         <button className="button" aria-pressed={view === 'bottles'} onClick={() => setView('bottles')}>
           My bottles
         </button>

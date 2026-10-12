@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { APP_NAME, FEEDBACK_URL } from '../config'
 import { useUserData } from '../storage/UserDataContext'
 
@@ -11,9 +11,20 @@ const SECTIONS = [
 
 export function Layout() {
   const { persistent } = useUserData()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isMainScreen = SECTIONS.some((s) => s.to === location.pathname)
+  // An installed app has no browser back button. A page opened directly has nowhere to go back to,
+  // so it returns to the drinks list instead.
+  const goBack = () => (location.key === 'default' ? navigate('/') : navigate(-1))
   return (
     <div className="app">
       <header className="header">
+        {!isMainScreen && (
+          <button className="button" onClick={goBack}>
+            ← Back
+          </button>
+        )}
         <Link to="/" className="brand">
           {APP_NAME}
         </Link>
