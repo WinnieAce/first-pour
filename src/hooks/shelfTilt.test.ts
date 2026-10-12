@@ -19,7 +19,7 @@ it('leans further the faster the swipe, but only ever gently', () => {
   expect(tiltFor(20)).toBeGreaterThan(tiltFor(5))
   expect(tiltFor(5000)).toBe(MAX_TILT)
   expect(tiltFor(-5000)).toBe(-MAX_TILT)
-  expect(MAX_TILT).toBeLessThanOrEqual(10)
+  expect(MAX_TILT).toBeLessThan(24) // 24 was tried and felt too harsh
 })
 
 it('tips the glasses on the shelf when it is swiped sideways', () => {

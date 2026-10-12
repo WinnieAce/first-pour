@@ -1,9 +1,9 @@
-/** The furthest a glass leans, in degrees. Kept small: a nudge, not a spill. */
-export const MAX_TILT = 8
+/** The furthest a glass leans, in degrees. A clear lean without looking like a spill. */
+export const MAX_TILT = 14
 
 /** How far the glasses lean for a sideways scroll of `delta` pixels: further for a faster swipe, up to a limit. */
 export function tiltFor(delta: number): number {
-  return Math.max(-MAX_TILT, Math.min(MAX_TILT, delta * 0.3))
+  return Math.max(-MAX_TILT, Math.min(MAX_TILT, delta * 0.5))
 }
 
 /**
