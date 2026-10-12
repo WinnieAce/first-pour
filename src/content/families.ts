@@ -23,10 +23,10 @@ export const FAMILIES: Record<FamilyId, { name: string; description: string }> =
   },
   tropical: {
     name: 'Tropical',
-    description: 'Rum with fruit, and often coconut or almond, for a rich and fruity drink.',
+    description: 'A spirit, usually rum, with fruit juice, and often coconut or almond, for a rich and fruity drink.',
   },
   'coffee-and-cream': {
     name: 'Coffee and cream',
-    description: 'Dessert-like drinks made with coffee, cream or both.',
+    description: 'Dessert-like drinks made with coffee, chocolate, cream or milk.',
   },
 }

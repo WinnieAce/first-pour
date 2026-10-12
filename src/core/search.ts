@@ -1,4 +1,4 @@
-import type { Content, Difficulty, Drink, FamilyId, Flavour } from '../content/schema'
+import type { Collection, Content, Difficulty, Drink, FamilyId, Flavour } from '../content/schema'
 
 export type DrinkFilters = {
   query: string
@@ -6,6 +6,7 @@ export type DrinkFilters = {
   family?: FamilyId
   flavour?: Flavour
   difficulty?: Difficulty
+  collection?: Collection
   makeableOnly: boolean
 }
 
@@ -40,6 +41,7 @@ export function filterDrinks(content: Content, filters: DrinkFilters, makeableId
         (!filters.family || d.family === filters.family) &&
         (!filters.flavour || d.flavour.includes(filters.flavour)) &&
         (!filters.difficulty || d.difficulty === filters.difficulty) &&
+        (!filters.collection || d.collection === filters.collection) &&
         (!filters.makeableOnly || makeableIds.has(d.id)),
     )
     .sort((a, b) => a.name.localeCompare(b.name))

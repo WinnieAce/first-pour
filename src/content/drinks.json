@@ -2622,5 +2622,494 @@
       }
     ],
     "whyItWorks": "Brandy, chocolate and cream: a dessert in a glass. The liqueur sweetens it, the cream makes it smooth, and the brandy adds warmth so it is not just sweet."
+  },
+  {
+    "id": "singapore-sling",
+    "name": "Singapore Sling",
+    "family": "tropical",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sweet",
+      "sour"
+    ],
+    "difficulty": "harder",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cherry-liqueur",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "triple-sec",
+        "amount": 7.5,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "benedictine",
+        "amount": 7.5,
+        "unit": "ml",
+        "optional": true,
+        "note": "a herbal liqueur in the original; the drink still works without it"
+      },
+      {
+        "ingredientId": "pineapple-juice",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "grenadine",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "amount": 1,
+        "unit": "dash",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin, cherry liqueur and orange liqueur to a shaker. Add the Bénédictine if you are using it.",
+        "ingredientIds": [
+          "gin",
+          "cherry-liqueur",
+          "triple-sec",
+          "benedictine"
+        ]
+      },
+      {
+        "text": "Add the pineapple juice, lime juice, grenadine and a dash of bitters.",
+        "ingredientIds": [
+          "pineapple-juice",
+          "lime-juice",
+          "grenadine",
+          "angostura-bitters"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard. The pineapple juice will froth.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a tall glass filled with fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Singapore's best-known cocktail, first mixed at the Raffles Hotel in the early 1900s. It has a long list of bottles, but the idea is simple: a small measure of gin in a lot of pineapple juice, with cherry liqueur and grenadine for sweetness and colour and lime to keep it fresh. Shaking pineapple juice gives the foamy top.",
+    "collection": "singapore"
+  },
+  {
+    "id": "calamansi-sparkler",
+    "name": "Calamansi Sparkler",
+    "family": "spritz-and-sparkling",
+    "baseIngredientId": "gin",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "gin",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "calamansi-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "sparkling-wine",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the gin, calamansi juice and syrup to a shaker.",
+        "ingredientIds": [
+          "gin",
+          "calamansi-juice",
+          "simple-syrup"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a tall, narrow glass.",
+        "technique": "strain",
+        "ingredientIds": []
+      },
+      {
+        "text": "Top slowly with sparkling wine.",
+        "ingredientIds": [
+          "sparkling-wine"
+        ]
+      }
+    ],
+    "glass": "flute",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "The calamansi lime juice sold at every hawker centre, turned into a cocktail. Calamansi is sharper and more fragrant than ordinary lime, so it gets as much syrup as juice. It is built the same way as a French 75, which shows how changing one citrus fruit changes the whole drink.",
+    "collection": "singapore"
+  },
+  {
+    "id": "milo-nightcap",
+    "name": "Milo Nightcap",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "brandy",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "milo",
+        "amount": 6,
+        "unit": "barspoon",
+        "optional": false,
+        "note": "a barspoon is about a teaspoon, so this is 2 tablespoons"
+      },
+      {
+        "ingredientId": "water",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false,
+        "note": "hot, to dissolve the Milo"
+      },
+      {
+        "ingredientId": "brandy",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "milk",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Stir the Milo into the hot water in a cup until smooth, then let it cool for a minute.",
+        "technique": "stir",
+        "ingredientIds": [
+          "milo",
+          "water"
+        ]
+      },
+      {
+        "text": "Pour it into a shaker and add the brandy and milk.",
+        "ingredientIds": [
+          "brandy",
+          "milk"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a short glass over fresh ice. For a Milo Dinosaur finish, sprinkle a little dry Milo on top.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Iced Milo with a measure of brandy. Milo is malty and chocolatey, and brandy has the same warm, dried-fruit sweetness, so the two blend instead of competing. Dissolving the powder in hot water first stops it clumping in cold milk.",
+    "collection": "singapore"
+  },
+  {
+    "id": "iced-kopi-cocktail",
+    "name": "Iced Kopi Cocktail",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sweet",
+      "bitter"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coffee",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "condensed-milk",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Stir the condensed milk into the coffee while it is still warm, so it dissolves.",
+        "technique": "stir",
+        "ingredientIds": [
+          "coffee",
+          "condensed-milk"
+        ]
+      },
+      {
+        "text": "Pour it into a shaker and add the vodka.",
+        "ingredientIds": [
+          "vodka"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a short glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "Kopi, the strong coffee-shop coffee sweetened with condensed milk, served iced with vodka. Condensed milk does two jobs at once: it sweetens the drink and makes it creamy. Vodka adds strength without getting in the way of the coffee.",
+    "collection": "singapore"
+  },
+  {
+    "id": "gula-melaka-old-fashioned",
+    "name": "Gula Melaka Old Fashioned",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "dark-rum",
+    "flavour": [
+      "strong",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "dark-rum",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "gula-melaka-syrup",
+        "amount": 7.5,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "amount": 2,
+        "unit": "dash",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a strip of peel, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the palm sugar syrup and bitters to a short glass.",
+        "ingredientIds": [
+          "gula-melaka-syrup",
+          "angostura-bitters"
+        ]
+      },
+      {
+        "text": "Add the rum and a few large ice cubes, then stir.",
+        "technique": "stir",
+        "ingredientIds": [
+          "dark-rum"
+        ]
+      },
+      {
+        "text": "Squeeze the orange peel over the glass to release its oils, then drop it in.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "An Old Fashioned with rum in place of whiskey and gula Melaka, the palm sugar used in chendol and ondeh-ondeh, in place of white sugar. Palm sugar tastes of caramel and smoke, which suits the toffee notes in dark rum. It shows how the sweetener in a drink can carry flavour of its own.",
+    "collection": "singapore"
+  },
+  {
+    "id": "bandung",
+    "name": "Bandung",
+    "family": "coffee-and-cream",
+    "baseIngredientId": null,
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "rose-syrup",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "evaporated-milk",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "water",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false,
+        "note": "cold"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice.",
+        "technique": "build",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the rose syrup and cold water and stir.",
+        "technique": "stir",
+        "ingredientIds": [
+          "rose-syrup",
+          "water"
+        ]
+      },
+      {
+        "text": "Pour in the evaporated milk and stir until the drink is an even pink.",
+        "technique": "stir",
+        "ingredientIds": [
+          "evaporated-milk"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "The pink rose milk found at drink stalls across Singapore, with no alcohol. Rose syrup is very sweet and floral, and evaporated milk gives it body without the heaviness of cream. Plenty of ice and water keep it light.",
+    "collection": "singapore"
   }
 ]

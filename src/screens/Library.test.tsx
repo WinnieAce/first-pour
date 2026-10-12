@@ -126,3 +126,15 @@ it('shows how hard each drink is on its card', async () => {
   expect(within(screen.getByRole('link', { name: /Daiquiri/ })).getByText('Easy')).toBeInTheDocument()
   expect(within(screen.getByRole('link', { name: /Whiskey Sour/ })).getByText('Medium')).toBeInTheDocument()
 })
+
+it('"Singapore favourites" narrows the list to that collection', async () => {
+  const { user } = await open()
+  await user.click(screen.getByLabelText(/singapore favourites/i))
+  expect(drinkNames()).toEqual(['Lime Soda'])
+})
+
+it('reads the Singapore favourites choice from the address', async () => {
+  await open(confirmed(), '/?collection=singapore')
+  expect(screen.getByLabelText(/singapore favourites/i)).toBeChecked()
+  expect(drinkNames()).toEqual(['Lime Soda'])
+})

@@ -64,3 +64,7 @@ it('matches a hyphenated query against a name written with a space', () => {
 it('matches words in an ingredient description, so brand and style names find drinks', () => {
   expect(run({ query: 'vanilla' })).toEqual(['old-fashioned', 'whiskey-sour'])
 })
+
+it('filters by collection', () => {
+  expect(run({ collection: 'singapore' })).toEqual(['lime-soda'])
+})

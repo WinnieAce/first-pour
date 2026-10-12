@@ -64,7 +64,7 @@ const drinks: Drink[] = [
     whyItWorks: 'A little sugar softens the whiskey and bitters add spice, so the spirit stays the star.',
   },
   {
-    id: 'lime-soda', name: 'Lime Soda', family: 'highball', baseIngredientId: null, flavour: ['sour'], difficulty: 'easy', method: 'built',
+    id: 'lime-soda', name: 'Lime Soda', family: 'highball', collection: 'singapore', baseIngredientId: null, flavour: ['sour'], difficulty: 'easy', method: 'built',
     ingredients: [
       { ingredientId: 'lime-juice', amount: 20, unit: 'ml', optional: false },
       { ingredientId: 'soda-water', amount: 120, unit: 'ml', optional: false },

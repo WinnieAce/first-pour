@@ -1060,5 +1060,204 @@
     "substitutes": [],
     "allergens": [],
     "common": false
+  },
+  {
+    "id": "cherry-liqueur",
+    "name": "Cherry liqueur (cherry brandy)",
+    "category": "liqueur",
+    "description": "A sweet, dark red liqueur that tastes of cherries and almond. Cherry Heering is the best-known brand.",
+    "abv": 24,
+    "pairsWith": [
+      {
+        "ingredientId": "gin",
+        "reason": "Cherry sweetness softens the sharp juniper in gin."
+      },
+      {
+        "ingredientId": "pineapple-juice",
+        "reason": "Cherry and pineapple are the fruit at the heart of a Singapore Sling."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "benedictine",
+    "name": "Bénédictine",
+    "category": "liqueur",
+    "description": "A French herbal liqueur, sweet and honeyed with a hint of spice. Often sold as D.O.M.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "gin",
+        "reason": "A little adds a herbal, honeyed depth to gin."
+      },
+      {
+        "ingredientId": "cherry-liqueur",
+        "reason": "Herbs and honey round out the fruit."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "calamansi-juice",
+    "name": "Calamansi juice",
+    "category": "fresh",
+    "description": "Juice of the small green calamansi lime. Sharper and more fragrant than ordinary lime, with a hint of orange. Squeeze it fresh.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "gin",
+        "reason": "Its fragrance suits the citrus peel in gin."
+      },
+      {
+        "ingredientId": "sparkling-wine",
+        "reason": "Bubbles lift the sharp citrus."
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "reason": "It is very sour, so it needs sweetening."
+      }
+    ],
+    "substitutes": [
+      "lime-juice"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "milo",
+    "name": "Milo powder",
+    "category": "mixer",
+    "description": "A malted chocolate drink powder. Sweet, malty and chocolatey. It contains milk and barley malt.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "milk",
+        "reason": "Milk makes it creamy, as in the drink itself."
+      },
+      {
+        "ingredientId": "brandy",
+        "reason": "Brandy's dried-fruit warmth suits malt and chocolate."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "dairy",
+      "gluten"
+    ],
+    "common": false
+  },
+  {
+    "id": "milk",
+    "name": "Milk",
+    "category": "fresh",
+    "description": "Fresh full-cream milk. Lighter than cream, so the drink stays easy to sip.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "milo",
+        "reason": "Cold milk and Milo are a kopitiam classic."
+      },
+      {
+        "ingredientId": "coffee",
+        "reason": "Milk softens strong coffee."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "dairy"
+    ],
+    "common": false
+  },
+  {
+    "id": "condensed-milk",
+    "name": "Sweetened condensed milk",
+    "category": "mixer",
+    "description": "Thick, very sweet tinned milk. It sweetens and adds creaminess in one spoonful. Stir it into something warm so it dissolves.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "coffee",
+        "reason": "It is what makes local kopi sweet and creamy."
+      },
+      {
+        "ingredientId": "vodka",
+        "reason": "It hides the burn of a neutral spirit."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "dairy"
+    ],
+    "common": false
+  },
+  {
+    "id": "gula-melaka-syrup",
+    "name": "Gula Melaka syrup (palm sugar syrup)",
+    "category": "mixer",
+    "description": "Palm sugar melted into a syrup. It tastes of caramel with a hint of smoke. To make it, chop the palm sugar, stir it into an equal amount of hot water until dissolved, then let it cool. It keeps for a month in the fridge.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "dark-rum",
+        "reason": "Caramel and smoke suit the toffee notes in aged rum."
+      },
+      {
+        "ingredientId": "coconut-cream",
+        "reason": "Palm sugar and coconut are the taste of chendol."
+      }
+    ],
+    "substitutes": [
+      "simple-syrup"
+    ],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "rose-syrup",
+    "name": "Rose syrup",
+    "category": "mixer",
+    "description": "A bright pink, very sweet syrup scented with rose. Sold in bottles in most supermarkets.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "evaporated-milk",
+        "reason": "Milk softens the sweetness and turns it into Bandung."
+      },
+      {
+        "ingredientId": "soda-water",
+        "reason": "Soda makes a simple pink fizzy drink."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false
+  },
+  {
+    "id": "evaporated-milk",
+    "name": "Evaporated milk",
+    "category": "mixer",
+    "description": "Unsweetened tinned milk with some of the water removed. Creamier than fresh milk and lighter than cream.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "rose-syrup",
+        "reason": "Together they make Bandung."
+      },
+      {
+        "ingredientId": "coffee",
+        "reason": "It is the milk in a kopi C."
+      }
+    ],
+    "substitutes": [
+      "milk"
+    ],
+    "allergens": [
+      "dairy"
+    ],
+    "common": false
   }
 ]

@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
-import { DIFFICULTIES, FAMILY_IDS, FLAVOURS } from '../content/schema'
+import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS } from '../content/schema'
 import { titleCase } from '../core/labels'
 import { matchBar } from '../core/matching'
 import { filterDrinks, type DrinkFilters } from '../core/search'
@@ -35,6 +35,7 @@ export function Library() {
     family: oneOf(FAMILY_IDS, params.get('family')),
     flavour: oneOf(FLAVOURS, params.get('flavour')),
     difficulty: oneOf(DIFFICULTIES, params.get('difficulty')),
+    collection: oneOf(COLLECTIONS, params.get('collection')),
     makeableOnly: params.get('makeable') === '1',
   }
 
@@ -110,6 +111,15 @@ export function Library() {
           onChange={(e) => setParam('makeable', e.target.checked ? '1' : '')}
         />
         <label htmlFor="makeable-only">Only drinks I can make</label>
+      </div>
+      <div className="check">
+        <input
+          id="singapore-only"
+          type="checkbox"
+          checked={filters.collection === 'singapore'}
+          onChange={(e) => setParam('collection', e.target.checked ? 'singapore' : '')}
+        />
+        <label htmlFor="singapore-only">Singapore favourites</label>
       </div>
 
       <p className="muted small" role="status">

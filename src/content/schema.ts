@@ -11,6 +11,7 @@ export const FLAVOURS = ['sweet', 'sour', 'bitter', 'strong'] as const
 export const DIFFICULTIES = ['easy', 'medium', 'harder'] as const
 export const METHODS = ['shaken', 'stirred', 'built', 'blended'] as const
 export const UNITS = ['ml', 'dash', 'barspoon', 'piece'] as const
+export const COLLECTIONS = ['singapore'] as const
 export const TECHNIQUES = ['shake', 'stir', 'muddle', 'strain', 'build'] as const
 
 export const ingredientSchema = z.strictObject({
@@ -52,6 +53,8 @@ export const drinkSchema = z.strictObject({
   glass: z.enum(GLASS_IDS),
   tools: z.array(z.strictObject({ name: text, alternative: text })),
   whyItWorks: text,
+  /** A themed set the drink belongs to, offered as a filter in the library. */
+  collection: z.enum(COLLECTIONS).optional(),
 })
 
 export const contentSchema = z.strictObject({
@@ -67,6 +70,7 @@ export type Flavour = (typeof FLAVOURS)[number]
 export type Difficulty = (typeof DIFFICULTIES)[number]
 export type Method = (typeof METHODS)[number]
 export type Unit = (typeof UNITS)[number]
+export type Collection = (typeof COLLECTIONS)[number]
 export type Technique = (typeof TECHNIQUES)[number]
 export type Ingredient = z.infer<typeof ingredientSchema>
 export type DrinkIngredient = z.infer<typeof drinkIngredientSchema>

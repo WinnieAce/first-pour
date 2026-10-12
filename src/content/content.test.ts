@@ -67,6 +67,12 @@ describe('searching the shipped library the way a beginner types', () => {
     ['cointreau', 'margarita'],
     ['whiskey', 'old-fashioned'],
     ['whiskey', 'boulevardier'],
+    ['singapore sling', 'singapore-sling'],
+    ['milo', 'milo-nightcap'],
+    ['kopi', 'iced-kopi-cocktail'],
+    ['calamansi', 'calamansi-sparkler'],
+    ['palm sugar', 'gula-melaka-old-fashioned'],
+    ['rose', 'bandung'],
   ])('"%s" finds %s', (query, id) => {
     expect(find(query)).toContain(id)
   })
@@ -84,4 +90,21 @@ it('every drink with raw egg white carries a caution in its ingredient note', ()
     d.ingredients.some((i) => i.ingredientId === 'egg-white' && !/raw/i.test(i.note ?? '')),
   )
   expect(missing.map((d) => d.id)).toEqual([])
+})
+
+it('has a Singapore collection with the Singapore Sling and at least one drink without alcohol', () => {
+  const local = content.drinks.filter((d) => d.collection === 'singapore')
+  expect(local.length).toBeGreaterThanOrEqual(6)
+  expect(local.map((d) => d.id)).toContain('singapore-sling')
+  expect(local.some((d) => calculateStrength(d, ingredientById).abvPercent === 0)).toBe(true)
+})
+
+it('flags dairy on every drink made with milk, condensed milk or evaporated milk', () => {
+  const milky = new Set(['milk', 'condensed-milk', 'evaporated-milk', 'milo'])
+  const unflagged = content.drinks.filter(
+    (d) =>
+      d.ingredients.some((i) => milky.has(i.ingredientId)) &&
+      !d.ingredients.some((i) => ingredientById.get(i.ingredientId)!.allergens.includes('dairy')),
+  )
+  expect(unflagged.map((d) => d.id)).toEqual([])
 })
