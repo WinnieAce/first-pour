@@ -1,6 +1,6 @@
 import type { Content, Drink, Ingredient } from '../content/schema'
 
-const base = (): Pick<Ingredient, 'pairsWith' | 'substitutes' | 'allergens' | 'common'> => ({ pairsWith: [], substitutes: [], allergens: [], common: false })
+const base = (): Pick<Ingredient, 'pairsWith' | 'substitutes' | 'allergens' | 'common' | 'colour'> => ({ pairsWith: [], substitutes: [], allergens: [], common: false, colour: '#e9e6da' })
 
 const ingredients: Ingredient[] = [
   { ...base(), id: 'white-rum', name: 'White rum', category: 'spirit', description: 'Light, clean and faintly sweet.', abv: 40, common: true, pairsWith: [{ ingredientId: 'lime-juice', reason: 'Lime cuts through the sweetness of rum.' }] },
@@ -19,7 +19,7 @@ const ingredients: Ingredient[] = [
 
 const drinks: Drink[] = [
   {
-    id: 'daiquiri', name: 'Daiquiri', family: 'sour', baseIngredientId: 'white-rum', flavour: ['sour', 'sweet'], difficulty: 'easy', method: 'shaken',
+    id: 'daiquiri', colour: '#e6e2b8', name: 'Daiquiri', family: 'sour', baseIngredientId: 'white-rum', flavour: ['sour', 'sweet'], difficulty: 'easy', method: 'shaken',
     ingredients: [
       { ingredientId: 'white-rum', amount: 60, unit: 'ml', optional: false },
       { ingredientId: 'lime-juice', amount: 25, unit: 'ml', optional: false },
@@ -34,7 +34,7 @@ const drinks: Drink[] = [
     whyItWorks: 'Rum is the strong part, lime the sour and syrup the sweet. In balance, none of the three stands out.',
   },
   {
-    id: 'whiskey-sour', name: 'Whiskey Sour', family: 'sour', baseIngredientId: 'bourbon', flavour: ['sour', 'strong'], difficulty: 'medium', method: 'shaken',
+    id: 'whiskey-sour', colour: '#d9a441', name: 'Whiskey Sour', family: 'sour', baseIngredientId: 'bourbon', flavour: ['sour', 'strong'], difficulty: 'medium', method: 'shaken',
     ingredients: [
       { ingredientId: 'bourbon', amount: 60, unit: 'ml', optional: false },
       { ingredientId: 'lemon-juice', amount: 25, unit: 'ml', optional: false },
@@ -50,7 +50,7 @@ const drinks: Drink[] = [
     whyItWorks: 'The same strong, sour, sweet balance as a Daiquiri, with bourbon bringing oak and vanilla.',
   },
   {
-    id: 'old-fashioned', name: 'Old Fashioned', family: 'stirred-and-strong', baseIngredientId: 'bourbon', flavour: ['strong', 'bitter'], difficulty: 'easy', method: 'stirred',
+    id: 'old-fashioned', colour: '#b8742a', name: 'Old Fashioned', family: 'stirred-and-strong', baseIngredientId: 'bourbon', flavour: ['strong', 'bitter'], difficulty: 'easy', method: 'stirred',
     ingredients: [
       { ingredientId: 'bourbon', amount: 60, unit: 'ml', optional: false },
       { ingredientId: 'simple-syrup', amount: 5, unit: 'ml', optional: false },
@@ -64,7 +64,7 @@ const drinks: Drink[] = [
     whyItWorks: 'A little sugar softens the whiskey and bitters add spice, so the spirit stays the star.',
   },
   {
-    id: 'lime-soda', name: 'Lime Soda', family: 'highball', collection: 'singapore', baseIngredientId: null, flavour: ['sour'], difficulty: 'easy', method: 'built',
+    id: 'lime-soda', colour: '#cfe3b4', name: 'Lime Soda', family: 'highball', collection: 'singapore', baseIngredientId: null, flavour: ['sour'], difficulty: 'easy', method: 'built',
     ingredients: [
       { ingredientId: 'lime-juice', amount: 20, unit: 'ml', optional: false },
       { ingredientId: 'soda-water', amount: 120, unit: 'ml', optional: false },

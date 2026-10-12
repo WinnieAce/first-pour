@@ -1,4 +1,5 @@
 import type { Collection, Content, Difficulty, Drink, FamilyId, Flavour } from '../content/schema'
+import { containsAlcohol } from './strength'
 
 export type DrinkFilters = {
   query: string
@@ -7,6 +8,7 @@ export type DrinkFilters = {
   flavour?: Flavour
   difficulty?: Difficulty
   collection?: Collection
+  alcoholFree?: boolean
   makeableOnly: boolean
 }
 
@@ -28,6 +30,7 @@ export function filterDrinks(content: Content, filters: DrinkFilters, makeableId
   const query = normalise(filters.query)
   // Descriptions are searched too, so brand and style names ("prosecco", "whiskey") find drinks.
   const names = new Map(content.ingredients.map((i) => [i.id, normalise(`${i.name} ${i.description}`)]))
+  const byId = new Map(content.ingredients.map((i) => [i.id, i]))
   const matchesQuery = (drink: Drink) =>
     query === '' ||
     normalise(drink.name).includes(query) ||
@@ -42,6 +45,7 @@ export function filterDrinks(content: Content, filters: DrinkFilters, makeableId
         (!filters.flavour || d.flavour.includes(filters.flavour)) &&
         (!filters.difficulty || d.difficulty === filters.difficulty) &&
         (!filters.collection || d.collection === filters.collection) &&
+        (!filters.alcoholFree || !containsAlcohol(d, byId)) &&
         (!filters.makeableOnly || makeableIds.has(d.id)),
     )
     .sort((a, b) => a.name.localeCompare(b.name))

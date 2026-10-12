@@ -68,3 +68,7 @@ it('matches words in an ingredient description, so brand and style names find dr
 it('filters by collection', () => {
   expect(run({ collection: 'singapore' })).toEqual(['lime-soda'])
 })
+
+it('filters to drinks with no alcohol at all, counting bitters as alcohol', () => {
+  expect(run({ alcoholFree: true })).toEqual(['lime-soda'])
+})

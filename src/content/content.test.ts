@@ -108,3 +108,8 @@ it('flags dairy on every drink made with milk, condensed milk or evaporated milk
   )
   expect(unflagged.map((d) => d.id)).toEqual([])
 })
+
+it('gives every drink and ingredient a colour for its glass and pour bar', () => {
+  const plain = [...content.drinks, ...content.ingredients].filter((x) => !/^#[0-9a-f]{6}$/.test(x.colour))
+  expect(plain.map((x) => x.id)).toEqual([])
+})

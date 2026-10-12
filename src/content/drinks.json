@@ -73,7 +73,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "This is the basic sour: a strong spirit, sour lemon and sweet syrup in balance, so no single one stands out. Bourbon brings vanilla and oak. Once you can taste how the three parts fit, you can make most drinks in this family."
+    "whyItWorks": "This is the basic sour: a strong spirit, sour lemon and sweet syrup in balance, so no single one stands out. Bourbon brings vanilla and oak. Once you can taste how the three parts fit, you can make most drinks in this family.",
+    "colour": "#d9a441"
   },
   {
     "id": "daiquiri",
@@ -141,7 +142,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Three ingredients and nowhere to hide. Rum is the strong part, lime the sour and syrup the sweet. If it tastes too sharp, add a little syrup; if too sweet, a little lime. That adjustment is the main skill in mixing."
+    "whyItWorks": "Three ingredients and nowhere to hide. Rum is the strong part, lime the sour and syrup the sweet. If it tastes too sharp, add a little syrup; if too sweet, a little lime. That adjustment is the main skill in mixing.",
+    "colour": "#e6e2b8"
   },
   {
     "id": "margarita",
@@ -222,7 +224,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "A sour where the sweet part is a liqueur instead of syrup. Orange liqueur sweetens the drink and adds its own flavour and strength. Salt on the rim makes the lime taste brighter and softens any bitterness."
+    "whyItWorks": "A sour where the sweet part is a liqueur instead of syrup. Orange liqueur sweetens the drink and adds its own flavour and strength. Salt on the rim makes the lime taste brighter and softens any bitterness.",
+    "colour": "#dfe6a8"
   },
   {
     "id": "gimlet",
@@ -289,7 +292,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "The same shape as a Daiquiri with gin in place of rum. Compare the two and you can taste what the spirit alone contributes: here, juniper and citrus peel in place of sugar cane."
+    "whyItWorks": "The same shape as a Daiquiri with gin in place of rum. Compare the two and you can taste what the spirit alone contributes: here, juniper and citrus peel in place of sugar cane.",
+    "colour": "#d5e3b0"
   },
   {
     "id": "sidecar",
@@ -357,7 +361,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Built like a Margarita, with brandy and lemon in place of tequila and lime. The orange liqueur is the only sweetener, so the drink is quite dry. Brandy gives it a warm, dried-fruit depth."
+    "whyItWorks": "Built like a Margarita, with brandy and lemon in place of tequila and lime. The orange liqueur is the only sweetener, so the drink is quite dry. Brandy gives it a warm, dried-fruit depth.",
+    "colour": "#d99a3c"
   },
   {
     "id": "cosmopolitan",
@@ -432,7 +437,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Vodka adds strength but little taste, so the flavour comes from tart cranberry, lime and sweet orange liqueur. It shows how a neutral spirit lets fruit take the lead."
+    "whyItWorks": "Vodka adds strength but little taste, so the flavour comes from tart cranberry, lime and sweet orange liqueur. It shows how a neutral spirit lets fruit take the lead.",
+    "colour": "#e0566f"
   },
   {
     "id": "amaretto-sour",
@@ -501,7 +507,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Amaretto is already very sweet, so it plays both the strong and the sweet part and needs no syrup. Lemon does all the balancing. It is lower in alcohol than most sours and a gentle place to start."
+    "whyItWorks": "Amaretto is already very sweet, so it plays both the strong and the sweet part and needs no syrup. Lemon does all the balancing. It is lower in alcohol than most sours and a gentle place to start.",
+    "colour": "#d98f3a"
   },
   {
     "id": "bees-knees",
@@ -569,7 +576,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "A gin sour sweetened with honey instead of sugar. Honey adds a floral flavour of its own, which suits the herbs in gin. Changing the sweetener is one of the easiest ways to change a drink."
+    "whyItWorks": "A gin sour sweetened with honey instead of sugar. Honey adds a floral flavour of its own, which suits the herbs in gin. Changing the sweetener is one of the easiest ways to change a drink.",
+    "colour": "#ecd27a"
   },
   {
     "id": "gin-and-tonic",
@@ -624,7 +632,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "One part spirit to three parts mixer is the usual highball ratio. Bitter tonic sharpens the pine-like juniper in gin. Plenty of ice keeps it cold and fizzy for longer, because a full glass of ice melts slowly."
+    "whyItWorks": "One part spirit to three parts mixer is the usual highball ratio. Bitter tonic sharpens the pine-like juniper in gin. Plenty of ice keeps it cold and fizzy for longer, because a full glass of ice melts slowly.",
+    "colour": "#dfe9e4"
   },
   {
     "id": "whisky-highball",
@@ -671,7 +680,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "Soda water adds no flavour, so this is whisky made longer and lighter. The bubbles carry the aroma up, which makes it a good way to get to know a bottle you usually drink neat."
+    "whyItWorks": "Soda water adds no flavour, so this is whisky made longer and lighter. The bubbles carry the aroma up, which makes it a good way to get to know a bottle you usually drink neat.",
+    "colour": "#e3c680"
   },
   {
     "id": "cuba-libre",
@@ -725,7 +735,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "A rum and cola with lime. The small amount of lime is what makes it a proper drink: its sourness cuts the sweetness of the cola and lets the rum come through."
+    "whyItWorks": "A rum and cola with lime. The small amount of lime is what makes it a proper drink: its sourness cuts the sweetness of the cola and lets the rum come through.",
+    "colour": "#5a2f1c"
   },
   {
     "id": "moscow-mule",
@@ -780,7 +791,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "Vodka supplies the strength and spicy ginger beer supplies the flavour. Lime ties the two together. It is traditionally served in a copper mug, but any glass works."
+    "whyItWorks": "Vodka supplies the strength and spicy ginger beer supplies the flavour. Lime ties the two together. It is traditionally served in a copper mug, but any glass works.",
+    "colour": "#e4d9a6"
   },
   {
     "id": "dark-and-stormy",
@@ -835,7 +847,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "The same idea as a Moscow Mule with dark rum in place of vodka. Because the rum has plenty of its own flavour, toffee and spice meet the heat of the ginger. Comparing the two shows how much the base spirit matters."
+    "whyItWorks": "The same idea as a Moscow Mule with dark rum in place of vodka. Because the rum has plenty of its own flavour, toffee and spice meet the heat of the ginger. Comparing the two shows how much the base spirit matters.",
+    "colour": "#8a5226"
   },
   {
     "id": "paloma",
@@ -898,7 +911,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "Grapefruit is sour and slightly bitter, which suits the earthy taste of tequila. A pinch of salt softens the bitterness. It is as easy as a rum and cola and more refreshing."
+    "whyItWorks": "Grapefruit is sour and slightly bitter, which suits the earthy taste of tequila. A pinch of salt softens the bitterness. It is as easy as a rum and cola and more refreshing.",
+    "colour": "#f2b7a0"
   },
   {
     "id": "no-alcohol-mule",
@@ -954,7 +968,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "A Moscow Mule without the vodka. Because vodka adds almost no flavour, very little is lost: ginger and lime already carry the drink."
+    "whyItWorks": "A Moscow Mule without the vodka. Because vodka adds almost no flavour, very little is lost: ginger and lime already carry the drink.",
+    "colour": "#e6dca8"
   },
   {
     "id": "lemon-lime-and-bitters",
@@ -1010,7 +1025,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "A few dashes of bitters add spice and a touch of bitterness to a sweet soft drink, the way seasoning changes a dish. The bitters contain alcohol, but so little is used that the drink is under 1%."
+    "whyItWorks": "A few dashes of bitters add spice and a touch of bitterness to a sweet soft drink, the way seasoning changes a dish. The bitters contain alcohol, but so little is used that the drink is under 1%.",
+    "colour": "#e8b98a"
   },
   {
     "id": "tom-collins",
@@ -1080,7 +1096,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "A gin sour made long with soda water. The strong, sour and sweet balance is the same; the soda makes it lighter and more refreshing, like a grown-up lemonade."
+    "whyItWorks": "A gin sour made long with soda water. The strong, sour and sweet balance is the same; the soda makes it lighter and more refreshing, like a grown-up lemonade.",
+    "colour": "#eef0d2"
   },
   {
     "id": "mojito",
@@ -1164,7 +1181,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "A Daiquiri with mint and soda added. Pressing the mint gently releases its oils; crushing it makes it bitter. The soda lengthens the drink so it can be sipped slowly."
+    "whyItWorks": "A Daiquiri with mint and soda added. Pressing the mint gently releases its oils; crushing it makes it bitter. The soda lengthens the drink so it can be sipped slowly.",
+    "colour": "#cfe3b4"
   },
   {
     "id": "gin-fizz",
@@ -1251,7 +1269,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Almost the same ingredients as a Tom Collins, but shaken and served without ice. Shaking adds air, and the soda lifts it into a foamy head. It shows how technique changes a drink even when the recipe barely does."
+    "whyItWorks": "Almost the same ingredients as a Tom Collins, but shaken and served without ice. Shaking adds air, and the soda lifts it into a foamy head. It shows how technique changes a drink even when the recipe barely does.",
+    "colour": "#f1efdc"
   },
   {
     "id": "virgin-mojito",
@@ -1323,7 +1342,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "A Mojito without the rum. Mint, lime and sugar are strong enough flavours to stand on their own, with a little more of each to fill the gap."
+    "whyItWorks": "A Mojito without the rum. Mint, lime and sugar are strong enough flavours to stand on their own, with a little more of each to fill the gap.",
+    "colour": "#d6e8bd"
   },
   {
     "id": "shirley-temple",
@@ -1377,7 +1397,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "A classic drink with no alcohol. Sweet pomegranate syrup and gentle ginger are balanced by a little lime, the same sweet-against-sour idea as a cocktail."
+    "whyItWorks": "A classic drink with no alcohol. Sweet pomegranate syrup and gentle ginger are balanced by a little lime, the same sweet-against-sour idea as a cocktail.",
+    "colour": "#ec6f7e"
   },
   {
     "id": "old-fashioned",
@@ -1450,7 +1471,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "Whiskey with just enough sugar to soften it and bitters to season it. The spirit stays the star, which makes this the closest cocktail to drinking it neat. It is a good way to compare bottles you already own."
+    "whyItWorks": "Whiskey with just enough sugar to soften it and bitters to season it. The spirit stays the star, which makes this the closest cocktail to drinking it neat. It is a good way to compare bottles you already own.",
+    "colour": "#b8742a"
   },
   {
     "id": "manhattan",
@@ -1522,7 +1544,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Two parts whiskey to one part sweet vermouth. Vermouth plays the role that sugar plays in an Old Fashioned, and brings herbs and dark fruit as well. It is stirred, not shaken, so it stays clear and smooth."
+    "whyItWorks": "Two parts whiskey to one part sweet vermouth. Vermouth plays the role that sugar plays in an Old Fashioned, and brings herbs and dark fruit as well. It is stirred, not shaken, so it stays clear and smooth.",
+    "colour": "#8f2f1f"
   },
   {
     "id": "negroni",
@@ -1594,7 +1617,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "Equal parts strong, bitter and sweet, which makes it easy to remember. Gin gives the strength, Campari the bitterness and vermouth the sweetness. It tastes bitter at first; many people grow to love it."
+    "whyItWorks": "Equal parts strong, bitter and sweet, which makes it easy to remember. Gin gives the strength, Campari the bitterness and vermouth the sweetness. It tastes bitter at first; many people grow to love it.",
+    "colour": "#b3261e"
   },
   {
     "id": "dry-martini",
@@ -1658,7 +1682,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Nearly all gin, softened by a little dry vermouth and by the water from stirring with ice. That small amount of dilution is essential: it opens up the flavour and takes off the burn. Serve it as cold as you can."
+    "whyItWorks": "Nearly all gin, softened by a little dry vermouth and by the water from stirring with ice. That small amount of dilution is essential: it opens up the flavour and takes off the burn. Serve it as cold as you can.",
+    "colour": "#e8ecdf"
   },
   {
     "id": "boulevardier",
@@ -1730,7 +1755,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "A Negroni with bourbon in place of gin. The sweeter, rounder whiskey softens the bitterness of the Campari, so this is an easier first step into bitter drinks if you already like bourbon."
+    "whyItWorks": "A Negroni with bourbon in place of gin. The sweeter, rounder whiskey softens the bitterness of the Campari, so this is an easier first step into bitter drinks if you already like bourbon.",
+    "colour": "#a03320"
   },
   {
     "id": "rusty-nail",
@@ -1782,7 +1808,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "Two ingredients. Drambuie is itself made from Scotch and honey, so it sweetens the whisky without changing its character. Use less Drambuie for a drier drink."
+    "whyItWorks": "Two ingredients. Drambuie is itself made from Scotch and honey, so it sweetens the whisky without changing its character. Use less Drambuie for a drier drink.",
+    "colour": "#c98a2e"
   },
   {
     "id": "aperol-spritz",
@@ -1850,7 +1877,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "Three parts sparkling wine, two parts Aperol, one part soda. The wine brings bubbles and acidity, the Aperol a gentle bitter orange flavour, and the soda keeps it light. It is lighter than most cocktails and hard to get wrong."
+    "whyItWorks": "Three parts sparkling wine, two parts Aperol, one part soda. The wine brings bubbles and acidity, the Aperol a gentle bitter orange flavour, and the soda keeps it light. It is lighter than most cocktails and hard to get wrong.",
+    "colour": "#f0792b"
   },
   {
     "id": "americano",
@@ -1917,7 +1945,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "A Negroni with soda water in place of gin. You get the same bitter and sweet flavours in a much lighter drink, which makes it a gentle way to find out whether you like Campari."
+    "whyItWorks": "A Negroni with soda water in place of gin. You get the same bitter and sweet flavours in a much lighter drink, which makes it a gentle way to find out whether you like Campari.",
+    "colour": "#c2402a"
   },
   {
     "id": "french-75",
@@ -1996,7 +2025,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "A small gin sour topped with sparkling wine instead of soda. The wine adds bubbles, acidity and extra strength, so it is livelier and stronger than it tastes."
+    "whyItWorks": "A small gin sour topped with sparkling wine instead of soda. The wine adds bubbles, acidity and extra strength, so it is livelier and stronger than it tastes.",
+    "colour": "#ead9a0"
   },
   {
     "id": "mimosa",
@@ -2043,7 +2073,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "Equal parts sparkling wine and orange juice. The juice softens the dry wine and the bubbles keep it light. Both should be well chilled, because no ice is used."
+    "whyItWorks": "Equal parts sparkling wine and orange juice. The juice softens the dry wine and the bubbles keep it light. Both should be well chilled, because no ice is used.",
+    "colour": "#f5b23c"
   },
   {
     "id": "bellini",
@@ -2094,7 +2125,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "Two parts sparkling wine to one part peach. Soft, sweet fruit rounds off the acidity of the wine. It works with other ripe fruit too, which makes it a good drink to experiment with."
+    "whyItWorks": "Two parts sparkling wine to one part peach. Soft, sweet fruit rounds off the acidity of the wine. It works with other ripe fruit too, which makes it a good drink to experiment with.",
+    "colour": "#f4b48c"
   },
   {
     "id": "kir-royale",
@@ -2141,7 +2173,8 @@
         "alternative": "A tablespoon, which holds 15 ml"
       }
     ],
-    "whyItWorks": "A spoonful of blackcurrant liqueur in a glass of sparkling wine. The liqueur adds sweetness, colour and fruit, and shows how a very small amount of a strong flavour can change a drink."
+    "whyItWorks": "A spoonful of blackcurrant liqueur in a glass of sparkling wine. The liqueur adds sweetness, colour and fruit, and shows how a very small amount of a strong flavour can change a drink.",
+    "colour": "#b53a5c"
   },
   {
     "id": "pina-colada",
@@ -2210,7 +2243,8 @@
         "alternative": "A shaker; shake hard with ice for a thinner drink"
       }
     ],
-    "whyItWorks": "Rum, pineapple and coconut: sweet, tangy and creamy together. The pineapple supplies the acidity that keeps the coconut from being too rich. A little lime sharpens it further."
+    "whyItWorks": "Rum, pineapple and coconut: sweet, tangy and creamy together. The pineapple supplies the acidity that keeps the coconut from being too rich. A little lime sharpens it further.",
+    "colour": "#f3ecc4"
   },
   {
     "id": "mai-tai",
@@ -2285,7 +2319,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "A rum sour with two sweeteners: orange liqueur and almond syrup. The almond gives the drink its nutty, rounded taste. Despite its reputation it contains no fruit juice except lime."
+    "whyItWorks": "A rum sour with two sweeteners: orange liqueur and almond syrup. The almond gives the drink its nutty, rounded taste. Despite its reputation it contains no fruit juice except lime.",
+    "colour": "#d98a34"
   },
   {
     "id": "virgin-pina-colada",
@@ -2346,7 +2381,8 @@
         "alternative": "A shaker; shake hard with ice for a thinner drink"
       }
     ],
-    "whyItWorks": "A Piña Colada without the rum. Pineapple and coconut already carry the flavour, and the lime keeps it from being too sweet."
+    "whyItWorks": "A Piña Colada without the rum. Pineapple and coconut already carry the flavour, and the lime keeps it from being too sweet.",
+    "colour": "#f5efcf"
   },
   {
     "id": "white-russian",
@@ -2408,7 +2444,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "Coffee liqueur gives the flavour and sweetness, vodka the strength and cream the richness. It tastes like a sweet iced coffee, so the alcohol is easy to miss."
+    "whyItWorks": "Coffee liqueur gives the flavour and sweetness, vodka the strength and cream the richness. It tastes like a sweet iced coffee, so the alcohol is easy to miss.",
+    "colour": "#cdb394"
   },
   {
     "id": "espresso-martini",
@@ -2484,7 +2521,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Real coffee adds bitterness and aroma that the liqueur alone cannot. Shaking hard whips the natural oils in the coffee into a creamy foam on top, with no cream involved."
+    "whyItWorks": "Real coffee adds bitterness and aroma that the liqueur alone cannot. Shaking hard whips the natural oils in the coffee into a creamy foam on top, with no cream involved.",
+    "colour": "#4a2c1a"
   },
   {
     "id": "irish-coffee",
@@ -2554,7 +2592,8 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "A hot drink. Sugar is not only for sweetness here: it makes the coffee dense enough for the cream to float. You drink the hot, sweet coffee through the cool cream."
+    "whyItWorks": "A hot drink. Sugar is not only for sweetness here: it makes the coffee dense enough for the cream to float. You drink the hot, sweet coffee through the cool cream.",
+    "colour": "#5c3a22"
   },
   {
     "id": "brandy-alexander",
@@ -2621,7 +2660,8 @@
         "alternative": "A small sieve"
       }
     ],
-    "whyItWorks": "Brandy, chocolate and cream: a dessert in a glass. The liqueur sweetens it, the cream makes it smooth, and the brandy adds warmth so it is not just sweet."
+    "whyItWorks": "Brandy, chocolate and cream: a dessert in a glass. The liqueur sweetens it, the cream makes it smooth, and the brandy adds warmth so it is not just sweet.",
+    "colour": "#d6bf9c"
   },
   {
     "id": "singapore-sling",
@@ -2731,7 +2771,8 @@
       }
     ],
     "whyItWorks": "Singapore's best-known cocktail, first mixed at the Raffles Hotel in the early 1900s. It has a long list of bottles, but the idea is simple: a small measure of gin in a lot of pineapple juice, with cherry liqueur and grenadine for sweetness and colour and lime to keep it fresh. Shaking pineapple juice gives the foamy top.",
-    "collection": "singapore"
+    "collection": "singapore",
+    "colour": "#e2557a"
   },
   {
     "id": "calamansi-sparkler",
@@ -2811,7 +2852,8 @@
       }
     ],
     "whyItWorks": "The calamansi lime juice sold at every hawker centre, turned into a cocktail. Calamansi is sharper and more fragrant than ordinary lime, so it gets as much syrup as juice. It is built the same way as a French 75, which shows how changing one citrus fruit changes the whole drink.",
-    "collection": "singapore"
+    "collection": "singapore",
+    "colour": "#e9e2a0"
   },
   {
     "id": "milo-nightcap",
@@ -2894,7 +2936,8 @@
       }
     ],
     "whyItWorks": "Iced Milo with a measure of brandy. Milo is malty and chocolatey, and brandy has the same warm, dried-fruit sweetness, so the two blend instead of competing. Dissolving the powder in hot water first stops it clumping in cold milk.",
-    "collection": "singapore"
+    "collection": "singapore",
+    "colour": "#8a5a36"
   },
   {
     "id": "iced-kopi-cocktail",
@@ -2969,7 +3012,8 @@
       }
     ],
     "whyItWorks": "Kopi, the strong coffee-shop coffee sweetened with condensed milk, served iced with vodka. Condensed milk does two jobs at once: it sweetens the drink and makes it creamy. Vodka adds strength without getting in the way of the coffee.",
-    "collection": "singapore"
+    "collection": "singapore",
+    "colour": "#8b6240"
   },
   {
     "id": "gula-melaka-old-fashioned",
@@ -3043,7 +3087,8 @@
       }
     ],
     "whyItWorks": "An Old Fashioned with rum in place of whiskey and gula Melaka, the palm sugar used in chendol and ondeh-ondeh, in place of white sugar. Palm sugar tastes of caramel and smoke, which suits the toffee notes in dark rum. It shows how the sweetener in a drink can carry flavour of its own.",
-    "collection": "singapore"
+    "collection": "singapore",
+    "colour": "#9a5a24"
   },
   {
     "id": "bandung",
@@ -3110,6 +3155,7 @@
       }
     ],
     "whyItWorks": "The pink rose milk found at drink stalls across Singapore, with no alcohol. Rose syrup is very sweet and floral, and evaporated milk gives it body without the heaviness of cream. Plenty of ice and water keep it light.",
-    "collection": "singapore"
+    "collection": "singapore",
+    "colour": "#f2a7c0"
   }
 ]

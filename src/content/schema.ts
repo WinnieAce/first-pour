@@ -2,6 +2,7 @@ import { z } from 'zod'
 
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'must be lowercase letters and digits joined by hyphens')
 const text = z.string().trim().min(1)
+const colour = z.string().regex(/^#[0-9a-f]{6}$/, 'must be a colour such as #b3261e')
 
 export const ALLERGENS = ['egg', 'dairy', 'nuts', 'gluten', 'sulphites'] as const
 export const INGREDIENT_CATEGORIES = ['spirit', 'liqueur', 'wine-or-fortified', 'bitters', 'mixer', 'fresh', 'staple'] as const
@@ -24,6 +25,8 @@ export const ingredientSchema = z.strictObject({
   substitutes: z.array(id),
   allergens: z.array(z.enum(ALLERGENS)),
   common: z.boolean(),
+  /** The colour of the ingredient itself, for the pour bar. */
+  colour,
 })
 
 const drinkIngredientSchema = z.strictObject({
@@ -53,6 +56,8 @@ export const drinkSchema = z.strictObject({
   glass: z.enum(GLASS_IDS),
   tools: z.array(z.strictObject({ name: text, alternative: text })),
   whyItWorks: text,
+  /** The colour of the finished drink, used to fill its glass. */
+  colour,
   /** A themed set the drink belongs to, offered as a filter in the library. */
   collection: z.enum(COLLECTIONS).optional(),
 })
