@@ -7,6 +7,8 @@ const drinkNames = () =>
     .getAllByRole('heading')
     .map((h) => h.textContent)
 
+const card = (name: RegExp) => within(screen.getByRole('list', { name: 'Drinks' })).getByRole('link', { name })
+
 const open = async (data = confirmed(), route = '/') => {
   const view = renderApp(<App />, { data, route })
   await screen.findByRole('list', { name: 'Drinks' })
@@ -26,7 +28,7 @@ it('lists every drink by name', async () => {
 
 it('each drink links to its page', async () => {
   await open()
-  expect(screen.getByRole('link', { name: /Daiquiri/ })).toHaveAttribute('href', '/drinks/daiquiri')
+  expect(card(/Daiquiri/)).toHaveAttribute('href', '/drinks/daiquiri')
 })
 
 it('typing in search narrows the list', async () => {
@@ -56,16 +58,16 @@ it('filters by flavour and difficulty together', async () => {
   expect(drinkNames()).toEqual(['Daiquiri', 'Lime Soda'])
 })
 
-it('"Only drinks I can make" uses the bar', async () => {
+it('"Can make" uses the bar', async () => {
   const { user } = await open(confirmed({ ownedIngredientIds: ['white-rum', 'lime-juice', 'simple-syrup'] }))
-  await user.click(screen.getByLabelText(/only drinks i can make/i))
+  await user.click(screen.getByRole('button', { name: 'Can make' }))
   expect(drinkNames()).toEqual(['Daiquiri'])
 })
 
 it('marks drinks the user can make', async () => {
   await open(confirmed({ ownedIngredientIds: ['white-rum', 'lime-juice', 'simple-syrup'] }))
-  expect(within(screen.getByRole('link', { name: /Daiquiri/ })).getByText(/you can make this/i)).toBeInTheDocument()
-  expect(within(screen.getByRole('link', { name: /Old Fashioned/ })).queryByText(/you can make this/i)).not.toBeInTheDocument()
+  expect(within(card(/Daiquiri/)).getByText(/you can make this/i)).toBeInTheDocument()
+  expect(within(card(/Old Fashioned/)).queryByText(/you can make this/i)).not.toBeInTheDocument()
 })
 
 it('shows a helpful message and a clear-filters button when nothing matches', async () => {
@@ -123,18 +125,65 @@ it('drops the My bar prompt once a bottle is ticked', async () => {
 
 it('shows how hard each drink is on its card', async () => {
   await open()
-  expect(within(screen.getByRole('link', { name: /Daiquiri/ })).getByText('Easy')).toBeInTheDocument()
-  expect(within(screen.getByRole('link', { name: /Whiskey Sour/ })).getByText('Medium')).toBeInTheDocument()
+  expect(within(card(/Daiquiri/)).getByText('Easy')).toBeInTheDocument()
+  expect(within(card(/Whiskey Sour/)).getByText('Medium')).toBeInTheDocument()
 })
 
-it('"Singapore favourites" narrows the list to that collection', async () => {
+it('"Singapore" narrows the list to that collection', async () => {
   const { user } = await open()
-  await user.click(screen.getByLabelText(/singapore favourites/i))
+  await user.click(screen.getByRole('button', { name: 'Singapore' }))
   expect(drinkNames()).toEqual(['Lime Soda'])
 })
 
-it('reads the Singapore favourites choice from the address', async () => {
+it('reads the Singapore choice from the address', async () => {
   await open(confirmed(), '/?collection=singapore')
-  expect(screen.getByLabelText(/singapore favourites/i)).toBeChecked()
+  expect(screen.getByRole('button', { name: 'Singapore' })).toHaveAttribute('aria-pressed', 'true')
   expect(drinkNames()).toEqual(['Lime Soda'])
+})
+
+it('"No alcohol" narrows the list to drinks with none', async () => {
+  const { user } = await open()
+  await user.click(screen.getByRole('button', { name: 'No alcohol' }))
+  expect(drinkNames()).toEqual(['Lime Soda'])
+})
+
+it('"All" switches the quick filters off again', async () => {
+  const { user } = await open()
+  await user.click(screen.getByRole('button', { name: 'No alcohol' }))
+  await user.click(screen.getByRole('button', { name: 'All' }))
+  expect(drinkNames()).toHaveLength(4)
+  expect(screen.getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'true')
+})
+
+it('shows the strength of each drink on its line', async () => {
+  await open()
+  expect(within(card(/Daiquiri/)).getByText('19%')).toBeInTheDocument()
+  expect(within(card(/Lime Soda/)).getByText('No alcohol')).toBeInTheDocument()
+})
+
+it('fills each glass with the colour of its drink', async () => {
+  await open()
+  expect(card(/Daiquiri/).querySelector('.liquid')).toHaveAttribute('fill', '#e6e2b8')
+})
+
+const shelfNames = (name: string) =>
+  within(screen.getByRole('list', { name }))
+    .getAllByRole('link')
+    .map((link) => link.querySelector('.arch-name')!.textContent)
+
+it('puts the drinks the user can make on the shelf', async () => {
+  await open(confirmed({ ownedIngredientIds: ['white-rum', 'lime-juice', 'simple-syrup'] }))
+  expect(shelfNames("Tonight's shelf")).toEqual(['Daiquiri'])
+  expect(screen.getByText(/1 you can make now/i)).toBeInTheDocument()
+})
+
+it('suggests one easy drink from each family when nothing can be made yet', async () => {
+  await open()
+  expect(shelfNames('Good first drinks')).toEqual(['Daiquiri', 'Lime Soda', 'Old Fashioned'])
+})
+
+it('hides the shelf while searching, so the results come first', async () => {
+  const { user } = await open()
+  await user.type(screen.getByLabelText(/search/i), 'bourbon')
+  expect(screen.queryByRole('list', { name: 'Good first drinks' })).not.toBeInTheDocument()
 })

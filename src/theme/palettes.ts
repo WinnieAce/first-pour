@@ -18,6 +18,8 @@ export type Palette = {
   good: string
   warnBg: string
   warnText: string
+  /** A soft wash of colour behind the top of the page. Decorative, so not contrast-checked. */
+  glow: string
 }
 
 // Contrast for every pairing the app uses is checked in palettes.test.ts. The classic values
@@ -37,6 +39,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#166534',
       warnBg: '#fef3c7',
       warnText: '#713f12',
+      glow: '#f3d9c4',
     },
     dark: {
       bg: '#171311',
@@ -50,6 +53,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#86efac',
       warnBg: '#42320c',
       warnText: '#fde68a',
+      glow: '#5a2a14',
     },
   },
   velvet: {
@@ -66,6 +70,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#1f5c33',
       warnBg: '#f3ddb8',
       warnText: '#5e3a0a',
+      glow: '#e8c9c4',
     },
     dark: {
       bg: '#1a0d0e',
@@ -79,6 +84,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#9fd8a5',
       warnBg: '#45171b',
       warnText: '#f3cfc0',
+      glow: '#733438',
     },
   },
   manor: {
@@ -95,6 +101,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#2c5a2e',
       warnBg: '#f5dfa8',
       warnText: '#5a3a08',
+      glow: '#ecd2a8',
     },
     dark: {
       bg: '#180c0c',
@@ -108,6 +115,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#a7d7a0',
       warnBg: '#4a2a10',
       warnText: '#f6d9a6',
+      glow: '#85431e',
     },
   },
   harbour: {
@@ -124,6 +132,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#1f5e3b',
       warnBg: '#f2e0c0',
       warnText: '#5c3a12',
+      glow: '#cfd9e8',
     },
     dark: {
       bg: '#141c2b',
@@ -137,6 +146,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#9ad6b0',
       warnBg: '#4a2a20',
       warnText: '#f2d3b0',
+      glow: '#3b5279',
     },
   },
   library: {
@@ -153,6 +163,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#3b5a2a',
       warnBg: '#f1dfb4',
       warnText: '#5a3c10',
+      glow: '#e0dcc0',
     },
     dark: {
       bg: '#1e1f17',
@@ -166,6 +177,7 @@ export const PALETTES: Record<Scheme, { name: string; light: Palette; dark: Pale
       good: '#a9d6a0',
       warnBg: '#443223',
       warnText: '#efd3a8',
+      glow: '#755151',
     },
   },
 }

@@ -25,3 +25,10 @@ export function titleCase(id: string): string {
   const words = id.replace(/-/g, ' ')
   return words.charAt(0).toUpperCase() + words.slice(1)
 }
+
+/** A greeting for the top of the drinks screen, by the hour on the person's own clock. */
+export function greeting(hour: number): string {
+  if (hour >= 5 && hour < 12) return 'Good morning.'
+  if (hour >= 12 && hour < 18) return 'Good afternoon.'
+  return 'Good evening.'
+}

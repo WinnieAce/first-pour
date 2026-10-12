@@ -51,7 +51,7 @@ it('omits purchases that unlock nothing', () => {
 
 it('does not follow substitute chains', () => {
   const ingredient = (id: string, substitutes: string[]): Ingredient => ({
-    id, name: id, category: 'spirit', description: 'x', abv: 40, pairsWith: [], substitutes, allergens: [], common: false,
+    id, name: id, category: 'spirit', description: 'x', abv: 40, pairsWith: [], substitutes, allergens: [], common: false, colour: '#e9e6da',
   })
   const a = ingredient('a', ['b'])
   const chain: Content = {

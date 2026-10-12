@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { GlassIcon } from '../components/GlassIcon'
 import { Measure } from '../components/Measure'
@@ -35,6 +36,9 @@ export function DrinkPage() {
   const alcoholic = containsAlcohol(drink, ingredientById)
   const allergens = drinkAllergens(drink, ingredientById)
   const isFavourite = data.favouriteDrinkIds.includes(drink.id)
+  // The first sentence of the explanation is set large; the measured ingredients make the pour bar.
+  const [lead, ...rest] = drink.whyItWorks.split(/(?<=[.!?])\s+/)
+  const poured = drink.ingredients.filter((i) => i.unit === 'ml' && !i.optional)
 
   const ingredientRow = (item: DrinkIngredient) => {
     const ingredient = ingredientById.get(item.ingredientId)!
@@ -44,6 +48,7 @@ export function DrinkPage() {
         <Measure amount={item.amount} unit={item.unit} />
         <div className="stack-sm">
           <div className="row">
+            <span className="dot" style={{ background: ingredient.colour }} aria-hidden="true" />
             <Link to={`/ingredients/${ingredient.id}`}>{ingredient.name}</Link>
             {item.optional && <span className="muted small">Optional</span>}
             <Availability ingredient={ingredient} owned={owned} />
@@ -57,11 +62,11 @@ export function DrinkPage() {
 
   return (
     <article className="stack">
-      <header className="row">
-        <GlassIcon glass={drink.glass} />
+      <header className="drink-hero">
+        <GlassIcon glass={drink.glass} colour={drink.colour} />
         <h1>{drink.name}</h1>
       </header>
-      <div className="row">
+      <div className="row centred">
         <span className="badge">{titleCase(drink.difficulty)}</span>
         {drink.flavour.map((f) => (
           <span key={f} className="badge">
@@ -70,7 +75,7 @@ export function DrinkPage() {
         ))}
         {!alcoholic && <span className="badge good">No alcohol</span>}
       </div>
-      <div className="row">
+      <div className="row centred">
         <Link to={`/drinks/${drink.id}/make`} className="button primary">
           Start making
         </Link>
@@ -81,11 +86,26 @@ export function DrinkPage() {
 
       <section className="section">
         <h2>Why this works</h2>
-        <p>{drink.whyItWorks}</p>
+        <p className="quote">{lead}</p>
+        {rest.length > 0 && <p>{rest.join(' ')}</p>}
       </section>
 
       <section className="section">
         <h2>Ingredients</h2>
+        {poured.length > 1 && (
+          <div
+            className="pour"
+            role="img"
+            aria-label={`Proportions by volume: ${poured.map((i) => `${ingredientById.get(i.ingredientId)!.name} ${i.amount}`).join(', ')}`}
+          >
+            {poured.map((i) => (
+              <span
+                key={i.ingredientId}
+                style={{ '--parts': i.amount, '--c': ingredientById.get(i.ingredientId)!.colour } as CSSProperties}
+              />
+            ))}
+          </div>
+        )}
         <ul className="ingredient-rows" aria-label="Ingredients">
           {drink.ingredients.map(ingredientRow)}
         </ul>

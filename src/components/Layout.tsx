@@ -21,7 +21,7 @@ export function Layout() {
     <div className="app">
       <header className="header">
         {!isMainScreen && (
-          <button className="button" onClick={goBack}>
+          <button className="back" onClick={goBack}>
             ← Back
           </button>
         )}

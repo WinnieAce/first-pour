@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import App from '../App'
 import { confirmed, renderApp } from '../test/render'
 
@@ -15,7 +15,7 @@ it('has no Back button on the main screens', async () => {
 
 it('Back returns from a drink to the list it was opened from, filters included', async () => {
   const { user } = await open('/?q=daiq', 'Drinks')
-  await user.click(screen.getByRole('link', { name: /Daiquiri/ }))
+  await user.click(within(screen.getByRole('list', { name: 'Drinks' })).getByRole('link', { name: /Daiquiri/ }))
   await screen.findByRole('heading', { level: 1, name: 'Daiquiri' })
   await user.click(screen.getByRole('button', { name: /back/i }))
   await screen.findByRole('heading', { level: 1, name: 'Drinks' })

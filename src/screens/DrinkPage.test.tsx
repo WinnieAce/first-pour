@@ -140,3 +140,16 @@ it('does not call a drink alcohol-free when it has a few dashes of bitters', asy
   expect(screen.queryByText('No alcohol')).not.toBeInTheDocument()
   expect(screen.getByText('Under 1%')).toBeInTheDocument()
 })
+
+it('draws the proportions of the measured ingredients as a pour bar', async () => {
+  renderApp(<App />, { data: confirmed(), route: '/drinks/daiquiri' })
+  const bar = await screen.findByRole('img', { name: /proportions/i })
+  expect(bar).toHaveAccessibleName('Proportions by volume: White rum 60, Lime juice 25, Simple syrup 15')
+  expect(bar.children).toHaveLength(3)
+})
+
+it('fills the big glass with the colour of the drink', async () => {
+  renderApp(<App />, { data: confirmed(), route: '/drinks/daiquiri' })
+  await screen.findByRole('heading', { level: 1, name: 'Daiquiri' })
+  expect(document.querySelector('.drink-hero .liquid')).toHaveAttribute('fill', '#e6e2b8')
+})

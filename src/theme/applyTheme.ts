@@ -12,6 +12,7 @@ const CSS_NAMES: Record<keyof Palette, string> = {
   good: '--good',
   warnBg: '--warn-bg',
   warnText: '--warn-text',
+  glow: '--glow',
 }
 
 // A copy of the choice kept where it can be read instantly, so the page does not flash the

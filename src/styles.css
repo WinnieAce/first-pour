@@ -1,3 +1,5 @@
+/* The classic colours, shown until the saved theme has loaded. Every scheme, in light and dark,
+   lives in src/theme/palettes.ts and is applied on top of these. */
 :root {
   color-scheme: light dark;
   --bg: #fbf7f1;
@@ -11,10 +13,14 @@
   --good: #166534;
   --warn-bg: #fef3c7;
   --warn-text: #713f12;
+  --glow: #f3d9c4;
   --space: 1rem;
-  --radius: 0.75rem;
+  --radius: 1.25rem;
   --tap: 2.75rem; /* 44px minimum tap target */
-  --nav-height: 3.75rem;
+  --nav-height: 3.5rem;
+  --display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --body: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,6 +36,7 @@
     --good: #86efac;
     --warn-bg: #42320c;
     --warn-text: #fde68a;
+    --glow: #5a2a14;
   }
 }
 
@@ -41,13 +48,18 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  background: var(--bg);
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  min-height: 100dvh;
+  /* A wash of colour behind the top of the page, in place of boxes and borders. */
+  background:
+    radial-gradient(120% 28rem at 85% -6rem, color-mix(in srgb, var(--glow) 60%, transparent), transparent 70%) no-repeat,
+    var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--body);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -55,15 +67,20 @@ body {
 h1,
 h2,
 h3 {
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 0;
   text-wrap: balance;
 }
 h1 {
-  font-size: 1.75rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.6rem;
 }
 h2 {
-  font-size: 1.25rem;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.6rem;
 }
 h3 {
   font-size: 1.05rem;
@@ -98,33 +115,23 @@ h1:focus {
 .app {
   max-width: 42rem;
   margin: 0 auto;
-  padding: 0 var(--space) calc(var(--nav-height) + env(safe-area-inset-bottom) + var(--space));
+  padding: 0 1.25rem calc(var(--nav-height) + env(safe-area-inset-bottom) + 2.5rem);
 }
 
 .header {
-  padding: var(--space) 0 0.5rem;
+  padding: var(--space) 0 0.25rem;
   display: flex;
   align-items: center;
   gap: var(--space);
 }
 
-/* Stays in view while the list below it scrolls. */
-.pinned {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  padding: 0.5rem 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-
 .brand {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--muted);
   text-decoration: none;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
 }
 
 .header .brand,
@@ -132,6 +139,17 @@ h1:focus {
   min-height: var(--tap);
   display: inline-flex;
   align-items: center;
+}
+
+.back {
+  min-height: var(--tap);
+  padding: 0 0.25rem 0 0;
+  font: inherit;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
 .main {
@@ -143,65 +161,88 @@ h1:focus {
   flex-wrap: wrap;
   gap: var(--space);
   padding: var(--space) 0;
-  border-top: 1px solid var(--line);
   font-size: 0.9rem;
 }
 
+/* A floating pill in place of a bar across the bottom. */
 .nav {
   position: fixed;
-  inset: auto 0 0 0;
+  left: 50%;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 2;
+  width: min(calc(100% - 1.5rem), 26rem);
   display: flex;
-  justify-content: center;
-  background: var(--surface);
-  border-top: 1px solid var(--line);
-  padding-bottom: env(safe-area-inset-bottom);
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0.5rem 1.5rem -0.75rem rgb(0 0 0 / 0.45);
 }
 .nav a {
   flex: 1 1 0;
-  max-width: 10.5rem;
-  min-height: var(--nav-height);
+  min-height: var(--tap);
   display: grid;
   place-items: center;
+  border-radius: 999px;
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-top: 3px solid transparent;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 .nav a[aria-current='page'] {
-  color: var(--accent);
-  border-top-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
 }
 
 .gate {
   max-width: 30rem;
   margin: 0 auto;
-  padding: 3rem var(--space);
+  padding: 3rem 1.25rem;
   display: grid;
   gap: 1.25rem;
 }
 .gate .brand {
-  font-size: 2.25rem;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text);
 }
 
 /* Building blocks */
 
 .stack {
   display: grid;
-  gap: var(--space);
+  gap: 1.25rem;
+}
+.stack > * {
+  min-width: 0;
 }
 .stack-sm {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.6rem;
+}
+.stack-sm > * {
+  min-width: 0;
 }
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.6rem;
   align-items: center;
+}
+.row.centred {
+  justify-content: center;
 }
 .muted {
   color: var(--muted);
+}
+.accent {
+  color: var(--accent);
 }
 .small {
   font-size: 0.9rem;
@@ -216,27 +257,35 @@ h1:focus {
   padding: 0;
 }
 
+/* A small heading in capitals that names a part of the screen. */
+.label {
+  font-family: var(--body);
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .notice,
 .responsible {
   background: var(--warn-bg);
   color: var(--warn-text);
-  padding: 0.75rem var(--space);
+  padding: 0.75rem 1.1rem;
   border-radius: var(--radius);
   font-size: 0.9rem;
 }
 
 .callout {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--accent);
-  padding: 0.75rem var(--space);
-  border-radius: var(--radius);
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 2px solid var(--accent);
 }
 
 .button {
   min-height: var(--tap);
   min-width: var(--tap);
-  padding: 0.5rem 1.1rem;
+  padding: 0.5rem 1.25rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -244,9 +293,9 @@ h1:focus {
   font: inherit;
   font-weight: 600;
   color: var(--text);
-  background: var(--surface);
+  background: transparent;
   border: 1px solid var(--control-line);
-  border-radius: var(--radius);
+  border-radius: 999px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -254,6 +303,7 @@ h1:focus {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--on-accent);
+  box-shadow: 0 0.75rem 1.75rem -0.75rem color-mix(in srgb, var(--accent) 70%, transparent);
 }
 .button:disabled {
   opacity: 0.45;
@@ -267,27 +317,63 @@ h1:focus {
 
 .field {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.3rem;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--muted);
 }
 .field input,
 .field select {
-  min-height: var(--tap);
+  min-height: 3rem;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1.1rem;
   font: inherit;
   font-weight: 400;
   color: var(--text);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
   border: 1px solid var(--control-line);
-  border-radius: var(--radius);
+  border-radius: 999px;
 }
 
 .filters {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   gap: 0.75rem;
+}
+
+/* Quick filters: one row to thumb through, running off the edge of the screen. */
+.chips {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 -1.25rem;
+  padding: 0.25rem 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.chips::-webkit-scrollbar {
+  display: none;
+}
+.chip {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 1.1rem;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--control-line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.chip[aria-expanded='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .check {
@@ -323,11 +409,11 @@ h1:focus {
 
 .badge {
   display: inline-block;
-  padding: 0.1rem 0.6rem;
+  padding: 0.1rem 0.7rem;
   border-radius: 999px;
   border: 1px solid currentColor;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
 }
 .badge.good {
@@ -346,11 +432,15 @@ h1:focus {
   min-width: 0;
 }
 .group legend {
-  padding: 0.75rem 0 0.25rem;
-  font-weight: 700;
+  padding: 0.9rem 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-.group .check {
-  border-bottom: 1px solid var(--line);
+.group .check + .check {
+  border-top: 2px dotted var(--line);
 }
 .group .check a {
   min-height: var(--tap);
@@ -359,34 +449,130 @@ h1:focus {
   place-items: center;
 }
 
-/* Drink cards */
+/* Stays in view while the list below it scrolls. */
+.pinned {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0 -1.25rem;
+  padding: 0.6rem 1.25rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Drinks screen */
+
+.hello {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.8rem;
+  line-height: 1.05;
+}
+
+/* The shelf: arched tiles, the only filled shapes on the screen. */
+.shelf {
+  list-style: none;
+  display: flex;
+  gap: 0.85rem;
+  margin: 0 -1.25rem;
+  padding: 0.5rem 1.25rem 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+.shelf::-webkit-scrollbar {
+  display: none;
+}
+.shelf li {
+  flex: none;
+  scroll-snap-align: start;
+}
+.shelf li:nth-child(even) {
+  margin-top: 1rem;
+}
+.arch {
+  width: 8.5rem;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.35rem;
+  padding: 1.5rem 0.75rem 1rem;
+  border-radius: 5rem 5rem 1.25rem 1.25rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--tint) 22%, var(--surface)),
+    color-mix(in srgb, var(--tint) 8%, var(--surface))
+  );
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+}
+.arch .glass {
+  width: 4rem;
+  height: 4rem;
+}
+.arch-name {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+.arch small {
+  font-size: 0.78rem;
+}
+
+/* The menu: one line per drink with a dotted leader to its strength, and no boxes. */
 
 .card-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.75rem;
 }
 .card {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.25rem 0.9rem;
+  gap: 0.15rem 0.9rem;
   align-items: center;
-  padding: 0.9rem var(--space);
-  min-height: 4.5rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  padding: 0.75rem 0;
+  min-height: 4rem;
   color: var(--text);
   text-decoration: none;
 }
 .card .glass {
   grid-row: span 2;
 }
+.leader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.leader::after {
+  content: '';
+  order: 1;
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 2px dotted var(--control-line);
+  transform: translateY(-0.3rem);
+}
 .card-name {
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.15;
+}
+.strength {
+  order: 2;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  white-space: nowrap;
 }
 .card-meta {
   display: flex;
@@ -394,28 +580,75 @@ h1:focus {
   gap: 0.25rem 0.5rem;
   align-items: center;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
-
 .card-meta > span:not(.badge) + span:not(.badge)::before {
   content: '·';
   margin-right: 0.5rem;
 }
 
 .glass {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: var(--accent);
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--text);
   flex: none;
 }
 
 /* Drink and ingredient pages */
 
+.drink-hero {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+.drink-hero .glass {
+  width: 9rem;
+  height: 9rem;
+  filter: drop-shadow(0 1.25rem 1.5rem color-mix(in srgb, var(--glow) 80%, transparent));
+  stroke-width: 1; /* the outline would look heavy at this size */
+}
+.drink-hero h1 {
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
 .section {
   display: grid;
-  gap: 0.6rem;
-  padding-top: var(--space);
-  border-top: 1px solid var(--line);
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+}
+.section > * {
+  min-width: 0;
+}
+
+.quote {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+}
+
+/* The proportions of a drink, drawn in the colours of its ingredients. */
+.pour {
+  display: flex;
+  height: 0.9rem;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.pour span {
+  flex: var(--parts);
+  background: var(--c);
+}
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--control-line);
 }
 
 .ingredient-rows {
@@ -427,21 +660,20 @@ h1:focus {
   display: grid;
   grid-template-columns: 5.5rem 1fr;
   gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 0;
 }
-.ingredient-rows li:last-child {
-  border-bottom: 0;
+.ingredient-rows li + li {
+  border-top: 2px dotted var(--line);
 }
 .measure {
-  font-weight: 700;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem var(--space);
+  gap: 0.5rem 1.5rem;
   margin: 0;
 }
 .stats div {
@@ -453,7 +685,10 @@ h1:focus {
 }
 .stats dd {
   margin: 0;
-  font-weight: 700;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.1;
 }
 
 .steps {
@@ -469,7 +704,7 @@ h1:focus {
   max-width: 42rem;
   margin: 0 auto;
   min-height: 100dvh;
-  padding: var(--space);
+  padding: var(--space) 1.25rem;
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: var(--space);
@@ -485,8 +720,9 @@ h1:focus {
   font-size: 1.25rem;
 }
 .making-step {
-  font-size: 1.6rem;
-  line-height: 1.3;
+  font-family: var(--display);
+  font-size: 2rem;
+  line-height: 1.2;
   font-weight: 600;
 }
 .making-body .ingredient-rows li {
@@ -494,10 +730,8 @@ h1:focus {
 }
 .technique {
   font-size: 1.05rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 0.9rem var(--space);
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 2px solid var(--accent);
   display: grid;
   gap: 0.4rem;
 }
@@ -548,12 +782,62 @@ h1:focus {
   white-space: nowrap;
 }
 
+/* Movement: glasses fill as a screen opens and lean when touched. Skipped for anyone who has
+   asked their device for less motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .button,
-  .card {
-    transition: border-color 0.15s ease;
+  .liquid {
+    transform-box: fill-box;
+    animation: fill 1s var(--ease) both;
   }
-  .card:hover {
-    border-color: var(--accent);
+  .pour span {
+    transform-origin: left;
+    animation: pour 0.9s var(--ease) both;
+  }
+  .pour span:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+  .pour span:nth-child(n + 3) {
+    animation-delay: 0.24s;
+  }
+  .button,
+  .chip,
+  .nav a {
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .button.primary:hover {
+    transform: translateY(-2px);
+  }
+  .card .glass,
+  .arch {
+    transition: transform 0.35s var(--ease);
+  }
+  .card:hover .glass,
+  .card:focus-visible .glass {
+    transform: rotate(-8deg) scale(1.08);
+  }
+  .arch:hover,
+  .arch:focus-visible {
+    transform: translateY(-6px) rotate(-1.5deg);
+  }
+}
+
+@keyframes fill {
+  from {
+    transform: translateY(60%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes pour {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
   }
 }

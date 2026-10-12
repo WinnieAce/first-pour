@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type CSSProperties } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
+import { GlassIcon } from '../components/GlassIcon'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
 import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS } from '../content/schema'
-import { titleCase } from '../core/labels'
+import { greeting, titleCase } from '../core/labels'
 import { matchBar } from '../core/matching'
 import { filterDrinks, type DrinkFilters } from '../core/search'
 import { useUserData } from '../storage/UserDataContext'
@@ -36,6 +37,7 @@ export function Library() {
     flavour: oneOf(FLAVOURS, params.get('flavour')),
     difficulty: oneOf(DIFFICULTIES, params.get('difficulty')),
     collection: oneOf(COLLECTIONS, params.get('collection')),
+    alcoholFree: params.get('zero') === '1',
     makeableOnly: params.get('makeable') === '1',
   }
 
@@ -71,15 +73,44 @@ export function Library() {
     </label>
   )
 
+  // Read once, when the screen opens, so the greeting cannot change in the middle of a visit.
+  const [hello] = useState(() => greeting(new Date().getHours()))
+  const quickFilters = filters.makeableOnly || filters.collection !== undefined || filters.alcoholFree === true
+  const browsing = query.trim() === '' && !quickFilters && filtersInUse === 0
+
+  // The shelf leads with what the person can make. Until they can make something, it offers one
+  // easy drink from each family as a place to start.
+  const canMake = content.drinks.filter((d) => makeableIds.has(d.id)).sort((a, b) => a.name.localeCompare(b.name))
+  const shelf =
+    canMake.length > 0
+      ? { title: "Tonight's shelf", drinks: canMake.slice(0, 6) }
+      : {
+          title: 'Good first drinks',
+          drinks: FAMILY_IDS.flatMap((f) => content.drinks.filter((d) => d.family === f && d.difficulty === 'easy').slice(0, 1)),
+        }
+
+  const clearQuickFilters = () => {
+    const next = new URLSearchParams(params)
+    for (const key of ['makeable', 'collection', 'zero']) next.delete(key)
+    setParams(next, { replace: true })
+  }
+
   return (
     <div className="stack">
-      <h1>Drinks</h1>
+      <header>
+        <h1 className="visually-hidden">Drinks</h1>
+        <p className="hello">{hello}</p>
+        <p className="muted">
+          <span role="status">{drinks.length === 1 ? '1 drink' : `${drinks.length} drinks`}.</span>{' '}
+          {canMake.length > 0 && <strong className="accent">{canMake.length} you can make now.</strong>}
+        </p>
+      </header>
       {!hasBottles && (
         <p className="callout">
           Tick the bottles you own and we'll show what you can make. <Link to="/bar">Set up my bar</Link>
         </p>
       )}
-      <label className="field">
+      <label className="field search">
         Search drinks or ingredients
         <input
           type="search"
@@ -90,8 +121,32 @@ export function Library() {
           }}
         />
       </label>
-      <div>
-        <button className="button" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(!filtersOpen)}>
+      <div className="chips" role="group" aria-label="Show">
+        <button className="chip" aria-pressed={!quickFilters} onClick={clearQuickFilters}>
+          All
+        </button>
+        <button
+          className="chip"
+          aria-pressed={filters.makeableOnly}
+          onClick={() => setParam('makeable', filters.makeableOnly ? '' : '1')}
+        >
+          Can make
+        </button>
+        <button
+          className="chip"
+          aria-pressed={filters.collection === 'singapore'}
+          onClick={() => setParam('collection', filters.collection === 'singapore' ? '' : 'singapore')}
+        >
+          Singapore
+        </button>
+        <button
+          className="chip"
+          aria-pressed={filters.alcoholFree === true}
+          onClick={() => setParam('zero', filters.alcoholFree ? '' : '1')}
+        >
+          No alcohol
+        </button>
+        <button className="chip" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(!filtersOpen)}>
           {filtersInUse > 0 ? `Filters (${filtersInUse})` : 'Filters'}
         </button>
       </div>
@@ -103,28 +158,26 @@ export function Library() {
           {select('Difficulty', 'difficulty', filters.difficulty, DIFFICULTIES.map((d) => ({ value: d, label: titleCase(d) })))}
         </div>
       )}
-      <div className="check">
-        <input
-          id="makeable-only"
-          type="checkbox"
-          checked={filters.makeableOnly}
-          onChange={(e) => setParam('makeable', e.target.checked ? '1' : '')}
-        />
-        <label htmlFor="makeable-only">Only drinks I can make</label>
-      </div>
-      <div className="check">
-        <input
-          id="singapore-only"
-          type="checkbox"
-          checked={filters.collection === 'singapore'}
-          onChange={(e) => setParam('collection', e.target.checked ? 'singapore' : '')}
-        />
-        <label htmlFor="singapore-only">Singapore favourites</label>
-      </div>
 
-      <p className="muted small" role="status">
-        {drinks.length === 1 ? '1 drink' : `${drinks.length} drinks`}
-      </p>
+      {browsing && shelf.drinks.length > 0 && (
+        <section className="stack-sm">
+          <h2 className="label" id="shelf-heading">
+            {shelf.title}
+          </h2>
+          <ul className="shelf" aria-labelledby="shelf-heading">
+            {shelf.drinks.map((drink) => (
+              <li key={drink.id}>
+                <Link to={`/drinks/${drink.id}`} className="arch" style={{ '--tint': drink.colour } as CSSProperties}>
+                  <GlassIcon glass={drink.glass} colour={drink.colour} />
+                  <span className="arch-name">{drink.name}</span>
+                  <small>{canMake.length > 0 ? 'You can make this' : FAMILIES[drink.family].name}</small>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {drinks.length === 0 && (
         <div className="stack-sm">
           <p>No drinks match. Try a different search or fewer filters.</p>
@@ -141,13 +194,16 @@ export function Library() {
           </div>
         </div>
       )}
-      <ul className="card-list" aria-label="Drinks">
-        {drinks.map((drink) => (
-          <li key={drink.id}>
-            <DrinkCard drink={drink} makeable={makeableIds.has(drink.id)} />
-          </li>
-        ))}
-      </ul>
+      <section className="stack-sm">
+        {browsing && <h2 className="label">The menu</h2>}
+        <ul className="card-list" aria-label="Drinks">
+          {drinks.map((drink) => (
+            <li key={drink.id}>
+              <DrinkCard drink={drink} makeable={makeableIds.has(drink.id)} />
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   )
 }

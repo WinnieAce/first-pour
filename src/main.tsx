@@ -6,6 +6,11 @@ import App from './App'
 import { createStore } from './storage/store'
 import { UserDataProvider } from './storage/UserDataProvider'
 import { applyCachedTheme } from './theme/applyTheme'
+import '@fontsource/cormorant-garamond/latin-500.css'
+import '@fontsource/cormorant-garamond/latin-500-italic.css'
+import '@fontsource/cormorant-garamond/latin-600.css'
+import '@fontsource/cormorant-garamond/latin-600-italic.css'
+import '@fontsource-variable/instrument-sans/wght.css'
 import './styles.css'
 
 applyCachedTheme()

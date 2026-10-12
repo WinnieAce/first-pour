@@ -31,7 +31,7 @@ describe('moving between screens', () => {
 
   it('opening a drink scrolls to the top, focuses its heading and updates the title', async () => {
     const { user } = renderApp(<App />, { data: confirmed() })
-    await user.click(await screen.findByRole('link', { name: /Daiquiri/ }))
+    await user.click((await screen.findAllByRole('link', { name: /Daiquiri/ }))[0])
     const heading = await screen.findByRole('heading', { level: 1, name: 'Daiquiri' })
     await waitFor(() => expect(document.title).toBe('Daiquiri · First Pour'))
     expect(heading).toHaveFocus()
