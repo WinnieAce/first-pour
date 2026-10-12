@@ -785,9 +785,16 @@ h1:focus {
 /* Movement: glasses fill as a screen opens and lean when touched. Skipped for anyone who has
    asked their device for less motion. */
 @media (prefers-reduced-motion: no-preference) {
+  /* Scrolling tips every glass by --tilt (see useScrollTilt); the drink inside stays level. */
+  .glass {
+    transform-origin: 50% 85%;
+    transform: rotate(var(--tilt, 0deg));
+  }
   .liquid {
     transform-box: fill-box;
-    animation: fill 1s var(--ease) both;
+    transform-origin: 50% 0;
+    transform: rotate(calc(var(--tilt, 0deg) * -1));
+    animation: fill 1s var(--ease) backwards;
   }
   .pour span {
     transform-origin: left;
@@ -811,13 +818,8 @@ h1:focus {
   .button.primary:hover {
     transform: translateY(-2px);
   }
-  .card .glass,
   .arch {
     transition: transform 0.35s var(--ease);
-  }
-  .card:hover .glass,
-  .card:focus-visible .glass {
-    transform: rotate(-8deg) scale(1.08);
   }
   .arch:hover,
   .arch:focus-visible {

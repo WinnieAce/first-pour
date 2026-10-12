@@ -36,7 +36,8 @@ export function GlassIcon({ glass, colour }: { glass: GlassId; colour: string })
         <path d={bowl} />
       </clipPath>
       <g clipPath={`url(#${clip})`}>
-        <rect className="liquid" x="0" y={surface} width="40" height="40" fill={colour} stroke="none" />
+        {/* Wider than the glass, so the drink still reaches both sides when the glass tips. */}
+        <rect className="liquid" x="-20" y={surface} width="80" height="40" fill={colour} stroke="none" />
       </g>
       <path d={bowl} />
       {rest && <path d={rest} />}
