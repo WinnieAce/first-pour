@@ -5,6 +5,7 @@ import { GlassIcon } from '../components/GlassIcon'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
 import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS } from '../content/schema'
+import { glassExtras } from '../core/extras'
 import { greeting, titleCase } from '../core/labels'
 import { shelfTilt } from '../hooks/shelfTilt'
 import { matchBar } from '../core/matching'
@@ -169,7 +170,7 @@ export function Library() {
             {shelf.drinks.map((drink) => (
               <li key={drink.id}>
                 <Link to={`/drinks/${drink.id}`} className="arch" style={{ '--tint': drink.colour } as CSSProperties}>
-                  <GlassIcon glass={drink.glass} colour={drink.colour} />
+                  <GlassIcon glass={drink.glass} colour={drink.colour} extras={glassExtras(drink)} />
                   <span className="arch-name">{drink.name}</span>
                   <small>{canMake.length > 0 ? 'You can make this' : FAMILIES[drink.family].name}</small>
                 </Link>

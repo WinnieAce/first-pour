@@ -592,6 +592,10 @@ h1:focus {
   height: 2.75rem;
   color: var(--text);
   flex: none;
+  overflow: visible; /* a straw or garnish may reach past the edge of the drawing */
+}
+.bubble {
+  opacity: 0.6;
 }
 
 /* Drink and ingredient pages */
@@ -796,6 +800,45 @@ h1:focus {
     transform: rotate(calc(var(--tilt, 0deg) * -1));
     animation: fill 1s var(--ease) backwards;
   }
+  /* A drink that is alive: its surface slides from side to side, ice bobs, bubbles rise, a straw
+     sways and steam drifts off a hot one. Each loops gently, a little out of step with the others. */
+  .wave {
+    animation: slosh 1.6s ease-in-out infinite alternate;
+  }
+  .wave + .wave {
+    animation-direction: alternate-reverse;
+    animation-duration: 2.1s;
+  }
+  .ice {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: bob 2.4s ease-in-out infinite alternate;
+  }
+  .ice + .ice {
+    animation-duration: 3.1s;
+    animation-direction: alternate-reverse;
+  }
+  .bubble {
+    animation: rise 2.2s ease-in infinite;
+  }
+  .bubble:nth-of-type(2) {
+    animation-delay: 0.7s;
+    animation-duration: 2.8s;
+  }
+  .bubble:nth-of-type(3) {
+    animation-delay: 1.3s;
+  }
+  .straw {
+    transform-box: fill-box;
+    transform-origin: 0 100%;
+    animation: sway 2.8s ease-in-out infinite alternate;
+  }
+  .steam {
+    animation: drift 2.6s ease-out infinite;
+  }
+  .steam + .steam {
+    animation-delay: 1.1s;
+  }
   .pour span {
     transform-origin: left;
     animation: pour 0.9s var(--ease) both;
@@ -838,6 +881,56 @@ h1:focus {
   }
   to {
     transform: none;
+  }
+}
+@keyframes slosh {
+  from {
+    transform: translateX(-3px);
+  }
+  to {
+    transform: translateX(3px);
+  }
+}
+@keyframes bob {
+  from {
+    transform: translate(-0.6px, 0.5px) rotate(-10deg);
+  }
+  to {
+    transform: translate(0.8px, -0.8px) rotate(12deg);
+  }
+}
+@keyframes rise {
+  from {
+    transform: none;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+@keyframes sway {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+@keyframes drift {
+  from {
+    transform: none;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-4px);
+    opacity: 0;
   }
 }
 @keyframes pour {

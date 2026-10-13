@@ -7,6 +7,7 @@ import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
 import type { DrinkIngredient, Ingredient } from '../content/schema'
 import { drinkAllergens } from '../core/allergens'
+import { glassExtras } from '../core/extras'
 import { GLASS_NAMES, titleCase } from '../core/labels'
 import { calculateStrength, containsAlcohol } from '../core/strength'
 import { useUserData } from '../storage/UserDataContext'
@@ -63,7 +64,7 @@ export function DrinkPage() {
   return (
     <article className="stack">
       <header className="drink-hero">
-        <GlassIcon glass={drink.glass} colour={drink.colour} />
+        <GlassIcon glass={drink.glass} colour={drink.colour} extras={glassExtras(drink)} />
         <h1>{drink.name}</h1>
       </header>
       <div className="row centred">

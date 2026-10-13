@@ -153,3 +153,21 @@ it('fills the big glass with the colour of the drink', async () => {
   await screen.findByRole('heading', { level: 1, name: 'Daiquiri' })
   expect(document.querySelector('.drink-hero .liquid')).toHaveAttribute('fill', '#e6e2b8')
 })
+
+it('dresses the big glass the way the drink is served', async () => {
+  renderApp(<App />, { data: confirmed(), route: '/drinks/lime-soda' })
+  await screen.findByRole('heading', { level: 1, name: 'Lime Soda' })
+  const hero = document.querySelector('.drink-hero')!
+  expect(hero.querySelectorAll('.ice')).toHaveLength(2)
+  expect(hero.querySelector('.straw')).toBeInTheDocument()
+  expect(hero.querySelectorAll('.bubble').length).toBeGreaterThan(0)
+  expect(hero.querySelectorAll('.wave')).toHaveLength(2)
+})
+
+it('leaves ice and a straw out of a drink served without them', async () => {
+  renderApp(<App />, { data: confirmed(), route: '/drinks/daiquiri' })
+  await screen.findByRole('heading', { level: 1, name: 'Daiquiri' })
+  const hero = document.querySelector('.drink-hero')!
+  expect(hero.querySelector('.ice')).not.toBeInTheDocument()
+  expect(hero.querySelector('.straw')).not.toBeInTheDocument()
+})
