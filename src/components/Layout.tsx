@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { APP_NAME, FEEDBACK_URL } from '../config'
 import { useUserData } from '../storage/UserDataContext'
+import { Icon } from './Icon'
 
 const SECTIONS = [
   { to: '/', label: 'Drinks' },
@@ -22,7 +23,8 @@ export function Layout() {
       <header className="header">
         {!isMainScreen && (
           <button className="back" onClick={goBack}>
-            ← Back
+            <Icon name="back" />
+            Back
           </button>
         )}
         <Link to="/" className="brand">

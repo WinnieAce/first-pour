@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
+import { GlassIcon } from '../components/GlassIcon'
 import { useContent } from '../content/ContentContext'
 import { matchBar } from '../core/matching'
 import { useUserData } from '../storage/UserDataContext'
@@ -20,10 +21,16 @@ export function Favourites() {
     <div className="stack">
       <h1 id="favourites-heading">Favourites</h1>
       {favourites.length === 0 ? (
-        <p>
-          No favourites yet. Open a drink and choose "Add to favourites" to keep it here.{' '}
-          <Link to="/">Browse the drinks</Link>
-        </p>
+        <div className="empty">
+          <GlassIcon glass="coupe" colour="transparent" />
+          <p>
+            No favourites yet. Open a drink and choose "Add to favourites" to keep it here, and it will also lead
+            the shelf on the drinks screen.
+          </p>
+          <Link to="/" className="button primary">
+            Browse the drinks
+          </Link>
+        </div>
       ) : (
         <ul className="card-list" aria-labelledby="favourites-heading">
           {favourites.map((drink) => (

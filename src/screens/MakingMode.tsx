@@ -1,3 +1,4 @@
+import { Icon } from '../components/Icon'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Measure } from '../components/Measure'
@@ -68,7 +69,10 @@ export function MakingMode() {
   return (
     <main className="making">
       <header className="making-top">
-        <Link to={`/drinks/${drink.id}`}>← Back to {drink.name}</Link>
+        <Link to={`/drinks/${drink.id}`} className="back">
+          <Icon name="back" />
+          Back to {drink.name}
+        </Link>
         <h1>{drink.name}</h1>
         <div className="row">
           <div className="stepper">

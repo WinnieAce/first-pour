@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
+import { Icon } from '../components/Icon'
 import { useContent } from '../content/ContentContext'
 import { CATEGORY_NAMES } from '../core/labels'
 import { matchBar } from '../core/matching'
@@ -35,7 +36,8 @@ export function IngredientPage() {
       <p>{ingredient.description}</p>
       <div>
         <button className="button" aria-pressed={owned} onClick={() => toggleOwned(ingredient.id)}>
-          {owned ? '✓ In my bar' : '+ Add to my bar'}
+          <Icon name={owned ? 'check' : 'plus'} />
+          {owned ? 'In my bar' : 'Add to my bar'}
         </button>
       </div>
       {ingredient.allergens.length > 0 && <p className="badge warn">Contains: {ingredient.allergens.join(', ')}</p>}

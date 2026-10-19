@@ -21,6 +21,9 @@
   --display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
   --body: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Strong curves for interface feedback: ease-out for anything responding to a touch. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --press: 160ms;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -92,6 +95,26 @@ p {
 a {
   color: var(--accent);
   text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+/* The parts of the page the browser draws, themed from the palette. */
+::selection {
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
+  color: var(--text);
+}
+html {
+  accent-color: var(--accent);
+  caret-color: var(--accent);
+  scrollbar-color: var(--control-line) transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Drawn icons sit on the text baseline at the size of the words beside them. */
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
 }
 
 :focus-visible {
@@ -143,7 +166,11 @@ h1:focus {
 
 .back {
   min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   padding: 0 0.25rem 0 0;
+  text-decoration: none;
   font: inherit;
   font-weight: 500;
   color: var(--muted);
@@ -278,8 +305,9 @@ h1:focus {
 }
 
 .callout {
-  padding: 0.25rem 0 0.25rem 1rem;
-  border-left: 2px solid var(--accent);
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
 }
 
 .button {
@@ -627,13 +655,20 @@ h1:focus {
   min-width: 0;
 }
 
+/* A pull quote with a hanging opening mark, so the words themselves stay aligned with the text. */
 .quote {
+  position: relative;
   font-family: var(--display);
   font-style: italic;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   line-height: 1.3;
-  padding-left: 1rem;
-  border-left: 2px solid var(--accent);
+}
+.quote::before {
+  content: '\201C';
+  position: absolute;
+  right: 100%;
+  margin-right: 0.08em;
+  color: var(--accent);
 }
 
 /* The proportions of a drink, drawn in the colours of its ingredients. */
@@ -735,8 +770,9 @@ h1:focus {
 }
 .technique {
   font-size: 1.05rem;
-  padding: 0.25rem 0 0.25rem 1rem;
-  border-left: 2px solid var(--accent);
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
   display: grid;
   gap: 0.4rem;
 }
@@ -776,6 +812,24 @@ h1:focus {
 }
 .dialog::backdrop {
   background: rgb(0 0 0 / 0.55);
+}
+
+/* An empty list: a drawing of an empty glass, a sentence and the way forward. */
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+.empty .glass {
+  width: 6rem;
+  height: 6rem;
+  color: var(--muted);
+}
+.empty p {
+  max-width: 32ch;
+  color: var(--muted);
 }
 
 .visually-hidden {
@@ -852,22 +906,31 @@ h1:focus {
   }
   .button,
   .chip,
-  .nav a {
+  .nav a,
+  .back,
+  .card {
     transition:
-      background-color 0.2s ease,
-      color 0.2s ease,
-      border-color 0.2s ease,
-      transform 0.2s ease;
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease,
+      transform var(--press) var(--ease-out);
   }
-  .button.primary:hover {
-    transform: translateY(-2px);
+  /* Everything you can press gives a little under your finger. */
+  .button:active,
+  .chip:active,
+  .nav a:active,
+  .back:active {
+    transform: scale(0.97);
+  }
+  .card:active {
+    transform: scale(0.99);
+  }
+  /* Menu glasses are already full: 46 of them pouring in on every visit would be noise. */
+  .card .liquid {
+    animation: none;
   }
   .card .glass {
     transition: transform 0.35s var(--ease);
-  }
-  .card:hover .glass,
-  .card:focus-visible .glass {
-    transform: rotate(-8deg) scale(1.08);
   }
 
   /* The shelf. Tiles rise into place one after another, all within 400ms. */
@@ -892,14 +955,31 @@ h1:focus {
   .arch .glass {
     transition: translate 300ms cubic-bezier(0.2, 0, 0, 1);
   }
-  .arch:hover,
   .arch:focus-visible {
     transform: translateY(-6px) rotate(-1.5deg);
     box-shadow: 0 1.4rem 1.6rem -1.1rem rgb(0 0 0 / 0.5);
   }
-  .arch:hover .glass,
   .arch:focus-visible .glass {
     translate: 0 -4px;
+  }
+  /* Hover effects only for a real pointer: on a phone they would stick after a tap. */
+  @media (hover: hover) and (pointer: fine) {
+    .button.primary:hover {
+      transform: translateY(-2px);
+    }
+    .card:hover .glass {
+      transform: rotate(-8deg) scale(1.08);
+    }
+    .arch:hover {
+      transform: translateY(-6px) rotate(-1.5deg);
+      box-shadow: 0 1.4rem 1.6rem -1.1rem rgb(0 0 0 / 0.5);
+    }
+    .arch:hover .glass {
+      translate: 0 -4px;
+    }
+  }
+  .card:focus-visible .glass {
+    transform: rotate(-8deg) scale(1.08);
   }
   .arch:active {
     transform: translateY(-2px) scale(0.97);

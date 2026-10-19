@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { GlassIcon } from '../components/GlassIcon'
+import { Icon } from '../components/Icon'
 import { Measure } from '../components/Measure'
 import { ResponsibleNotice } from '../components/ResponsibleNotice'
 import { useContent } from '../content/ContentContext'
@@ -81,7 +82,8 @@ export function DrinkPage() {
           Start making
         </Link>
         <button className="button" aria-pressed={isFavourite} onClick={() => toggleFavourite(drink.id)}>
-          {isFavourite ? '★ In your favourites' : '☆ Add to favourites'}
+          <Icon name="star" filled={isFavourite} />
+          {isFavourite ? 'In your favourites' : 'Add to favourites'}
         </button>
       </div>
 
