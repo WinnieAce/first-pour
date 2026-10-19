@@ -509,6 +509,7 @@ h1:focus {
   color: var(--text);
   text-align: center;
   text-decoration: none;
+  box-shadow: 0 0.6rem 1rem -0.9rem rgb(0 0 0 / 0.45);
 }
 .arch .glass {
   width: 4rem;
@@ -789,7 +790,7 @@ h1:focus {
 /* Movement: glasses fill as a screen opens and lean when touched. Skipped for anyone who has
    asked their device for less motion. */
 @media (prefers-reduced-motion: no-preference) {
-  /* Swiping the shelf sideways tips its glasses by --tilt (see shelfTilt); the drink inside stays level. */
+  /* Swiping the shelf sideways tips its glasses by --tilt (see shelfMotion); the drink inside stays level. */
   .glass {
     transform-origin: 50% 85%;
     transform: rotate(var(--tilt, 0deg));
@@ -861,17 +862,48 @@ h1:focus {
   .button.primary:hover {
     transform: translateY(-2px);
   }
-  .card .glass,
-  .arch {
+  .card .glass {
     transition: transform 0.35s var(--ease);
   }
   .card:hover .glass,
   .card:focus-visible .glass {
     transform: rotate(-8deg) scale(1.08);
   }
+
+  /* The shelf. Tiles rise into place one after another, all within 400ms. */
+  .shelf li {
+    animation: tile-in 450ms cubic-bezier(0.05, 0.7, 0.1, 1) backwards;
+    animation-delay: calc(min(var(--order, 0), 5) * 60ms);
+  }
+  /* Each tile's loops start at a different point, so the glasses never move in step. */
+  .arch :is(.wave, .ice, .straw, .steam) {
+    animation-delay: var(--phase, 0s);
+  }
+  .shelf li.asleep .glass * {
+    animation-play-state: paused;
+  }
+  /* Hover lifts the tile, and the glass lifts a little further, so the drink seems to rise off its
+     card; the shadow deepens with it. A press squashes the tile briefly. */
+  .arch {
+    transition:
+      transform 220ms cubic-bezier(0.2, 0, 0, 1),
+      box-shadow 220ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .arch .glass {
+    transition: translate 300ms cubic-bezier(0.2, 0, 0, 1);
+  }
   .arch:hover,
   .arch:focus-visible {
     transform: translateY(-6px) rotate(-1.5deg);
+    box-shadow: 0 1.4rem 1.6rem -1.1rem rgb(0 0 0 / 0.5);
+  }
+  .arch:hover .glass,
+  .arch:focus-visible .glass {
+    translate: 0 -4px;
+  }
+  .arch:active {
+    transform: translateY(-2px) scale(0.97);
+    transition-duration: 120ms;
   }
 }
 
@@ -881,6 +913,16 @@ h1:focus {
   }
   to {
     transform: none;
+  }
+}
+@keyframes tile-in {
+  from {
+    transform: translateY(18px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
   }
 }
 @keyframes slosh {

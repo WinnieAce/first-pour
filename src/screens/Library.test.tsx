@@ -173,7 +173,7 @@ const shelfNames = (name: string) =>
 
 it('puts the drinks the user can make on the shelf', async () => {
   await open(confirmed({ ownedIngredientIds: ['white-rum', 'lime-juice', 'simple-syrup'] }))
-  expect(shelfNames("Tonight's shelf")).toEqual(['Daiquiri'])
+  expect(shelfNames("Tonight's shelf")[0]).toBe('Daiquiri')
   expect(screen.getByText(/1 you can make now/i)).toBeInTheDocument()
 })
 
@@ -186,4 +186,30 @@ it('hides the shelf while searching, so the results come first', async () => {
   const { user } = await open()
   await user.type(screen.getByLabelText(/search/i), 'bourbon')
   expect(screen.queryByRole('list', { name: 'Good first drinks' })).not.toBeInTheDocument()
+})
+
+it('puts favourites on the shelf, even ones that cannot be made yet', async () => {
+  await open(confirmed({ favouriteDrinkIds: ['old-fashioned'] }))
+  expect(shelfNames("Tonight's shelf")[0]).toBe('Old Fashioned')
+  const tile = within(screen.getByRole('list', { name: "Tonight's shelf" })).getByRole('link', { name: /Old Fashioned/ })
+  expect(within(tile).getByText('Favourite')).toBeInTheDocument()
+})
+
+it('leads the shelf with favourites, those you can make first, then other drinks you can make', async () => {
+  await open(
+    confirmed({
+      ownedIngredientIds: ['white-rum', 'lime-juice', 'simple-syrup', 'soda-water'],
+      favouriteDrinkIds: ['old-fashioned', 'lime-soda'],
+    }),
+  )
+  expect(shelfNames("Tonight's shelf")).toEqual(['Lime Soda', 'Old Fashioned', 'Daiquiri'])
+  const tile = within(screen.getByRole('list', { name: "Tonight's shelf" })).getByRole('link', { name: /Lime Soda/ })
+  expect(within(tile).getByText('Favourite · can make')).toBeInTheDocument()
+})
+
+it('fills the rest of the shelf with good first drinks, without repeating any', async () => {
+  await open(confirmed({ favouriteDrinkIds: ['old-fashioned'] }))
+  expect(shelfNames("Tonight's shelf")).toEqual(['Old Fashioned', 'Daiquiri', 'Lime Soda'])
+  const tile = within(screen.getByRole('list', { name: "Tonight's shelf" })).getByRole('link', { name: /Daiquiri/ })
+  expect(within(tile).getByText('Sours')).toBeInTheDocument()
 })

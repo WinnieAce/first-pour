@@ -4,10 +4,10 @@ import { DrinkCard } from '../components/DrinkCard'
 import { GlassIcon } from '../components/GlassIcon'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
-import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS } from '../content/schema'
+import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS, type Drink } from '../content/schema'
 import { glassExtras } from '../core/extras'
 import { greeting, titleCase } from '../core/labels'
-import { shelfTilt } from '../hooks/shelfTilt'
+import { shelfMotion } from '../hooks/shelfMotion'
 import { matchBar } from '../core/matching'
 import { filterDrinks, type DrinkFilters } from '../core/search'
 import { useUserData } from '../storage/UserDataContext'
@@ -80,16 +80,27 @@ export function Library() {
   const quickFilters = filters.makeableOnly || filters.collection !== undefined || filters.alcoholFree === true
   const browsing = query.trim() === '' && !quickFilters && filtersInUse === 0
 
-  // The shelf leads with what the person can make. Until they can make something, it offers one
-  // easy drink from each family as a place to start.
-  const canMake = content.drinks.filter((d) => makeableIds.has(d.id)).sort((a, b) => a.name.localeCompare(b.name))
-  const shelf =
-    canMake.length > 0
-      ? { title: "Tonight's shelf", drinks: canMake.slice(0, 6) }
-      : {
-          title: 'Good first drinks',
-          drinks: FAMILY_IDS.flatMap((f) => content.drinks.filter((d) => d.family === f && d.difficulty === 'easy').slice(0, 1)),
-        }
+  // The shelf leads with the person's favourites, those they can make first, then the other drinks
+  // they can make. The rest is filled with one easy drink from each family as a place to start.
+  const byName = (a: Drink, b: Drink) => a.name.localeCompare(b.name)
+  const canMake = content.drinks.filter((d) => makeableIds.has(d.id)).sort(byName)
+  const favourites = content.drinks.filter((d) => data.favouriteDrinkIds.includes(d.id)).sort(byName)
+  const personal = [
+    ...favourites.filter((d) => makeableIds.has(d.id)),
+    ...favourites.filter((d) => !makeableIds.has(d.id)),
+    ...canMake.filter((d) => !data.favouriteDrinkIds.includes(d.id)),
+  ]
+  const starters = FAMILY_IDS.flatMap((f) => content.drinks.filter((d) => d.family === f && d.difficulty === 'easy').slice(0, 1))
+  const shelf = {
+    title: personal.length > 0 ? "Tonight's shelf" : 'Good first drinks',
+    drinks: [...personal, ...starters.filter((d) => !personal.includes(d))].slice(0, 8),
+  }
+  const tileNote = (drink: Drink) => {
+    const favourite = data.favouriteDrinkIds.includes(drink.id)
+    const makeable = makeableIds.has(drink.id)
+    if (favourite) return makeable ? 'Favourite · can make' : 'Favourite'
+    return makeable ? 'You can make this' : FAMILIES[drink.family].name
+  }
 
   const clearQuickFilters = () => {
     const next = new URLSearchParams(params)
@@ -166,13 +177,14 @@ export function Library() {
           <h2 className="label" id="shelf-heading">
             {shelf.title}
           </h2>
-          <ul className="shelf" aria-labelledby="shelf-heading" ref={shelfTilt}>
-            {shelf.drinks.map((drink) => (
-              <li key={drink.id}>
+          <ul className="shelf" aria-labelledby="shelf-heading" ref={shelfMotion}>
+            {shelf.drinks.map((drink, n) => (
+              // --order staggers the tiles' entrance; --phase starts each glass's loops at a different point.
+              <li key={drink.id} style={{ '--order': n, '--phase': `${-n * 0.37}s` } as CSSProperties}>
                 <Link to={`/drinks/${drink.id}`} className="arch" style={{ '--tint': drink.colour } as CSSProperties}>
                   <GlassIcon glass={drink.glass} colour={drink.colour} extras={glassExtras(drink)} />
                   <span className="arch-name">{drink.name}</span>
-                  <small>{canMake.length > 0 ? 'You can make this' : FAMILIES[drink.family].name}</small>
+                  <small>{tileNote(drink)}</small>
                 </Link>
               </li>
             ))}
