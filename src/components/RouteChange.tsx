@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { useLocation, useNavigationType } from 'react-router-dom'
 import { APP_NAME } from '../config'
+import { routeRendered } from '../hooks/viewTransition'
 
 /**
  * Makes moving between screens behave like loading a page: the title names the screen,
@@ -13,11 +14,12 @@ export function RouteChange() {
   // Read through a ref so that a filter change, which alters the navigation type but not the
   // screen, does not count as moving to a new screen.
   const latestType = useRef(navigationType)
-  useEffect(() => {
+  useLayoutEffect(() => {
     latestType.current = navigationType
   })
 
-  useEffect(() => {
+  // Before paint, so a view transition captures the new screen already scrolled and focused.
+  useLayoutEffect(() => {
     const heading = document.querySelector('h1')
     const name = heading?.textContent?.trim()
     document.title = name && name !== APP_NAME ? `${name} · ${APP_NAME}` : APP_NAME
@@ -32,6 +34,7 @@ export function RouteChange() {
       heading.tabIndex = -1
       heading.focus({ preventScroll: true })
     }
+    routeRendered()
   }, [pathname])
 
   return null

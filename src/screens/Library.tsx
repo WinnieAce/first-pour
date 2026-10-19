@@ -2,6 +2,7 @@ import { useMemo, useState, type CSSProperties } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { DrinkCard } from '../components/DrinkCard'
 import { GlassIcon } from '../components/GlassIcon'
+import { GlassLink } from '../components/GlassLink'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
 import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS, type Drink } from '../content/schema'
@@ -181,11 +182,11 @@ export function Library() {
             {shelf.drinks.map((drink, n) => (
               // --order staggers the tiles' entrance; --phase starts each glass's loops at a different point.
               <li key={drink.id} style={{ '--order': n, '--phase': `${-n * 0.37}s` } as CSSProperties}>
-                <Link to={`/drinks/${drink.id}`} className="arch" style={{ '--tint': drink.colour } as CSSProperties}>
-                  <GlassIcon glass={drink.glass} colour={drink.colour} extras={glassExtras(drink)} />
+                <GlassLink to={`/drinks/${drink.id}`} className="arch" style={{ '--tint': drink.colour } as CSSProperties}>
+                  <GlassIcon glass={drink.glass} colour={drink.colour} extras={glassExtras(drink)} id={`shelf:${drink.id}`} />
                   <span className="arch-name">{drink.name}</span>
                   <small>{tileNote(drink)}</small>
-                </Link>
+                </GlassLink>
               </li>
             ))}
           </ul>

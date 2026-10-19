@@ -79,6 +79,7 @@ h1 {
   font-style: italic;
   font-weight: 500;
   font-size: 2.6rem;
+  letter-spacing: -0.012em; /* large type reads better slightly tightened */
 }
 h2 {
   font-family: var(--display);
@@ -210,6 +211,7 @@ h1:focus {
   box-shadow: 0 0.5rem 1.5rem -0.75rem rgb(0 0 0 / 0.45);
 }
 .nav a {
+  position: relative;
   flex: 1 1 0;
   min-height: var(--tap);
   display: grid;
@@ -221,9 +223,17 @@ h1:focus {
   font-weight: 500;
 }
 .nav a[aria-current='page'] {
-  background: var(--accent);
   color: var(--on-accent);
   font-weight: 600;
+}
+.nav-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--accent);
+}
+.nav-label {
+  position: relative; /* above the sliding highlight */
 }
 
 .gate {
@@ -497,6 +507,7 @@ h1:focus {
   font-weight: 500;
   font-size: 2.8rem;
   line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
 /* The shelf: arched tiles, the only filled shapes on the screen. */
@@ -651,6 +662,7 @@ h1:focus {
 .drink-hero h1 {
   font-size: 3.2rem;
   line-height: 1;
+  letter-spacing: -0.015em;
 }
 
 .section {
@@ -761,10 +773,18 @@ h1:focus {
   gap: 0.75rem;
 }
 .making-body {
+  position: relative;
+  overflow-x: clip; /* steps sliding in and out stay inside the screen */
+  font-size: 1.25rem;
+}
+.making-page {
   display: grid;
   gap: var(--space);
   align-content: start;
-  font-size: 1.25rem;
+  cursor: grab;
+}
+.making-page:active {
+  cursor: grabbing;
 }
 .making-step {
   font-family: var(--display);
@@ -846,6 +866,55 @@ h1:focus {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* Someone who has asked for less transparency, or more contrast, gets solid bars instead of
+   see-through ones, and firmer edges. */
+@media (prefers-reduced-transparency: reduce) {
+  .nav,
+  .pinned {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .nav,
+  .pinned {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--control-line);
+  }
+  .leader::after,
+  .group .check + .check,
+  .ingredient-rows li + li {
+    border-color: var(--control-line);
+  }
+}
+
+/* Moving between screens. The big glass on a drink page and the glass that was tapped share a name,
+   so the browser glides one into the other; the rest of the screen cross-fades quickly underneath.
+   The nav has its own name, so it stays put instead of fading. Skipped entirely when "reduce
+   motion" is on (see hooks/viewTransition.ts). */
+.drink-hero .glass {
+  view-transition-name: drink-glass;
+}
+.nav {
+  view-transition-name: nav;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+}
+::view-transition-group(drink-glass) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+::view-transition-old(drink-glass),
+::view-transition-new(drink-glass) {
+  animation-duration: 260ms;
+  height: 100%;
 }
 
 /* Movement: glasses fill as a screen opens and lean when touched. Skipped for anyone who has
@@ -949,8 +1018,12 @@ h1:focus {
   .arch :is(.wave, .ice, .straw, .steam) {
     animation-delay: var(--phase, 0s);
   }
-  .shelf li.asleep .glass * {
+  .shelf li.asleep .glass *,
+  .resting .glass * {
     animation-play-state: paused;
+  }
+  .icon.pop {
+    animation: star-pop 420ms var(--ease-out);
   }
   /* Hover lifts the tile, and the glass lifts a little further, so the drink seems to rise off its
      card; the shadow deepens with it. A press squashes the tile briefly. */
@@ -997,6 +1070,17 @@ h1:focus {
 @keyframes fill {
   from {
     transform: translateY(60%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes star-pop {
+  from {
+    transform: scale(0.6);
+  }
+  55% {
+    transform: scale(1.25);
   }
   to {
     transform: none;

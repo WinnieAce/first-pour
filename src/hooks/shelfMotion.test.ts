@@ -1,4 +1,4 @@
-import { MAX_TILT, shelfMotion, springStep, tiltFor } from './shelfMotion'
+import { MAX_TILT, shelfMotion, springStep, tiltFor, type Swing } from './shelfMotion'
 
 const shelf = () => document.createElement('ul')
 const scrollTo = (el: HTMLElement, x: number) => {
@@ -7,22 +7,55 @@ const scrollTo = (el: HTMLElement, x: number) => {
 }
 const tilt = (el: HTMLElement) => el.style.getPropertyValue('--tilt')
 
+/** Runs the spring for `seconds` at `hz` frames a second towards `target`, recording every frame. */
+const simulate = (start: Swing, target: number, seconds: number, hz = 60) => {
+  const frames: Swing[] = []
+  let state = start
+  for (let i = 0; i < Math.round(seconds * hz); i++) frames.push((state = springStep(state, target, 1 / hz)))
+  return frames
+}
+
 afterEach(() => vi.unstubAllGlobals())
 
-it('leans one way swiping left and the other way swiping right', () => {
-  expect(tiltFor(10)).toBeGreaterThan(0)
-  expect(tiltFor(-10)).toBeLessThan(0)
+it('leans one way swiping left and the other way swiping right, by swipe speed', () => {
+  expect(tiltFor(800)).toBeGreaterThan(0)
+  expect(tiltFor(-800)).toBeLessThan(0)
   expect(tiltFor(0)).toBe(0)
+  expect(tiltFor(1600)).toBeGreaterThan(tiltFor(400))
 })
 
-it('leans further the faster the swipe, but only ever gently', () => {
-  expect(tiltFor(20)).toBeGreaterThan(tiltFor(5))
-  expect(tiltFor(5000)).toBe(MAX_TILT)
-  expect(tiltFor(-5000)).toBe(-MAX_TILT)
-  expect(MAX_TILT).toBeLessThan(24) // 24 was tried and felt too harsh
+it('never leans past the limit, which stays short of the 24 degrees that felt too harsh', () => {
+  expect(tiltFor(100_000)).toBe(MAX_TILT)
+  expect(tiltFor(-100_000)).toBe(-MAX_TILT)
+  expect(MAX_TILT).toBeLessThan(24)
 })
 
-it('tips the glasses on the shelf when it is swiped sideways', () => {
+it('settles upright with only a slight swing past it', () => {
+  const frames = simulate({ tilt: MAX_TILT, velocity: 0 }, 0, 2)
+  const lowest = Math.min(...frames.map((f) => f.tilt))
+  expect(lowest).toBeLessThan(0)
+  expect(lowest).toBeGreaterThan(-MAX_TILT * 0.1)
+  expect(Math.abs(frames.at(-1)!.tilt)).toBeLessThan(0.05)
+})
+
+it('moves at the same speed on a 120 Hz screen as on a 60 Hz one', () => {
+  const at60 = simulate({ tilt: MAX_TILT, velocity: 0 }, 0, 0.15, 60).at(-1)!.tilt
+  const at120 = simulate({ tilt: MAX_TILT, velocity: 0 }, 0, 0.15, 120).at(-1)!.tilt
+  expect(Math.abs(at60 - at120)).toBeLessThan(0.6)
+})
+
+it('chases a moving target rather than jumping to it', () => {
+  const frames = simulate({ tilt: 0, velocity: 0 }, 10, 0.6)
+  expect(frames[0].tilt).toBeLessThan(5)
+  expect(frames.at(-1)!.tilt).toBeCloseTo(10, 0)
+})
+
+it('carries its speed into the settle instead of starting from a standstill', () => {
+  const next = springStep({ tilt: 5, velocity: 100 }, 0, 1 / 60)
+  expect(next.tilt).toBeGreaterThan(5)
+})
+
+it('tips the glasses on the shelf as soon as it is swiped sideways', () => {
   const el = shelf()
   shelfMotion(el)
   scrollTo(el, 40)
@@ -34,7 +67,6 @@ it('ignores the page scrolling up and down', () => {
   shelfMotion(el)
   window.dispatchEvent(new Event('scroll'))
   expect(tilt(el)).toBe('')
-  expect(document.documentElement.style.getPropertyValue('--tilt')).toBe('')
 })
 
 it('stops when the shelf goes away', () => {
@@ -53,14 +85,13 @@ it('leaves the glasses still for anyone who has asked for less motion', () => {
   expect(tilt(el)).toBe('')
 })
 
-it('swings a little past upright as it settles, like liquid finding its level, then comes to rest', () => {
-  let state = { tilt: MAX_TILT, velocity: 0 }
-  let lowest = state.tilt
-  for (let frame = 0; frame < 90; frame++) {
-    state = springStep(state)
-    lowest = Math.min(lowest, state.tilt)
-  }
-  expect(lowest).toBeLessThan(0) // it does swing past upright
-  expect(lowest).toBeGreaterThan(-MAX_TILT * 0.15) // but only slightly
-  expect(Math.abs(state.tilt)).toBeLessThan(0.05)
+it('wakes the resting glasses when the shelf is swiped', () => {
+  vi.useFakeTimers()
+  const el = shelf()
+  shelfMotion(el)
+  vi.advanceTimersByTime(6000)
+  expect(el).toHaveClass('resting')
+  scrollTo(el, 40)
+  expect(el).not.toHaveClass('resting')
+  vi.useRealTimers()
 })

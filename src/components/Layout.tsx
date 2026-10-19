@@ -1,5 +1,7 @@
+import { motion } from 'motion/react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { APP_NAME, FEEDBACK_URL } from '../config'
+import { withViewTransition } from '../hooks/viewTransition'
 import { useUserData } from '../storage/UserDataContext'
 import { Icon } from './Icon'
 
@@ -17,7 +19,7 @@ export function Layout() {
   const isMainScreen = SECTIONS.some((s) => s.to === location.pathname)
   // An installed app has no browser back button. A page opened directly has nowhere to go back to,
   // so it returns to the drinks list instead.
-  const goBack = () => (location.key === 'default' ? navigate('/') : navigate(-1))
+  const goBack = () => withViewTransition(() => (location.key === 'default' ? navigate('/') : navigate(-1)))
   return (
     <div className="app">
       <header className="header">
@@ -50,7 +52,20 @@ export function Layout() {
       <nav className="nav" aria-label="Main">
         {SECTIONS.map((s) => (
           <NavLink key={s.to} to={s.to} end={s.to === '/'}>
-            {s.label}
+            {({ isActive }) => (
+              <>
+                {/* One highlight, shared between the tabs, so it slides to the new one. A critically
+                    damped spring: it arrives without overshooting. */}
+                {isActive && (
+                  <motion.span
+                    className="nav-pill"
+                    layoutId="nav-pill"
+                    transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
+                  />
+                )}
+                <span className="nav-label">{s.label}</span>
+              </>
+            )}
           </NavLink>
         ))}
       </nav>

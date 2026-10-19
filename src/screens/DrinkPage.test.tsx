@@ -171,3 +171,17 @@ it('leaves ice and a straw out of a drink served without them', async () => {
   expect(hero.querySelector('.ice')).not.toBeInTheDocument()
   expect(hero.querySelector('.straw')).not.toBeInTheDocument()
 })
+
+it('pops the star when the drink is added to favourites, and only then', async () => {
+  const { user } = renderApp(<App />, { data: confirmed(), route: '/drinks/daiquiri' })
+  const button = await screen.findByRole('button', { name: /add to favourites/i })
+  expect(button.querySelector('.icon.pop')).not.toBeInTheDocument()
+  await user.click(button)
+  expect(screen.getByRole('button', { name: /in your favourites/i }).querySelector('.icon.pop')).toBeInTheDocument()
+})
+
+it('does not pop the star for a drink that was already a favourite', async () => {
+  renderApp(<App />, { data: confirmed({ favouriteDrinkIds: ['daiquiri'] }), route: '/drinks/daiquiri' })
+  const button = await screen.findByRole('button', { name: /in your favourites/i })
+  expect(button.querySelector('.icon.pop')).not.toBeInTheDocument()
+})

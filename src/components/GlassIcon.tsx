@@ -27,13 +27,25 @@ const wave = (y: number) => `M-20 ${y}${'q2.5 -1.4 5 0q2.5 1.4 5 0'.repeat(8)}V4
  * With `extras` the drink comes to life: its surface ripples, and ice, bubbles, a straw, a citrus
  * wheel or steam are added as the recipe calls for. Decorative: the glass is also named in text.
  */
-export function GlassIcon({ glass, colour, extras }: { glass: GlassId; colour: string; extras?: GlassExtras }) {
+export function GlassIcon({
+  glass,
+  colour,
+  extras,
+  id,
+}: {
+  glass: GlassId
+  colour: string
+  extras?: GlassExtras
+  /** Where this glass sits and which drink it is, such as `shelf:negroni`, for the glide to the drink page. */
+  id?: string
+}) {
   const clip = useId()
   const { bowl, rest, surface, left, right, rim, floor } = GLASSES[glass]
   const middle = (left + right) / 2
   return (
     <svg
       className="glass"
+      data-glass={id}
       viewBox="0 0 40 40"
       aria-hidden="true"
       focusable="false"

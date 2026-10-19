@@ -1,11 +1,13 @@
-import { Icon } from '../components/Icon'
+import { AnimatePresence, motion, type Variants } from 'motion/react'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Icon } from '../components/Icon'
 import { Measure } from '../components/Measure'
 import { useContent } from '../content/ContentContext'
 import type { DrinkIngredient, Technique } from '../content/schema'
 import { GLASS_NAMES } from '../core/labels'
 import { clampServings, MAX_SERVINGS, MIN_SERVINGS } from '../core/measures'
+import { swipeDirection } from '../core/swipe'
 import { useWakeLock } from '../hooks/useWakeLock'
 import { useUserData } from '../storage/UserDataContext'
 import { NotFound } from './NotFound'
@@ -38,14 +40,29 @@ const TECHNIQUES: Record<Technique, { what: string; why: string; noTool: string 
   },
 }
 
+// Steps sit side by side: the next one arrives from the right and the last one leaves to the left,
+// and going back reverses both, so the path out is the path in. Critically damped springs, so a
+// step lands without bouncing; the exit is quicker than the entrance.
+const pages: Variants = {
+  enter: (direction: number) => ({ x: direction >= 0 ? '45%' : '-45%', opacity: 0 }),
+  shown: { x: 0, opacity: 1, transition: { type: 'spring', bounce: 0, duration: 0.42 } },
+  leave: (direction: number) => ({
+    x: direction >= 0 ? '-35%' : '35%',
+    opacity: 0,
+    transition: { type: 'spring', bounce: 0, duration: 0.3 },
+  }),
+}
+
 export function MakingMode() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { drinkById, ingredientById } = useContent()
   const { data, setUnits } = useUserData()
   const [servings, setServings] = useState(MIN_SERVINGS)
-  // Screen 0 is "gather everything"; screens 1..n are the steps.
-  const [screen, setScreen] = useState(0)
+  // Screen 0 is "gather everything"; screens 1..n are the steps. The direction of the last move
+  // decides which side the next screen slides in from.
+  const [[screen, direction], setPage] = useState<[number, number]>([0, 1])
+  const show = (next: number) => setPage([next, next > screen ? 1 : -1])
   const drink = drinkById.get(id ?? '')
   useWakeLock(drink !== undefined)
 
@@ -64,7 +81,8 @@ export function MakingMode() {
     ? drink.ingredients.filter((i) => step.ingredientIds.includes(i.ingredientId))
     : drink.ingredients
 
-  const forward = () => (isLast ? navigate(`/drinks/${drink.id}`) : setScreen(screen + 1))
+  const forward = () => (isLast ? navigate(`/drinks/${drink.id}`) : show(screen + 1))
+  const backward = () => screen > 0 && show(screen - 1)
 
   return (
     <main className="making">
@@ -110,60 +128,85 @@ export function MakingMode() {
       </header>
 
       <section className="making-body" aria-live="polite">
-        {step ? (
-          <>
-            <p className="muted small">
-              Step {screen} of {drink.steps.length}
-            </p>
-            <p className="making-step">{step.text}</p>
-          </>
-        ) : (
-          <>
-            <h2>Gather everything</h2>
-            <p>
-              <strong>Glass:</strong> {GLASS_NAMES[drink.glass]}
-            </p>
-          </>
-        )}
+        <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+          <motion.div
+            key={screen}
+            className="making-page"
+            custom={direction}
+            variants={pages}
+            initial="enter"
+            animate="shown"
+            exit="leave"
+            // The step follows the finger sideways. Where there is no step to go to, it gives a
+            // little and springs back, rather than stopping dead.
+            drag="x"
+            dragDirectionLock
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={{ left: isLast ? 0.2 : 0.9, right: screen === 0 ? 0.2 : 0.9 }}
+            dragTransition={{ bounceStiffness: 500, bounceDamping: 45 }}
+            onDragEnd={(event, info) => {
+              const width = (event.currentTarget as HTMLElement | null)?.offsetWidth || window.innerWidth
+              const swipe = swipeDirection(info.offset.x, info.velocity.x, width)
+              if (swipe === 'next' && !isLast) forward()
+              if (swipe === 'back') backward()
+            }}
+          >
+            {step ? (
+              <>
+                <p className="muted small">
+                  Step {screen} of {drink.steps.length}
+                </p>
+                <p className="making-step">{step.text}</p>
+              </>
+            ) : (
+              <>
+                <h2>Gather everything</h2>
+                <p>
+                  <strong>Glass:</strong> {GLASS_NAMES[drink.glass]}
+                </p>
+              </>
+            )}
 
-        {shown.length > 0 && (
-          <ul className="ingredient-rows" aria-label="Ingredients">
-            {shown.map((item) => (
-              <li key={item.ingredientId}>
-                <Measure amount={item.amount} unit={item.unit} servings={servings} />
-                <span>
-                  {ingredientById.get(item.ingredientId)!.name}
-                  {item.optional && ' (optional)'}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
+            {shown.length > 0 && (
+              <ul className="ingredient-rows" aria-label="Ingredients">
+                {shown.map((item) => (
+                  <li key={item.ingredientId}>
+                    <Measure amount={item.amount} unit={item.unit} servings={servings} />
+                    <span>
+                      {ingredientById.get(item.ingredientId)!.name}
+                      {item.optional && ' (optional)'}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
 
-        {!step && drink.tools.length > 0 && (
-          <div>
-            <h3 id="making-tools">Tools</h3>
-            <ul aria-labelledby="making-tools">
-              {drink.tools.map((tool) => (
-                <li key={tool.name}>
-                  {tool.name} <span className="muted">(or: {tool.alternative})</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+            {!step && drink.tools.length > 0 && (
+              <div>
+                <h3 id="making-tools">Tools</h3>
+                <ul aria-labelledby="making-tools">
+                  {drink.tools.map((tool) => (
+                    <li key={tool.name}>
+                      {tool.name} <span className="muted">(or: {tool.alternative})</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-        {technique && (
-          <aside className="technique" role="note">
-            <p>{technique.what}</p>
-            <p className="muted">Why: {technique.why}</p>
-            <p className="muted">{technique.noTool}</p>
-          </aside>
-        )}
+            {technique && (
+              <aside className="technique" role="note">
+                <p>{technique.what}</p>
+                <p className="muted">Why: {technique.why}</p>
+                <p className="muted">{technique.noTool}</p>
+              </aside>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </section>
 
       <div className="making-actions">
-        <button className="button" disabled={screen === 0} onClick={() => setScreen(screen - 1)}>
+        <button className="button" disabled={screen === 0} onClick={backward}>
           Back
         </button>
         <button className="button primary" onClick={forward}>

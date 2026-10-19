@@ -7,10 +7,10 @@ const PATHS = {
   plus: 'M12 5v14M5 12h14',
 }
 
-export function Icon({ name, filled = false }: { name: keyof typeof PATHS; filled?: boolean }) {
+export function Icon({ name, filled = false, className }: { name: keyof typeof PATHS; filled?: boolean; className?: string }) {
   return (
     <svg
-      className="icon"
+      className={className ? `icon ${className}` : 'icon'}
       viewBox="0 0 24 24"
       aria-hidden="true"
       focusable="false"

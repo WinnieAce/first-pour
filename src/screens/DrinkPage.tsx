@@ -1,6 +1,7 @@
-import type { CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { GlassIcon } from '../components/GlassIcon'
+import { GlassLink } from '../components/GlassLink'
 import { Icon } from '../components/Icon'
 import { Measure } from '../components/Measure'
 import { ResponsibleNotice } from '../components/ResponsibleNotice'
@@ -11,6 +12,7 @@ import { drinkAllergens } from '../core/allergens'
 import { glassExtras } from '../core/extras'
 import { GLASS_NAMES, titleCase } from '../core/labels'
 import { calculateStrength, containsAlcohol } from '../core/strength'
+import { restLoops } from '../hooks/loopRest'
 import { useUserData } from '../storage/UserDataContext'
 import { NotFound } from './NotFound'
 
@@ -26,6 +28,8 @@ export function DrinkPage() {
   const { id } = useParams()
   const { content, drinkById, ingredientById } = useContent()
   const { data, toggleFavourite } = useUserData()
+  // Counts favourite taps, so the star pops each time a drink is added, never on arrival.
+  const [pops, setPops] = useState(0)
   const drink = drinkById.get(id ?? '')
   if (!drink) return <NotFound what="drink" />
 
@@ -64,7 +68,7 @@ export function DrinkPage() {
 
   return (
     <article className="stack">
-      <header className="drink-hero">
+      <header className="drink-hero" ref={restLoops}>
         <GlassIcon glass={drink.glass} colour={drink.colour} extras={glassExtras(drink)} />
         <h1>{drink.name}</h1>
       </header>
@@ -81,8 +85,15 @@ export function DrinkPage() {
         <Link to={`/drinks/${drink.id}/make`} className="button primary">
           Start making
         </Link>
-        <button className="button" aria-pressed={isFavourite} onClick={() => toggleFavourite(drink.id)}>
-          <Icon name="star" filled={isFavourite} />
+        <button
+          className="button"
+          aria-pressed={isFavourite}
+          onClick={() => {
+            if (!isFavourite) setPops(pops + 1)
+            toggleFavourite(drink.id)
+          }}
+        >
+          <Icon name="star" filled={isFavourite} key={pops} className={isFavourite && pops > 0 ? 'pop' : undefined} />
           {isFavourite ? 'In your favourites' : 'Add to favourites'}
         </button>
       </div>
@@ -171,7 +182,7 @@ export function DrinkPage() {
             <ul className="row plain-list">
               {relatives.map((d) => (
                 <li key={d.id}>
-                  <Link to={`/drinks/${d.id}`}>{d.name}</Link>
+                  <GlassLink to={`/drinks/${d.id}`}>{d.name}</GlassLink>
                 </li>
               ))}
             </ul>

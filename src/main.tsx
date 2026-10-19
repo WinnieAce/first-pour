@@ -1,3 +1,4 @@
+import { MotionConfig } from 'motion/react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
@@ -22,11 +23,14 @@ registerSW()
 createStore().then((store) => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <UserDataProvider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </UserDataProvider>
+      {/* With "reduce motion" on, Motion keeps fades and drops movement. */}
+      <MotionConfig reducedMotion="user">
+        <UserDataProvider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </UserDataProvider>
+      </MotionConfig>
     </StrictMode>,
   )
 })
