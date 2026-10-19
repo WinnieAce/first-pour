@@ -513,6 +513,13 @@ h1:focus {
 .shelf::-webkit-scrollbar {
   display: none;
 }
+/* Rows that scroll sideways fade out at their edges rather than being cut off, which also hints
+   that there is more to swipe to. */
+.shelf,
+.chips {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 1.25rem, #000 calc(100% - 2.5rem), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 1.25rem, #000 calc(100% - 2.5rem), transparent);
+}
 .shelf li {
   flex: none;
   scroll-snap-align: start;
