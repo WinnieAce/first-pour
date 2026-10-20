@@ -37,3 +37,9 @@ it('shows steam on a hot drink and nothing cold on it', () => {
   expect(extras('irish-coffee')).toMatchObject({ steam: true, ice: false, straw: false })
   expect(extras('espresso-martini').steam).toBe(false)
 })
+
+it('uses the fresh lime or lemon a recipe calls for as its citrus wheel', () => {
+  expect(extras('caipirinha').citrus).toBe('lime')
+  expect(extras('horses-neck').citrus).toBe('lemon')
+  expect(extras('bloody-mary').citrus).toBe('lemon')
+})

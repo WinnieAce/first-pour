@@ -1273,49 +1273,227 @@
     "colour": "#7a4a1e"
   },
   {
-    "id": "rose-syrup",
-    "name": "Rose syrup",
-    "category": "mixer",
-    "description": "A bright pink, very sweet syrup scented with rose. Sold in bottles in most supermarkets.",
+    "id": "cachaca",
+    "name": "Cachaça",
+    "category": "spirit",
+    "description": "Brazil's spirit, distilled from fresh sugar cane juice rather than molasses. Grassy and fruity, with more bite than white rum.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "lime",
+        "reason": "Lime and sugar crushed together are all a Caipirinha needs."
+      },
+      {
+        "ingredientId": "sugar",
+        "reason": "Plain sugar softens its grassy edge."
+      }
+    ],
+    "substitutes": [
+      "white-rum"
+    ],
+    "allergens": [],
+    "common": false,
+    "colour": "#ede9d8"
+  },
+  {
+    "id": "lime",
+    "name": "Fresh lime",
+    "category": "fresh",
+    "description": "A whole lime, cut into wedges to be pressed in the glass. Pressing releases the oil from the skin as well as the juice.",
     "abv": 0,
     "pairsWith": [
       {
-        "ingredientId": "evaporated-milk",
-        "reason": "Milk softens the sweetness and turns it into Bandung."
+        "ingredientId": "cachaca",
+        "reason": "The classic partner in a Caipirinha."
       },
       {
-        "ingredientId": "soda-water",
-        "reason": "Soda makes a simple pink fizzy drink."
+        "ingredientId": "sugar",
+        "reason": "Pressed together, the sugar draws out juice and oil from the peel."
+      }
+    ],
+    "substitutes": [
+      "lime-juice"
+    ],
+    "allergens": [],
+    "common": false,
+    "colour": "#7fb33a"
+  },
+  {
+    "id": "tomato-juice",
+    "name": "Tomato juice",
+    "category": "mixer",
+    "description": "Thick, savoury and lightly salted. Shake the carton well: it settles.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "vodka",
+        "reason": "A neutral spirit lets the tomato and spices lead."
+      },
+      {
+        "ingredientId": "worcestershire",
+        "reason": "Worcestershire sauce deepens the savoury flavour."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Lemon keeps it fresh rather than heavy."
       }
     ],
     "substitutes": [],
     "allergens": [],
     "common": false,
-    "colour": "#e8477f"
+    "colour": "#c0331f"
   },
   {
-    "id": "evaporated-milk",
-    "name": "Evaporated milk",
+    "id": "worcestershire",
+    "name": "Worcestershire sauce",
     "category": "mixer",
-    "description": "Unsweetened tinned milk with some of the water removed. Creamier than fresh milk and lighter than cream.",
+    "description": "A dark, tangy, savoury sauce used by the dash. It is made with anchovies, and some brands use malt vinegar made from barley.",
     "abv": 0,
     "pairsWith": [
       {
-        "ingredientId": "rose-syrup",
-        "reason": "Together they make Bandung."
+        "ingredientId": "tomato-juice",
+        "reason": "The two together are the backbone of a Bloody Mary."
       },
       {
-        "ingredientId": "coffee",
-        "reason": "It is the milk in a kopi C."
+        "ingredientId": "hot-sauce",
+        "reason": "Savoury depth and a little heat balance each other."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [
+      "gluten"
+    ],
+    "common": false,
+    "colour": "#3a1d10"
+  },
+  {
+    "id": "hot-sauce",
+    "name": "Hot sauce",
+    "category": "mixer",
+    "description": "A chilli sauce such as Tabasco. A few drops add heat without changing the drink much otherwise.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "tomato-juice",
+        "reason": "Heat lifts the rich tomato."
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Sour and spicy wake each other up."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "colour": "#c42a14"
+  },
+  {
+    "id": "lemon",
+    "name": "Lemon slice or peel",
+    "category": "fresh",
+    "description": "A slice, or a long strip of peel cut with a vegetable peeler. Twisting the peel over a drink releases its oil.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "brandy",
+        "reason": "A spiral of lemon peel is the classic finish for a Horse's Neck."
+      },
+      {
+        "ingredientId": "ginger-ale",
+        "reason": "Lemon oil brightens gentle ginger."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "colour": "#f2df5a"
+  },
+  {
+    "id": "pisco",
+    "name": "Pisco",
+    "category": "spirit",
+    "description": "A clear grape brandy from Peru and Chile. Floral and fruity, and lighter than aged brandy.",
+    "abv": 40,
+    "pairsWith": [
+      {
+        "ingredientId": "lemon-juice",
+        "reason": "Lemon and pisco make the Pisco Sour."
+      },
+      {
+        "ingredientId": "egg-white",
+        "reason": "Egg white gives the sour its silky foam."
       }
     ],
     "substitutes": [
-      "milk"
+      "brandy"
     ],
-    "allergens": [
-      "dairy"
-    ],
+    "allergens": [],
     "common": false,
-    "colour": "#f3e9d2"
+    "colour": "#f0ecdc"
+  },
+  {
+    "id": "grapefruit-juice",
+    "name": "Grapefruit juice",
+    "category": "fresh",
+    "description": "Sharp, slightly bitter and refreshing. Pink grapefruit is a little sweeter.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "cranberry-juice",
+        "reason": "Tart cranberry and bitter grapefruit make a Sea Breeze."
+      },
+      {
+        "ingredientId": "vodka",
+        "reason": "Vodka adds strength without getting in the way of the fruit."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "colour": "#f4a88c"
+  },
+  {
+    "id": "peach-schnapps",
+    "name": "Peach schnapps",
+    "category": "liqueur",
+    "description": "A sweet, clear peach liqueur. Lower in alcohol than a spirit.",
+    "abv": 20,
+    "pairsWith": [
+      {
+        "ingredientId": "orange-juice",
+        "reason": "Peach and orange are a soft, fruity pairing."
+      },
+      {
+        "ingredientId": "cranberry-juice",
+        "reason": "Tart cranberry keeps the sweet peach in check."
+      }
+    ],
+    "substitutes": [],
+    "allergens": [],
+    "common": false,
+    "colour": "#f3b98a"
+  },
+  {
+    "id": "agave-syrup",
+    "name": "Agave syrup",
+    "category": "mixer",
+    "description": "A runny syrup from the agave plant, the same plant tequila is made from. Sweeter than sugar, so a little goes a long way.",
+    "abv": 0,
+    "pairsWith": [
+      {
+        "ingredientId": "tequila",
+        "reason": "It echoes the flavour of the spirit itself."
+      },
+      {
+        "ingredientId": "lime-juice",
+        "reason": "Lime balances its rich sweetness."
+      }
+    ],
+    "substitutes": [
+      "simple-syrup"
+    ],
+    "allergens": [],
+    "common": false,
+    "colour": "#e2b04a"
   }
 ]

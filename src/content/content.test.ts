@@ -72,7 +72,12 @@ describe('searching the shipped library the way a beginner types', () => {
     ['kopi', 'iced-kopi-cocktail'],
     ['calamansi', 'calamansi-sparkler'],
     ['palm sugar', 'gula-melaka-old-fashioned'],
-    ['rose', 'bandung'],
+    ['caipirinha', 'caipirinha'],
+    ['bloody mary', 'bloody-mary'],
+    ['horses neck', 'horses-neck'],
+    ['long island', 'long-island-iced-tea'],
+    ['tommys margarita', 'tommys-margarita'],
+    ['cachaca', 'caipirinha'],
   ])('"%s" finds %s', (query, id) => {
     expect(find(query)).toContain(id)
   })
@@ -92,11 +97,20 @@ it('every drink with raw egg white carries a caution in its ingredient note', ()
   expect(missing.map((d) => d.id)).toEqual([])
 })
 
-it('has a Singapore collection with the Singapore Sling and at least one drink without alcohol', () => {
+it('has a Singapore collection with the Singapore Sling', () => {
   const local = content.drinks.filter((d) => d.collection === 'singapore')
-  expect(local.length).toBeGreaterThanOrEqual(6)
+  expect(local.length).toBeGreaterThanOrEqual(5)
   expect(local.map((d) => d.id)).toContain('singapore-sling')
-  expect(local.some((d) => calculateStrength(d, ingredientById).abvPercent === 0)).toBe(true)
+})
+
+it('includes the common IBA classics a beginner is likely to have heard of', () => {
+  const ids = content.drinks.map((d) => d.id)
+  for (const classic of ['caipirinha', 'mint-julep', 'bloody-mary', 'black-russian', 'tequila-sunrise', 'pisco-sour', 'long-island-iced-tea'])
+    expect(ids).toContain(classic)
+})
+
+it('no longer lists Bandung', () => {
+  expect(content.drinks.map((d) => d.id)).not.toContain('bandung')
 })
 
 it('flags dairy on every drink made with milk, condensed milk or evaporated milk', () => {

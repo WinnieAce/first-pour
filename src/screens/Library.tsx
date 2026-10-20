@@ -6,6 +6,7 @@ import { GlassLink } from '../components/GlassLink'
 import { useContent } from '../content/ContentContext'
 import { FAMILIES } from '../content/families'
 import { COLLECTIONS, DIFFICULTIES, FAMILY_IDS, FLAVOURS, type Drink } from '../content/schema'
+import { dailyStarters } from '../core/dailyShelf'
 import { glassExtras } from '../core/extras'
 import { greeting, titleCase } from '../core/labels'
 import { shelfMotion } from '../hooks/shelfMotion'
@@ -82,7 +83,7 @@ export function Library() {
   const browsing = query.trim() === '' && !quickFilters && filtersInUse === 0
 
   // The shelf leads with the person's favourites, those they can make first, then the other drinks
-  // they can make. The rest is filled with one easy drink from each family as a place to start.
+  // they can make. The rest is filled with one easy drink from each family, a different one each day.
   const byName = (a: Drink, b: Drink) => a.name.localeCompare(b.name)
   const canMake = content.drinks.filter((d) => makeableIds.has(d.id)).sort(byName)
   const favourites = content.drinks.filter((d) => data.favouriteDrinkIds.includes(d.id)).sort(byName)
@@ -91,7 +92,8 @@ export function Library() {
     ...favourites.filter((d) => !makeableIds.has(d.id)),
     ...canMake.filter((d) => !data.favouriteDrinkIds.includes(d.id)),
   ]
-  const starters = FAMILY_IDS.flatMap((f) => content.drinks.filter((d) => d.family === f && d.difficulty === 'easy').slice(0, 1))
+  // Picked once when the screen opens, so the shelf cannot reshuffle at midnight mid-visit.
+  const [starters] = useState(() => dailyStarters(content, new Date()))
   const shelf = {
     title: personal.length > 0 ? "Tonight's shelf" : 'Good first drinks',
     drinks: [...personal, ...starters.filter((d) => !personal.includes(d))].slice(0, 8),

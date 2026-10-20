@@ -3091,34 +3091,445 @@
     "colour": "#9a5a24"
   },
   {
-    "id": "bandung",
-    "name": "Bandung",
-    "family": "coffee-and-cream",
-    "baseIngredientId": null,
+    "id": "caipirinha",
+    "name": "Caipirinha",
+    "family": "sour",
+    "baseIngredientId": "cachaca",
     "flavour": [
+      "sour",
+      "strong"
+    ],
+    "difficulty": "medium",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "lime",
+        "amount": 1,
+        "unit": "piece",
+        "optional": false,
+        "note": "cut into small wedges"
+      },
+      {
+        "ingredientId": "sugar",
+        "amount": 4,
+        "unit": "barspoon",
+        "optional": false,
+        "note": "about 4 teaspoons"
+      },
+      {
+        "ingredientId": "cachaca",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Put the lime wedges and sugar in a short glass and press them firmly a few times.",
+        "technique": "muddle",
+        "ingredientIds": [
+          "lime",
+          "sugar"
+        ]
+      },
+      {
+        "text": "Fill the glass with crushed or cracked ice and pour in the cachaça.",
+        "technique": "build",
+        "ingredientIds": [
+          "cachaca"
+        ]
+      },
+      {
+        "text": "Stir well, lifting from the bottom, so the sugar dissolves.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Muddler (a blunt stick for pressing)",
+        "alternative": "The end of a wooden spoon"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Brazil's national cocktail, made in the glass. Pressing whole lime wedges with sugar draws out both the juice and the oil in the peel, which gives a fuller lime flavour than juice alone. The sugar is the sweet part, the lime the sour and the cachaça the strong.",
+    "colour": "#e4ebc0"
+  },
+  {
+    "id": "mint-julep",
+    "name": "Mint Julep",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "bourbon",
+    "flavour": [
+      "strong",
+      "sweet"
+    ],
+    "difficulty": "medium",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "mint",
+        "amount": 8,
+        "unit": "piece",
+        "optional": false,
+        "note": "or 4 small sprigs"
+      },
+      {
+        "ingredientId": "sugar",
+        "amount": 1,
+        "unit": "barspoon",
+        "optional": false
+      },
+      {
+        "ingredientId": "water",
+        "amount": 10,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "bourbon",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Put the mint, sugar and water in a short glass or metal cup and press gently.",
+        "technique": "muddle",
+        "ingredientIds": [
+          "mint",
+          "sugar",
+          "water"
+        ]
+      },
+      {
+        "text": "Fill to the top with crushed ice and pour in the bourbon.",
+        "technique": "build",
+        "ingredientIds": [
+          "bourbon"
+        ]
+      },
+      {
+        "text": "Stir until the outside of the glass frosts over.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Muddler (a blunt stick for pressing)",
+        "alternative": "The end of a wooden spoon"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A Kentucky classic: bourbon, sugar and mint over a mound of crushed ice. Crushed ice melts quickly, so the drink starts strong and softens as you sip. Press the mint gently; tearing it releases bitterness.",
+    "colour": "#c9a35a"
+  },
+  {
+    "id": "bloody-mary",
+    "name": "Bloody Mary",
+    "family": "highball",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "medium",
+    "method": "stirred",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 45,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "tomato-juice",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "worcestershire",
+        "amount": 2,
+        "unit": "dash",
+        "optional": false
+      },
+      {
+        "ingredientId": "hot-sauce",
+        "amount": 2,
+        "unit": "dash",
+        "optional": false,
+        "note": "more if you like it hot"
+      },
+      {
+        "ingredientId": "salt",
+        "amount": 1,
+        "unit": "piece",
+        "optional": false,
+        "note": "a pinch, or celery salt, with a grind of black pepper"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the vodka, tomato juice, lemon juice, Worcestershire sauce, hot sauce and a pinch of salt and pepper to a mixing glass with ice.",
+        "ingredientIds": [
+          "vodka",
+          "tomato-juice",
+          "lemon-juice",
+          "worcestershire",
+          "hot-sauce",
+          "salt"
+        ]
+      },
+      {
+        "text": "Stir gently until cold. Shaking would make tomato juice frothy.",
+        "technique": "stir",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a tall glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Mixing glass",
+        "alternative": "Any sturdy glass or jug"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "A savoury cocktail, built like a seasoned soup. Tomato gives body, lemon keeps it bright, and Worcestershire, hot sauce and salt season it. Vodka adds strength without competing. Taste and adjust the seasoning, the way you would with food.",
+    "colour": "#a8281f"
+  },
+  {
+    "id": "black-russian",
+    "name": "Black Russian",
+    "family": "coffee-and-cream",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sweet",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "coffee-liqueur",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a short glass with ice and pour in the vodka and coffee liqueur.",
+        "technique": "build",
+        "ingredientIds": [
+          "vodka",
+          "coffee-liqueur"
+        ]
+      },
+      {
+        "text": "Stir gently.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Two ingredients: vodka for strength, coffee liqueur for flavour and sweetness. Float some cream on top and it becomes a White Russian, which shows how one extra layer changes a drink.",
+    "colour": "#3b2216"
+  },
+  {
+    "id": "godfather",
+    "name": "Godfather",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "scotch",
+    "flavour": [
+      "sweet",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "scotch",
+        "amount": 35,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "amaretto",
+        "amount": 35,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a short glass with ice and pour in the Scotch and amaretto.",
+        "technique": "build",
+        "ingredientIds": [
+          "scotch",
+          "amaretto"
+        ]
+      },
+      {
+        "text": "Stir gently.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Equal parts Scotch and amaretto. The almond sweetness of the liqueur rounds off the whisky's smoky, malty edges. Swap the Scotch for brandy and you have a French Connection.",
+    "colour": "#b9752c"
+  },
+  {
+    "id": "french-connection",
+    "name": "French Connection",
+    "family": "stirred-and-strong",
+    "baseIngredientId": "brandy",
+    "flavour": [
+      "sweet",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "brandy",
+        "amount": 35,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "amaretto",
+        "amount": 35,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a short glass with ice and pour in the brandy and amaretto.",
+        "technique": "build",
+        "ingredientIds": [
+          "brandy",
+          "amaretto"
+        ]
+      },
+      {
+        "text": "Stir gently.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "A Godfather made with brandy instead of Scotch. Brandy's dried-fruit warmth and amaretto's almond flavour sit naturally together, so it tastes softer and sweeter than its whisky cousin.",
+    "colour": "#b06a2a"
+  },
+  {
+    "id": "garibaldi",
+    "name": "Garibaldi",
+    "family": "highball",
+    "baseIngredientId": "campari",
+    "flavour": [
+      "bitter",
       "sweet"
     ],
     "difficulty": "easy",
     "method": "built",
     "ingredients": [
       {
-        "ingredientId": "rose-syrup",
-        "amount": 30,
+        "ingredientId": "campari",
+        "amount": 45,
         "unit": "ml",
         "optional": false
       },
       {
-        "ingredientId": "evaporated-milk",
-        "amount": 60,
-        "unit": "ml",
-        "optional": false
-      },
-      {
-        "ingredientId": "water",
-        "amount": 90,
+        "ingredientId": "orange-juice",
+        "amount": 120,
         "unit": "ml",
         "optional": false,
-        "note": "cold"
+        "note": "freshly squeezed if you can"
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a wedge, to garnish"
       }
     ],
     "steps": [
@@ -3128,18 +3539,16 @@
         "ingredientIds": []
       },
       {
-        "text": "Add the rose syrup and cold water and stir.",
-        "technique": "stir",
+        "text": "Pour in the Campari, then the orange juice, and stir.",
         "ingredientIds": [
-          "rose-syrup",
-          "water"
+          "campari",
+          "orange-juice"
         ]
       },
       {
-        "text": "Pour in the evaporated milk and stir until the drink is an even pink.",
-        "technique": "stir",
+        "text": "Garnish with the orange.",
         "ingredientIds": [
-          "evaporated-milk"
+          "orange"
         ]
       }
     ],
@@ -3154,8 +3563,678 @@
         "alternative": "A teaspoon or a chopstick"
       }
     ],
-    "whyItWorks": "The pink rose milk found at drink stalls across Singapore, with no alcohol. Rose syrup is very sweet and floral, and evaporated milk gives it body without the heaviness of cream. Plenty of ice and water keep it light.",
-    "collection": "singapore",
-    "colour": "#f2a7c0"
+    "whyItWorks": "Campari and orange juice. The juice softens Campari's bitterness while its own orange notes match the liqueur's. Whisking or shaking the juice first makes it light and foamy, the way Italian bars serve it.",
+    "colour": "#f0703a"
+  },
+  {
+    "id": "tequila-sunrise",
+    "name": "Tequila Sunrise",
+    "family": "highball",
+    "baseIngredientId": "tequila",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "tequila",
+        "amount": 45,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange-juice",
+        "amount": 90,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "grenadine",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "half a slice, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice and pour in the tequila and orange juice.",
+        "technique": "build",
+        "ingredientIds": [
+          "tequila",
+          "orange-juice"
+        ]
+      },
+      {
+        "text": "Pour the grenadine slowly down the inside of the glass. It is heavier, so it sinks.",
+        "ingredientIds": [
+          "grenadine"
+        ]
+      },
+      {
+        "text": "Do not stir. Garnish with the orange.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      }
+    ],
+    "whyItWorks": "The sunrise is the grenadine: heavier than the juice, it sinks to the bottom and leaves a red-to-orange fade. Stirring would spoil the look but not the taste, so it is up to you.",
+    "colour": "#f39b2e"
+  },
+  {
+    "id": "screwdriver",
+    "name": "Screwdriver",
+    "family": "highball",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 50,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange-juice",
+        "amount": 100,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice and pour in the vodka and orange juice.",
+        "technique": "build",
+        "ingredientIds": [
+          "vodka",
+          "orange-juice"
+        ]
+      },
+      {
+        "text": "Stir gently.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Vodka and orange juice, one part to two. Because vodka tastes of so little, the juice decides how good the drink is: freshly squeezed makes a real difference.",
+    "colour": "#f7b733"
+  },
+  {
+    "id": "horses-neck",
+    "name": "Horse's Neck",
+    "family": "highball",
+    "baseIngredientId": "brandy",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "brandy",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "ginger-ale",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "amount": 1,
+        "unit": "dash",
+        "optional": true,
+        "note": "if you like a little spice"
+      },
+      {
+        "ingredientId": "lemon",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a long spiral of peel, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Hang a long spiral of lemon peel inside a tall glass and fill it with ice.",
+        "technique": "build",
+        "ingredientIds": [
+          "lemon"
+        ]
+      },
+      {
+        "text": "Pour in the brandy and ginger ale, add a dash of bitters if using, and stir gently.",
+        "ingredientIds": [
+          "brandy",
+          "ginger-ale",
+          "angostura-bitters"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Brandy lengthened with gentle ginger ale. The long curl of lemon peel is the drink's trademark: it hangs over the rim like a horse's neck and scents every sip.",
+    "colour": "#d9b46a"
+  },
+  {
+    "id": "pisco-sour",
+    "name": "Pisco Sour",
+    "family": "sour",
+    "baseIngredientId": "pisco",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "medium",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "pisco",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "egg-white",
+        "amount": 1,
+        "unit": "piece",
+        "optional": false,
+        "note": "for the foam. Served raw: leave it out if you are pregnant, elderly or unwell"
+      },
+      {
+        "ingredientId": "angostura-bitters",
+        "amount": 3,
+        "unit": "dash",
+        "optional": true,
+        "note": "on top of the foam"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the pisco, lemon juice, syrup and egg white to a shaker.",
+        "ingredientIds": [
+          "pisco",
+          "lemon-juice",
+          "simple-syrup",
+          "egg-white"
+        ]
+      },
+      {
+        "text": "Shake hard without ice first to whip the egg, then add ice and shake again.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a chilled stemmed glass and shake a few drops of bitters onto the foam.",
+        "technique": "strain",
+        "ingredientIds": [
+          "angostura-bitters"
+        ]
+      }
+    ],
+    "glass": "coupe",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "The national drink of Peru, and the classic sour shape with a foamy top. Shaking first without ice whips the egg white into a thicker foam. The drops of bitters on top add aroma with every sip.",
+    "colour": "#efe7c6"
+  },
+  {
+    "id": "sea-breeze",
+    "name": "Sea Breeze",
+    "family": "highball",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sour"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cranberry-juice",
+        "amount": 120,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "grapefruit-juice",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice and pour in the vodka, cranberry juice and grapefruit juice.",
+        "technique": "build",
+        "ingredientIds": [
+          "vodka",
+          "cranberry-juice",
+          "grapefruit-juice"
+        ]
+      },
+      {
+        "text": "Stir gently.",
+        "technique": "stir",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Tart cranberry and a smaller amount of sharp, slightly bitter grapefruit. The grapefruit stops the cranberry tasting flat, much as bitters season a richer drink.",
+    "colour": "#e05a72"
+  },
+  {
+    "id": "long-island-iced-tea",
+    "name": "Long Island Iced Tea",
+    "family": "highball",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "strong",
+      "sweet"
+    ],
+    "difficulty": "medium",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "tequila",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "white-rum",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "gin",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "triple-sec",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lemon-juice",
+        "amount": 25,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cola",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false,
+        "note": "to top up"
+      },
+      {
+        "ingredientId": "lemon",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a slice, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice.",
+        "technique": "build",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the vodka, tequila, rum, gin, orange liqueur, lemon juice and syrup.",
+        "ingredientIds": [
+          "vodka",
+          "tequila",
+          "white-rum",
+          "gin",
+          "triple-sec",
+          "lemon-juice",
+          "simple-syrup"
+        ]
+      },
+      {
+        "text": "Top with cola, stir gently and garnish with the lemon.",
+        "ingredientIds": [
+          "cola",
+          "lemon"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Five spirits in small measures, balanced by lemon and sugar and topped with a splash of cola for the colour of iced tea. It contains no tea, and it is much stronger than it tastes, so take it slowly.",
+    "colour": "#7a4426"
+  },
+  {
+    "id": "planters-punch",
+    "name": "Planter's Punch",
+    "family": "tropical",
+    "baseIngredientId": "dark-rum",
+    "flavour": [
+      "sweet",
+      "sour"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "dark-rum",
+        "amount": 45,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 15,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "simple-syrup",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "water",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false,
+        "note": "cold"
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "a strip of peel, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a short glass with ice.",
+        "technique": "build",
+        "ingredientIds": []
+      },
+      {
+        "text": "Add the rum, lime juice, syrup and cold water and stir.",
+        "ingredientIds": [
+          "dark-rum",
+          "lime-juice",
+          "simple-syrup",
+          "water"
+        ]
+      },
+      {
+        "text": "Squeeze the orange peel over the drink and drop it in.",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "An old Jamaican recipe built on the rhyme 'one of sour, two of sweet, three of strong, four of weak': lime, sweetener, rum and water. The official recipe uses fresh sugar cane juice; syrup and a splash of water stand in for it here.",
+    "colour": "#c56a2e"
+  },
+  {
+    "id": "sex-on-the-beach",
+    "name": "Sex on the Beach",
+    "family": "highball",
+    "baseIngredientId": "vodka",
+    "flavour": [
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "method": "built",
+    "ingredients": [
+      {
+        "ingredientId": "vodka",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "peach-schnapps",
+        "amount": 20,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange-juice",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "cranberry-juice",
+        "amount": 40,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "orange",
+        "amount": 1,
+        "unit": "piece",
+        "optional": true,
+        "note": "half a slice, to garnish"
+      }
+    ],
+    "steps": [
+      {
+        "text": "Fill a tall glass with ice and pour in the vodka, peach schnapps, orange juice and cranberry juice.",
+        "technique": "build",
+        "ingredientIds": [
+          "vodka",
+          "peach-schnapps",
+          "orange-juice",
+          "cranberry-juice"
+        ]
+      },
+      {
+        "text": "Stir gently and garnish with the orange.",
+        "technique": "stir",
+        "ingredientIds": [
+          "orange"
+        ]
+      }
+    ],
+    "glass": "highball",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Bar spoon",
+        "alternative": "A teaspoon or a chopstick"
+      }
+    ],
+    "whyItWorks": "Sweet peach, juicy orange and tart cranberry, with vodka for strength. The cranberry is what keeps it from being sugary: it supplies the sour that balances the sweet.",
+    "colour": "#ef7a4f"
+  },
+  {
+    "id": "tommys-margarita",
+    "name": "Tommy's Margarita",
+    "family": "sour",
+    "baseIngredientId": "tequila",
+    "flavour": [
+      "sour",
+      "strong"
+    ],
+    "difficulty": "easy",
+    "method": "shaken",
+    "ingredients": [
+      {
+        "ingredientId": "tequila",
+        "amount": 60,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "lime-juice",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      },
+      {
+        "ingredientId": "agave-syrup",
+        "amount": 30,
+        "unit": "ml",
+        "optional": false
+      }
+    ],
+    "steps": [
+      {
+        "text": "Add the tequila, lime juice and agave syrup to a shaker.",
+        "ingredientIds": [
+          "tequila",
+          "lime-juice",
+          "agave-syrup"
+        ]
+      },
+      {
+        "text": "Fill the shaker with ice and shake hard.",
+        "technique": "shake",
+        "ingredientIds": []
+      },
+      {
+        "text": "Strain into a short glass over fresh ice.",
+        "technique": "strain",
+        "ingredientIds": []
+      }
+    ],
+    "glass": "rocks",
+    "tools": [
+      {
+        "name": "Jigger (a small measuring cup)",
+        "alternative": "A tablespoon, which holds 15 ml"
+      },
+      {
+        "name": "Shaker",
+        "alternative": "A jam jar with a tight lid"
+      },
+      {
+        "name": "Strainer",
+        "alternative": "A small sieve"
+      }
+    ],
+    "whyItWorks": "A Margarita with agave syrup in place of orange liqueur. Agave syrup comes from the same plant as tequila, so it sweetens the drink while making the tequila taste more like itself.",
+    "colour": "#e2e4b0"
   }
 ]

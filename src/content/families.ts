@@ -7,7 +7,7 @@ export const FAMILIES: Record<FamilyId, { name: string; description: string }> =
   },
   highball: {
     name: 'Highballs',
-    description: 'A measure of spirit topped with a larger amount of a fizzy mixer in a tall glass of ice.',
+    description: 'A measure of spirit lengthened with a larger amount of mixer or juice in a tall glass of ice.',
   },
   'collins-and-fizz': {
     name: 'Collins and fizzes',

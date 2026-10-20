@@ -33,6 +33,8 @@ export function glassExtras(drink: Drink): GlassExtras {
 
   let citrus: GlassExtras['citrus'] = null
   if (has('orange')) citrus = 'orange'
+  else if (has('lemon')) citrus = 'lemon'
+  else if (has('lime')) citrus = 'lime'
   else if (tall && ice && (has('lime-juice') || has('calamansi-juice'))) citrus = 'lime'
   else if (tall && ice && has('lemon-juice')) citrus = 'lemon'
 
