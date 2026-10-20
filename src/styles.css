@@ -774,6 +774,7 @@ h1:focus {
 }
 .making-body {
   position: relative;
+  display: grid; /* the step stretches to fill the space, so it can be swiped from anywhere */
   overflow-x: clip; /* steps sliding in and out stay inside the screen */
   font-size: 1.25rem;
 }
@@ -816,15 +817,21 @@ h1:focus {
   min-height: 3.5rem;
   font-size: 1.15rem;
 }
+/* Compact square buttons, and a count that keeps one width from "1 serving" to "8 servings", so
+   changing it never pushes the ml and oz buttons onto another line. */
 .stepper {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
+}
+.stepper .button {
+  padding-inline: 0.6rem;
 }
 .stepper output {
-  min-width: 2ch;
+  min-width: 5.75em;
   text-align: center;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Dialog */
