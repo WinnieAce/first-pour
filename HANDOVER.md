@@ -69,8 +69,11 @@ interface guidelines) and from watching real people use the app.
   Critically damped by default; a little bounce only after a gesture with momentum, such as a swipe.
 - Tapping an item glides its drawing into the detail screen and back (`hooks/viewTransition.ts`).
 - Respect "reduce motion": Motion runs with `reducedMotion="user"` and view transitions are skipped.
-- Motion (Framer Motion) is used only where it earns its 145 KB: the sliding nav highlight and swiping
-  between steps. Everything else is CSS or a few lines of our own.
+- Motion (Framer Motion) is used only where it earns its 145 KB: swiping between steps in making mode.
+  Everything else is CSS or a few lines of our own.
+- Do not use Motion's shared-layout animation (`layoutId`) inside a pinned (`position: fixed`) bar. It
+  measures against the page's scroll position, so after scrolling, the nav highlight flew in diagonally
+  from where the page had been. The highlight is now one element slid sideways with a CSS transform.
 
 ## 4. What testers taught us
 

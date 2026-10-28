@@ -226,11 +226,19 @@ h1:focus {
   color: var(--on-accent);
   font-weight: 600;
 }
+/* Sized to one tab and moved along by whole tabs: its own width plus the gap between tabs. */
 .nav-pill {
   position: absolute;
-  inset: 0;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0.3rem;
+  width: calc((100% - 0.6rem - (var(--count) - 1) * 0.25rem) / var(--count));
   border-radius: 999px;
   background: var(--accent);
+  transform: translateX(calc(var(--active) * (100% + 0.25rem)));
+}
+.nav-pill[data-hidden='true'] {
+  opacity: 0;
 }
 .nav-label {
   position: relative; /* above the sliding highlight */
@@ -1024,6 +1032,11 @@ h1:focus {
   /* Each tile's loops start at a different point, so the glasses never move in step. */
   .arch :is(.wave, .ice, .straw, .steam) {
     animation-delay: var(--phase, 0s);
+  }
+  .nav-pill {
+    transition:
+      transform 350ms var(--ease-out),
+      opacity 200ms ease;
   }
   .shelf li.asleep .glass *,
   .resting .glass * {

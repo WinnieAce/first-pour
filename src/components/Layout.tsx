@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import type { CSSProperties } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { APP_NAME, FEEDBACK_URL } from '../config'
 import { withViewTransition } from '../hooks/viewTransition'
@@ -17,6 +17,7 @@ export function Layout() {
   const location = useLocation()
   const navigate = useNavigate()
   const isMainScreen = SECTIONS.some((s) => s.to === location.pathname)
+  const active = SECTIONS.findIndex((s) => s.to === location.pathname)
   // An installed app has no browser back button. A page opened directly has nowhere to go back to,
   // so it returns to the drinks list instead.
   const goBack = () => withViewTransition(() => (location.key === 'default' ? navigate('/') : navigate(-1)))
@@ -49,23 +50,13 @@ export function Layout() {
           </a>
         )}
       </footer>
-      <nav className="nav" aria-label="Main">
+      {/* One highlight behind the tabs, slid sideways to the current one with a CSS transition. It only
+          ever moves within the nav, so scrolling the page between taps cannot throw it off course. */}
+      <nav className="nav" aria-label="Main" style={{ '--active': Math.max(active, 0), '--count': SECTIONS.length } as CSSProperties}>
+        <span className="nav-pill" data-hidden={active < 0} aria-hidden="true" />
         {SECTIONS.map((s) => (
           <NavLink key={s.to} to={s.to} end={s.to === '/'}>
-            {({ isActive }) => (
-              <>
-                {/* One highlight, shared between the tabs, so it slides to the new one. A critically
-                    damped spring: it arrives without overshooting. */}
-                {isActive && (
-                  <motion.span
-                    className="nav-pill"
-                    layoutId="nav-pill"
-                    transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
-                  />
-                )}
-                <span className="nav-label">{s.label}</span>
-              </>
-            )}
+            <span className="nav-label">{s.label}</span>
           </NavLink>
         ))}
       </nav>

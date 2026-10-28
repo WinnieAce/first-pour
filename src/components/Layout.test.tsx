@@ -33,10 +33,18 @@ it('shows Back on ingredient pages too', async () => {
   expect(screen.getByRole('button', { name: /back/i })).toBeInTheDocument()
 })
 
-it('marks the current section with a single highlight that can slide between tabs', async () => {
+it('marks the current section with a single highlight that slides between tabs', async () => {
   await open('/favourites', 'Favourites')
   const nav = screen.getByRole('navigation', { name: 'Main' })
   const pills = nav.querySelectorAll('.nav-pill')
   expect(pills).toHaveLength(1)
-  expect(pills[0].closest('a')).toHaveTextContent('Favourites')
+  // The highlight sits under the third tab, and only ever moves sideways within the nav.
+  expect(nav.style.getPropertyValue('--active')).toBe('2')
+  expect(pills[0]).not.toHaveAttribute('data-hidden', 'true')
+  expect(screen.getByRole('link', { name: 'Favourites' })).toHaveAttribute('aria-current', 'page')
+})
+
+it('hides the highlight on pages that are not one of the main sections', async () => {
+  await open('/drinks/daiquiri', 'Daiquiri')
+  expect(document.querySelector('.nav-pill')).toHaveAttribute('data-hidden', 'true')
 })
